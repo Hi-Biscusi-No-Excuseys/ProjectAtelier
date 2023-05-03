@@ -3,7 +3,6 @@ import React from 'react';
 // (does the same thing as the line below, but doesn't destructure for the function)
 import { createRoot } from 'react-dom/client';
 
-
 import App from './components/App';
 
 
@@ -11,3 +10,4 @@ import App from './components/App';
 // Above is for the non-destructured way on line 2
 // Below is the way to do it for the method on line 4
 createRoot(document.getElementById('root')).render(<App />);
+

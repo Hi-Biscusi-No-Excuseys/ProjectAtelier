@@ -25,3 +25,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+
+package-lock.json
+
