@@ -6,6 +6,4 @@ export default function App() {
       <p>Hello, world!</p>
     </div>
   );
-
 }
-
