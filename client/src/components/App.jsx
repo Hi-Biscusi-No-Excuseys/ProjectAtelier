@@ -8,9 +8,9 @@ export default function App() {
   return (
     <>
       <Overview />
-      <RatingsReviews />
-      <QuestionsAnswers />
       <RelatedItems />
+      <QuestionsAnswers />
+      <RatingsReviews />
     </>
   );
 }
