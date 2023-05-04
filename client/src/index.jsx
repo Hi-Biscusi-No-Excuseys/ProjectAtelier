@@ -5,7 +5,4 @@ import { createRoot } from 'react-dom/client';
 
 import App from './components/App';
 
-// ReactDOM.createRoot(document.getElementById)('root')).render(<App />);
-// Above is for the non-destructured way on line 2
-// Below is the way to do it for the method on line 4
 createRoot(document.getElementById('root')).render(<App />);
