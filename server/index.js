@@ -4,6 +4,14 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 
+const overview = require('./overview');
+
+const questionsanswers = require('./questionsanswers');
+
+const ratingsreviews = require('./ratingsreviews');
+
+const relateditems = require('./relateditems');
+
 const app = express();
 app.use(morgan('dev'));
 
@@ -11,6 +19,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.use('/overview', overview);
+app.use('/questionsanswers', questionsanswers);
+app.use('/ratingsreviews', ratingsreviews);
+app.use('/relateditems', relateditems);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
