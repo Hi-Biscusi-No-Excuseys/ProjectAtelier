@@ -6,7 +6,7 @@ const morgan = require('morgan');
 
 const overview = require('./overview');
 
-const questionsanswers = require('./questionsanswers');
+const questionsanswers = require('./questionsanswers.js');
 
 const ratingsreviews = require('./ratingsreviews');
 
