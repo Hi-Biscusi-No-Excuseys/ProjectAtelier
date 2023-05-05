@@ -11,7 +11,6 @@ export default function RelatedProductsList() {
         <RelatedProductCard />
         <RelatedProductCard />
         <RelatedProductCard />
-        <RelatedProductCard />
       </ProductContainer>
     </div>
   );
