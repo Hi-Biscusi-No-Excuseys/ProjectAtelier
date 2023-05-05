@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/overview', overview);
 app.use('/questionsanswers', questionsanswers);
-app.use('/ratingsreviews', ratingsreviews);
+app.use('/reviews', ratingsreviews);
 app.use('/relateditems', relateditems);
 
 const PORT = process.env.PORT || 3000;
