@@ -4,16 +4,17 @@ import ProductBreakdown from './components/ProductBreakdown.jsx';
 import SortOptions from './components/SortOptions.jsx';
 import ReviewsList from './components/ReviewsList.jsx';
 
-export default function RatingsReviews() {
+export default function RatingsReviews({productID}) {
+
   return (
-    <>
-      <h3>Ratings & Reviews</h3>
+    <div id='reviews'>
       <aside>
-        <RatingBreakdown />
-        <ProductBreakdown />
+        <h3>Ratings & Reviews</h3>
+        <RatingBreakdown productID={productID}/>
+        <ProductBreakdown productID={productID}/>
       </aside>
       <SortOptions />
-      <ReviewsList />
-    </>
+      <ReviewsList productID={productID}/>
+    </div>
   );
 }
