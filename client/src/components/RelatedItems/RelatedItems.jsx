@@ -8,32 +8,30 @@ import styles from './Styles.jsx';
 const { ListContainer } = styles;
 const { useState, useEffect } = React;
 
-export default function RelatedItems( {productID} ) {
+export default function RelatedItems( {productID, setProductID} ) {
   const [items, setItems] = useState([]);
+  const [outfit, setOutfit] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(`/related/${productID}`, {
-  //     headers: {
-  //       Authorization: process.env.AUTH
-  //     }
-  //   })
-  //     .then((response) => {
-  //       setItems(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log('ERROR:', err);
-  //     });
-  // },[productID]);
+  useEffect(() => {
+    axios.get(`/relateditems/related/${productID}`)
+      .then((response) => {
+        console.log(response.data);
+        setItems(response.data);
+      })
+      .catch((err) => {
+        console.log('ERROR:', err);
+      });
+  },[productID]);
 
   return (
     <div id="related-items-component">
     <ListContainer>
-      <RelatedProductsList items={items}/>
+      <RelatedProductsList items={items} setProductID={setProductID}/>
+      <YourOutfitList outfit={outfit} setOutfit={setOutfit}/>
 
       {/* adding just to test */}
       <Comparison />
 
-      <YourOutfitList />
     </ListContainer>
     </div>
   );

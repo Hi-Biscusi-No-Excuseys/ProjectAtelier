@@ -2,11 +2,13 @@ import React from 'react';
 import styles from './Styles.jsx';
 const { Card } = styles;
 
-export default function RelatedProductCard({product}) {
+export default function RelatedProductCard({item}) {
   return (
     <div>
       <Card id="product-card">
-        <p>Hello I&apos;m a card.</p>
+        <div>
+          {item.name}
+        </div>
       </Card>
     </div>
   );
