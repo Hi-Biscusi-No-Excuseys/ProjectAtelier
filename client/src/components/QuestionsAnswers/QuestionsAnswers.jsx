@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Search from './Search';
-import QuestionsList from './QuestionsList';
-import MoreAnsweredQ from './MoreAnsweredQ';
-import AddQuestion from './AddQuestion';
+import Search from './components/Search';
+import QuestionsList from './components/QuestionsList';
+import MoreAnsweredQ from './components/MoreAnsweredQ';
+import AddQuestion from './components/AddQuestion';
 
 export default function QuestionsAnswers() {
   const [questions, setQuestions] = useState([]);
