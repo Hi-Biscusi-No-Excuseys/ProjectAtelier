@@ -26,7 +26,7 @@ router.get('/related/:product_id', (req, res) => {
 
       for (let i = 0; i < response.data.length; i++) {
         url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${response.data[i]}`;
-        console.log('URL #', i, url);
+        // console.log('URL #', i, url);
         promises.push(axios.get(url, options));
       }
 

@@ -32,10 +32,28 @@ border-width: 1px;
 `;
 
 const Card = styled.div`
+display: flex;
 height: 400px;
-width: 300px;
+width: 260px;
 border-style: solid;
 border-width: 2px;
+position: relative;
+`;
+
+const CardImage = styled.img`
+position: relative;
+height: 280px;
+width: 260px;
+z-index: 1;
+`;
+
+const CardDetails = styled(Card)`
+position: absolute;
+z-index: 2;
+`;
+
+const Star = styled(CardDetails)`
+justify-content: flex-end;
 `;
 
 const Table = styled.div`
@@ -68,6 +86,9 @@ export default {
   ProductContainer: ProductContainer,
   Title: Title,
   Card: Card,
+  CardImage: CardImage,
+  CardDetails: CardDetails,
+  Star: Star,
   Table: Table,
   TableRow: TableRow,
   TableCol: TableCol,
