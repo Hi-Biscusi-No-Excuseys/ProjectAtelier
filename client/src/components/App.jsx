@@ -5,7 +5,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews';
 import RelatedItems from './RelatedItems/RelatedItems';
 
 export default function App() {
-  const [productID, setProductID] = useState(40432);
+  const [productID, setProductID] = useState(40347);
 
   return (
     <div>
