@@ -13,9 +13,12 @@ export default function Overview({productID}) {
   useEffect(()=>{
     axios.get(`/overview/products/${productID}/styles`)
       .then((response) => {
-        setStyles(response.data);
+        setStyles(response.data.results);
+      })
+      .catch((err)=>{
+        console.log(err);
       });
-  }, [])
+  }, [productID])
 
   return (
     <div className="overview">
