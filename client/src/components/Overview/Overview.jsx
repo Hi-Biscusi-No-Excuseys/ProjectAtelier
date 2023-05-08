@@ -6,11 +6,7 @@ import ImageGallery from './components/ImageGallery';
 import Description from './components/Description';
 const axios = require('axios');
 
-<<<<<<< HEAD
-export default function Overview({productID}) {
-=======
 export default function Overview({product}) {
->>>>>>> overview-api
   const [overview, setOverview] = useState({});
   const [styles, setStyles] = useState([]);
 
@@ -38,9 +34,9 @@ console.log('this is style: ', styles);
     <div className="overview">
       <ImageGallery styles={styles}/>
       <div>
-        <ProductInfo overview={overview} styles={styles}/>
+        <ProductInfo overview={overview}/>
         <StyleSelector styles={styles}/>
-        <AddToCart />
+        <AddToCart styles={styles}/>
       </div>
       <Description overview={overview}/>
       </div>
