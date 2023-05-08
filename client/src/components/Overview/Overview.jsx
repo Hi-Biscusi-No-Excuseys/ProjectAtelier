@@ -7,7 +7,7 @@ import Description from './components/Description';
 const axios = require('axios');
 
 export default function Overview({productID}) {
-  const [overview, setOverview] = useState([]);
+  const [overview, setOverview] = useState({});
   const [styles, setStyles] = useState([]);
 
   useEffect(()=>{
@@ -36,7 +36,7 @@ console.log('this is style: ', styles);
       <div>
         <ProductInfo overview={overview}/>
         <StyleSelector styles={styles}/>
-        <AddToCart styles={styles}/>
+        <AddToCart />
       </div>
       <Description overview={overview}/>
       </div>
