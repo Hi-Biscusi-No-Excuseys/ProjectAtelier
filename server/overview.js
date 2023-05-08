@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const auth = process.env.TOKEN;
+const auth = process.env.AUTH;
 
 router.get('/products', (req, res) => {
   console.log('This is the request body: ', req.body);
