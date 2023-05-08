@@ -6,12 +6,12 @@ import ImageGallery from './components/ImageGallery';
 import Description from './components/Description';
 const axios = require('axios');
 
-export default function Overview({productID}) {
+export default function Overview({product}) {
   const [overview, setOverview] = useState([]);
   const [styles, setStyles] = useState([]);
 
   useEffect(()=>{
-    axios.get(`/overview/products/${productID}/styles`)
+    axios.get(`/overview/products/${product}/styles`)
       .then((response) => {
         setStyles(response.data);
       });
