@@ -6,19 +6,19 @@ import ImageGallery from './components/ImageGallery';
 import Description from './components/Description';
 const axios = require('axios');
 
-export default function Overview({productID}) {
-  const [overview, setOverview] = useState([]);
+export default function Overview({product}) {
+  const [overview, setOverview] = useState({});
   const [styles, setStyles] = useState([]);
 
   useEffect(()=>{
-    axios.get(`/overview/products/${productID}/styles`)
+    axios.get(`/overview/products/${product.id}/styles`)
       .then((response) => {
         setStyles(response.data.results);
       })
       .catch((err) => {
         console.log('Unable to fetch data: ', err);
       });
-    axios.get(`/overview/products/${productID}`)
+    axios.get(`/overview/products/${product.id}`)
       .then((response) => {
         setOverview(response.data);
       })
