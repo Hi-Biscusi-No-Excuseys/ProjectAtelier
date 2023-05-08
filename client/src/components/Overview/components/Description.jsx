@@ -14,9 +14,9 @@ const features = overview.features
       <div>
         {features?.map((list, i) => {
           if (list.value !== null) {
-            return <li key={i}>{list.feature}, {list.value}</li>
+            return <ul key={i}>{list.feature}, {list.value}</ul>
           } else {
-            return <li key={i}>{list.feature}</li>
+            return <ul key={i}>{list.feature}</ul>
           }
         })}
       </div>
