@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Details({overview}) {
-  console.log(overview);
+
   return (
     <div className="productDetails">
       <div>⭐️⭐️⭐️⭐️⭐️</div>

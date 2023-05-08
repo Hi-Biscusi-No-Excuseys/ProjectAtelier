@@ -27,6 +27,9 @@ export default function Overview({productID}) {
       })
   }, [productID])
 
+console.log('this is overview: ', overview);
+console.log('this is style: ', styles);
+
   return (
     <div className="overview">
       <ImageGallery styles={styles}/>

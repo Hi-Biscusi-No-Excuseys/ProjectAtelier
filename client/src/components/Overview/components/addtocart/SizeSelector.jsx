@@ -5,6 +5,7 @@ export default function SizeSelector() {
   return (
     <div className="sizeselector">
       <select>
+        <option selected disabled>Select Size</option>
         <option value="Small">Small</option>
         <option value="Medium">Medium</option>
         <option value="Large">Large</option>
