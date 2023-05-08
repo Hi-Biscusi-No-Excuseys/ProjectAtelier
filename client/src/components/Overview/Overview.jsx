@@ -25,7 +25,7 @@ export default function Overview({product}) {
       .catch((err) => {
         console.log('Unable to fetch data: ', err);
       })
-  }, [productID])
+  }, [product])
 
 console.log('this is overview: ', overview);
 console.log('this is style: ', styles);
