@@ -34,7 +34,7 @@ console.log('this is style: ', styles);
     <div className="overview">
       <ImageGallery styles={styles}/>
       <div>
-        <ProductInfo overview={overview}/>
+        <ProductInfo overview={overview} styles={styles}/>
         <StyleSelector styles={styles}/>
         <AddToCart styles={styles}/>
       </div>
