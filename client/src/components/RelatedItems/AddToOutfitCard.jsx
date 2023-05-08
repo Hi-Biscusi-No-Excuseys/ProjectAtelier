@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styles from './Styles.jsx';
-const { Card } = styles;
+const { Card, AddToOutFitButton } = styles;
 
 export default function AddToOutfitCard( {productID, setOutfit} ) {
 
@@ -12,7 +12,7 @@ export default function AddToOutfitCard( {productID, setOutfit} ) {
   return (
     <div>
       <Card id="add-to-outfit-card" onClick={handleAddClick}>
-        <p>Hello I&apos;m gonna be a button. CLICK ME TO ADD TO OUTFIT</p>
+        <AddToOutFitButton>&#43;</AddToOutFitButton>
       </Card>
     </div>
   );

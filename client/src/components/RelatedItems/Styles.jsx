@@ -37,23 +37,53 @@ height: 400px;
 width: 260px;
 border-style: solid;
 border-width: 2px;
-position: relative;
+flex-direction: column;
+// position: absolute;
+align-content: center;
+justify-content: center;
+`;
+
+const CardImageContainer = styled.div`
+display: flex;
+height: 280px;
+width: 260px;
+flex-direction: row-reverse;
 `;
 
 const CardImage = styled.img`
-position: relative;
+position: absolute;
 height: 280px;
 width: 260px;
-z-index: 1;
+z-index: -1;
 `;
 
-const CardDetails = styled(Card)`
-position: absolute;
-z-index: 2;
+
+const CardDetails = styled.div`
+height: 120px;
+width: 260px;
 `;
 
-const Star = styled(CardDetails)`
-justify-content: flex-end;
+const CardHeader = styled.div`
+`;
+
+const CardTitle = styled.div`
+`;
+
+const AddToOutFitButton = styled.span`
+align-self: center;
+font-size: 200px;
+`;
+
+const StarContainer = styled.div`
+
+`;
+
+const Star = styled.div`
+// color: white;
+font-size: 30px;
+// font-weight: 1100;
+align-self: flex-start;
+padding-right: 10px;
 `;
 
 const Table = styled.div`
@@ -86,9 +116,14 @@ export default {
   ProductContainer: ProductContainer,
   Title: Title,
   Card: Card,
+  CardImageContainer: CardImageContainer,
   CardImage: CardImage,
-  CardDetails: CardDetails,
   Star: Star,
+  StarContainer: StarContainer,
+  CardDetails: CardDetails,
+  CardTitle: CardTitle,
+  CardHeader: CardHeader,
+  AddToOutFitButton: AddToOutFitButton,
   Table: Table,
   TableRow: TableRow,
   TableCol: TableCol,
