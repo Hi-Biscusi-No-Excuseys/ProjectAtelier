@@ -15,20 +15,27 @@ export default function Overview({productID}) {
       .then((response) => {
         setStyles(response.data.results);
       })
-      .catch((err)=>{
-        console.log(err);
+      .catch((err) => {
+        console.log('Unable to fetch data: ', err);
       });
+    axios.get(`/overview/products/${productID}`)
+      .then((response) => {
+        setOverview(response.data);
+      })
+      .catch((err) => {
+        console.log('Unable to fetch data: ', err);
+      })
   }, [productID])
 
   return (
     <div className="overview">
       <ImageGallery styles={styles}/>
       <div>
-        <ProductInfo styles={styles}/>
+        <ProductInfo overview={overview}/>
         <StyleSelector styles={styles}/>
         <AddToCart styles={styles}/>
       </div>
-      <Description styles={styles}/>
+      <Description overview={overview}/>
       </div>
   );
 }
