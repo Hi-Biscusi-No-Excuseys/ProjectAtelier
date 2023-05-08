@@ -11,7 +11,7 @@ router.get('/questions', (req, res) => {
   // console.log('this is req.query', req)
   axios.get(`${API_HOST}${PATH}`, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: process.env.AUTH,
     },
     params: {
       product_id: req.query.product_id || 40399, // set a default value if product_id is not provided
@@ -31,7 +31,7 @@ router.get('/questions', (req, res) => {
 router.get('/questions/:question_id/answers', (req, res) => {
   axios.get(`${API_HOST}/qa/questions/${req.params.question_id}/answers`, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: process.env.AUTH,
     },
     params: {
       page: req.query.page || 1,
@@ -58,7 +58,7 @@ router.post('/questions', (req, res) => {
       product_id
     }, {
       headers: {
-        Authorization: process.env.API_KEY,
+        Authorization: process.env.AUTH,
       }
     }
   )
@@ -80,7 +80,7 @@ router.post('/questions/:question_id/answers', (req, res) => {
       photos
     }, {
       headers: {
-        Authorization: process.env.API_KEY,
+        Authorization: process.env.AUTH,
       }
     }
   )
@@ -98,7 +98,7 @@ router.post('/questions/:question_id/answers', (req, res) => {
 router.put('/questions/:question_id/helpful', (req, res) => {
   axios.put(`${API_HOST}/qa/questions/${req.params.question_id}/helpful`, {}, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: process.env.AUTH,
     }
   })
   .then((response) => {
@@ -113,7 +113,7 @@ router.put('/questions/:question_id/helpful', (req, res) => {
 router.put('/questions/:question_id/report', (req, res) => {
   axios.put(`${API_HOST}/qa/questions/${req.params.question_id}/report`, {}, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: process.env.AUTH,
     }
   })
   .then((response) => {
@@ -128,7 +128,7 @@ router.put('/questions/:question_id/report', (req, res) => {
 router.put('/answers/:answer_id/helpful', (req, res) => {
   axios.put(`${API_HOST}/qa/answers/${req.params.answer_id}/helpful`, {}, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: process.env.AUTH,
     }
   })
   .then((response) => {
@@ -143,7 +143,7 @@ router.put('/answers/:answer_id/helpful', (req, res) => {
 router.put('/answers/:answer_id/report', (req, res) => {
   axios.put(`${API_HOST}/qa/answers/${req.params.answer_id}/report`, {}, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: process.env.AUTH,
     }
   })
   .then((response) => {
