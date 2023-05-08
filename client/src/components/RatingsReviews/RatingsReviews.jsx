@@ -8,13 +8,20 @@ export default function RatingsReviews({productID}) {
 
   return (
     <div id='reviews'>
-      <aside>
-        <h3>Ratings & Reviews</h3>
-        <RatingBreakdown productID={productID}/>
-        <ProductBreakdown productID={productID}/>
-      </aside>
-      <SortOptions />
-      <ReviewsList productID={productID}/>
+      <h3>Ratings & Reviews</h3>
+
+      <div id='breakdown-list'>
+        <aside>
+          <RatingBreakdown productID={productID}/>
+          <ProductBreakdown productID={productID}/>
+        </aside>
+
+        <div id='sort-and-list'>
+          <SortOptions />
+          <ReviewsList productID={productID}/>
+        </div>
+      </div>
+
     </div>
   );
 }
