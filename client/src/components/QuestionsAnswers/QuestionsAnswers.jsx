@@ -14,7 +14,7 @@ export default function QuestionsAnswers({productID}) {
   useEffect(() => {
     axios.get(`http://localhost:3000/questionsanswers/questions/?product_id=${productID}`)
     .then(({data}) => {
-      console.log('this is DATA!', data.results); // add this line to confirm data is being retrieved
+      // console.log('this is DATA!', data.results); // add this line to confirm data is being retrieved
       setQuestions(data.results)
     })
     .catch((err) => console.log(`error getting questions: ${err}`))

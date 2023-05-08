@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import AddAnswer from './AddAnswer.jsx';
 //
 export default function QuestionsListEntry({question, request, setRequest}) {
-  console.log('question.question_body', question.question_body);
+  // console.log('question.question_body', question.question_body);
   const[helpfulClicked, setHelpfulClicked] = useState(false);
   const[addAnswerForm, setAddAnswerForm] = useState(false);
 
