@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 
-export default function AddAnswer({question, request, setRequest, onClose }) {
+export default function AddAnswer({question, request, setRequest, onClose, productName }) {
   const[answer, setAnswer] = useState('');
   const[nickname, setNickname] = useState('');
   const[email, setEmail] = useState('');
@@ -38,7 +38,7 @@ export default function AddAnswer({question, request, setRequest, onClose }) {
     <div>
         <div className="modal-content">
           <h2>Submit your Answer</h2>
-          <h3>{question.product_name}: {question.question_body}</h3>
+          <h3>{productName}: {question.question_body}</h3>
           <form method="post" onSubmit={(e) => {
             e.preventDefault();
             handleAddAnswer(question.question_id, answer, nickname, email);

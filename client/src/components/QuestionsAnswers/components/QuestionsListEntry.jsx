@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import AddAnswer from './AddAnswer.jsx';
 //
-export default function QuestionsListEntry({question, request, setRequest}) {
+export default function QuestionsListEntry({question, request, setRequest, productName}) {
   // console.log('question.question_body', question.question_body);
   const[helpfulClicked, setHelpfulClicked] = useState(false);
   const[addAnswerForm, setAddAnswerForm] = useState(false);
 
   const handleQHelpfulClick = (questionID) => {
-    if(!helpfulClicked) {
+    if(!helpfulClicked ) {
       axios.put(`http://localhost:3000/questionsanswers/questions/${questionID}/helpful`)
       .then(() => {
         setRequest(!request);
@@ -35,7 +35,7 @@ export default function QuestionsListEntry({question, request, setRequest}) {
            onClick={() =>setAddAnswerForm(!addAnswerForm)}> Add Answer</span>
          </div>
             : createPortal(
-              <AddAnswer onClose={() => setAddAnswerForm(!addAnswerForm)} question={question} request={request} setRequest={setRequest} />,
+              <AddAnswer onClose={() => setAddAnswerForm(!addAnswerForm)} question={question} request={request} productName={productName} setRequest={setRequest} />,
               document.body
             )
           }
