@@ -1,7 +1,8 @@
 import React from 'react';
-import AddAnswer from './AddAnswer.jsx';
 import axios from 'axios';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import AddAnswer from './AddAnswer.jsx';
 //
 export default function QuestionsListEntry({question, request, setRequest}) {
   console.log('question.question_body', question.question_body);
@@ -33,11 +34,16 @@ export default function QuestionsListEntry({question, request, setRequest}) {
            <span style={{textDecoration: 'underline'}}
            onClick={() =>setAddAnswerForm(!addAnswerForm)}> Add Answer</span>
          </div>
-            :  <AddAnswer question={question} request={request} setRequest={setRequest}addAnswerForm={addAnswerForm} setAddAnswerForm={setAddAnswerForm}/>}
+            : createPortal(
+              <AddAnswer onClose={() => setAddAnswerForm(!addAnswerForm)} question={question} request={request} setRequest={setRequest} />,
+              document.body
+            )
+          }
 
 
       </div>
-      <strong>A:</strong> <text>will be rendering answers here</text>
+      <strong>A:</strong>will be rendering answers here
     </div>
   );
 }
+

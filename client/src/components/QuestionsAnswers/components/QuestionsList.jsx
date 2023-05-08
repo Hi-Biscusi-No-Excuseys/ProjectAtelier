@@ -10,7 +10,7 @@ export default function QuestionsList({questions, request, setRequest}) {
      {questions.length > 0 ? (
       questions.sort(sortByHelpfulness).map((question) => {
         return (
-          <QuestionsListEntry question={question} request={request} setRequest={setRequest} />
+          <QuestionsListEntry key={question.question_id} question={question} request={request} setRequest={setRequest} />
         )
       })) : <div>No questions found</div>}
     </div>
