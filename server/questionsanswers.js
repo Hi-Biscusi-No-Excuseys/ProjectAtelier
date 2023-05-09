@@ -35,7 +35,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
     },
     params: {
       page: req.query.page || 1,
-      count: req.query.count || 5,
+      count: req.query.count || 1000,
     },
   })
     .then((response) => {

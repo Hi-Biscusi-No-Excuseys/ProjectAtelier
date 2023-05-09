@@ -12,6 +12,7 @@ export default function Overview({product}) {
   const [reviews, setReviews] = useState(0);
 
   useEffect(()=>{
+    setOverview(product);
     axios.get(`/overview/products/${product.id}/styles`)
       .then((response) => {
         setStyles(response.data.results);
@@ -21,17 +22,12 @@ export default function Overview({product}) {
       });
     axios.get('/reviews/meta', { params: {product_id: product.id} })
       .then((response) => {
-        console.log('This is the response: ', response);
         setReviews(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10))
       })
       .catch((err) => {
         console.error('Client failed to get reviews:', err);
       })
   }, [product])
-
-console.log('this is overview: ', overview);
-console.log('this is style: ', styles);
-console.log(reviews)
 
   return (
     <div className="overview">

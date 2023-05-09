@@ -51,7 +51,7 @@ router.get('/products/:product_id/styles', (req, res) => {
   }
   axios.get(url, options)
     .then((response)=>{
-      console.log("These are the product's styles: ", response.data);
+      // console.log("These are the product's styles: ", response.data);
       res.json(response.data);
     })
     .catch((err)=>{
