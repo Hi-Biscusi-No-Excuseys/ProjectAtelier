@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Search from './components/Search';
 import QuestionsList from './components/QuestionsList';
-import MoreAnsweredQ from './components/MoreAnsweredQ';
 import AddQuestion from './components/AddQuestion';
 import axios from 'axios';
 //40432
@@ -21,11 +20,10 @@ export default function QuestionsAnswers({product}) {
   }, [request, product]);
 
   return (
-    <div class="QuestionsAnswers">
+    <div className="QuestionsAnswers">
       <h1>Questions & Answers</h1>
       <Search filterText={filterText} setFilterText={setFilterText} />
       <QuestionsList productName={product.name}filterText={filterText} questions={questions} request={request} setRequest={setRequest}/>
-      <MoreAnsweredQ />
       <AddQuestion />
     </div>
   );

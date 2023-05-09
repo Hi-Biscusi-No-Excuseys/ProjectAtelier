@@ -38,7 +38,10 @@ export default function AnswersListEntry({answer, request, setRequest }) {
       </div>
       <div style={{display: 'flex', marginBottom: '8px' }}>
         <div>
-          by {answer.answerer_name}, {formattedDate}&nbsp; | &nbsp;
+          {answer.answerer_name === "Seller" ?
+          <div>by <strong>{answer.answerer_name} </strong>, {formattedDate}&nbsp; | &nbsp; </div>
+          : <div>by {answer.answerer_name}, {formattedDate}&nbsp; | &nbsp; </div>}
+
         </div>
 
         <div>Helpful?
