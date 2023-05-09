@@ -3,7 +3,7 @@ import RelatedProductCard from './RelatedProductCard';
 import styles from './Styles.jsx';
 const { ProductContainer, Title } = styles;
 
-export default function RelatedProductsList({ items, setProductID }) {
+export default function RelatedProductsList({ items, setProduct }) {
 
 
 
@@ -12,7 +12,7 @@ export default function RelatedProductsList({ items, setProductID }) {
       <Title>RELATED PRODUCTS</Title>
       <ProductContainer>
         {items.map((item) => {
-          return <RelatedProductCard key={item.id} item={item}/>;
+          return <RelatedProductCard key={item.id} item={item} setProduct={setProduct}/>;
         })}
       </ProductContainer>
     </div>

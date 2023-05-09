@@ -8,16 +8,17 @@ import styles from './Styles.jsx';
 const { ListContainer } = styles;
 const { useState, useEffect } = React;
 
-export default function RelatedItems( {productID, setProductID} ) {
+export default function RelatedItems( {product, setProduct} ) {
   const [items, setItems] = useState([]);
   const [outfit, setOutfit] = useState([]);
 
-
+// move the sessionStorage into the YourOutfit component. Not sure it's really needed here. But it was useful during development to avoid hitting the API so many times.
   useEffect(() => {
     if (sessionStorage.getItem('RelatedItems') && items.length === 0) {
+      console.log('Snagging from sessionStorage:');
       setItems(JSON.parse(sessionStorage.getItem('RelatedItems')));
     } else {
-      axios.get(`/relateditems/related/${productID}`)
+      axios.get(`/relateditems/related/${product.id}`)
         .then((firstResponse) => {
           console.log('What did we get? : ', firstResponse.data);
 
@@ -53,7 +54,7 @@ export default function RelatedItems( {productID, setProductID} ) {
           console.log('ERROR:', err);
         });
     }
-  },[productID]);
+  },[product]);
 
   // useEffect(() => {
   //   axios.get(`/overview/products/${item.id}/styles`)
@@ -71,8 +72,8 @@ export default function RelatedItems( {productID, setProductID} ) {
   return (
     <div id="related-items-component">
     <ListContainer>
-      <RelatedProductsList items={items} setProductID={setProductID}/>
-      <YourOutfitList productID={productID} outfit={outfit} setOutfit={setOutfit}/>
+      <RelatedProductsList items={items} setProduct={setProduct}/>
+      <YourOutfitList product={product} outfit={outfit} setOutfit={setOutfit}/>
 
       {/* adding just to test */}
       <Comparison />

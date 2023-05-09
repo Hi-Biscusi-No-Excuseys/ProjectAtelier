@@ -3,8 +3,9 @@ import axios from 'axios';
 import styles from './Styles.jsx';
 const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
 
-export default function RelatedProductCard({item}) {
+export default function RelatedProductCard({item, setProduct}) {
   console.log('What dis', item);
+
   // const [style, setStyle] = useState('');
 
   // useEffect(() => {
@@ -24,7 +25,9 @@ export default function RelatedProductCard({item}) {
   return (
     <div>
       <Card id="product-card">
-        <CardImageContainer>
+        <CardImageContainer onClick={(e) => {
+          setProduct(item);
+        }}>
           <CardImage src={item.results[0].photos[0].url}/>
           <Star>&#x2729;</Star>
         </CardImageContainer>
