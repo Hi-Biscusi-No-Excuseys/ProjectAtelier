@@ -12,7 +12,7 @@ export default function RelatedItems( {product, setProduct} ) {
   const [items, setItems] = useState([]);
   const [outfit, setOutfit] = useState([]);
 
-// move the sessionStorage into the YourOutfit component. Not sure it's really needed here. But it was useful during development to avoid hitting the API so many times.
+// move the sessionStorage (and change to localStorage) into the YourOutfit component. Not sure it's really needed here. But it was useful during development to avoid hitting the API so many times.
   useEffect(() => {
     if (sessionStorage.getItem('RelatedItems') && items.length === 0) {
       console.log('Snagging from sessionStorage:');
@@ -20,7 +20,7 @@ export default function RelatedItems( {product, setProduct} ) {
     } else {
       axios.get(`/relateditems/related/${product.id}`)
         .then((firstResponse) => {
-          console.log('What did we get? : ', firstResponse.data);
+          // console.log('What did we get? : ', firstResponse.data);
 
           const promises = [];
 
@@ -33,12 +33,28 @@ export default function RelatedItems( {product, setProduct} ) {
 
           axios.all(promises)
             .then((secondResponse) => {
-              console.log('What styles did we get? : ', secondResponse);
+              // console.log('What styles did we get? : ', secondResponse);
               const styledItems = [];
 
               for (let i = 0; i < firstResponse.data.length; i++) {
                   // console.log('Ending up with: ', Object.assign(firstResponse.data[i], secondResponse[i].data));
-                  styledItems.push(Object.assign(firstResponse.data[i], secondResponse[i].data));
+                  if (styledItems.length === 0) {
+                    styledItems.push(Object.assign(firstResponse.data[i], secondResponse[i].data));
+                  } else {
+                    let found = false;
+                    for (let j = 0; j < styledItems.length; j++) {
+                      if (styledItems[j].id === firstResponse.data[i].id) {
+                        found = true;
+                        console.log('>>>>> Found duplicate, do not save.');
+                        break;
+                      }
+                    }
+
+                    if (!found) {
+                      styledItems.push(Object.assign(firstResponse.data[i], secondResponse[i].data));
+                    }
+                  }
+
               }
 
               setItems(styledItems);
@@ -55,6 +71,18 @@ export default function RelatedItems( {product, setProduct} ) {
         });
     }
   },[product]);
+
+  const addToOutfit = (item) => {
+    console.log(`What we received from addToOutfit card: ${item.name}`);
+    axios.get(`/overview/products/${product.id}/styles`)
+      .then((response) => {
+        setOutfit([...outfit, Object.assign(item, response.data)]);
+        console.log('Current outfit:', outfit);
+      })
+      .catch((err) => {
+        console.log('Unable to add outfit: ', err);
+      });
+  };
 
   // useEffect(() => {
   //   axios.get(`/overview/products/${item.id}/styles`)
@@ -73,7 +101,7 @@ export default function RelatedItems( {product, setProduct} ) {
     <div id="related-items-component">
     <ListContainer>
       <RelatedProductsList items={items} setProduct={setProduct}/>
-      <YourOutfitList product={product} outfit={outfit} setOutfit={setOutfit}/>
+      <YourOutfitList product={product} outfit={outfit} addToOutfit={addToOutfit}/>
 
       {/* adding just to test */}
       <Comparison />

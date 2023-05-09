@@ -26,6 +26,7 @@ export default function RelatedProductCard({item, setProduct}) {
     <div>
       <Card id="product-card">
         <CardImageContainer onClick={(e) => {
+          console.log('CLICKED: ', item.id);
           setProduct(item);
         }}>
           <CardImage src={item.results[0].photos[0].url}/>

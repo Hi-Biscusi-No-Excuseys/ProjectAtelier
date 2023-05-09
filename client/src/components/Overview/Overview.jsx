@@ -21,7 +21,7 @@ export default function Overview({product}) {
       });
     axios.get('/reviews/meta', { params: {product_id: product.id} })
       .then((response) => {
-        console.log('This is the response: ', response);
+        // console.log('This is the response: ', response);
         setReviews(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10))
       })
       .catch((err) => {
@@ -29,9 +29,9 @@ export default function Overview({product}) {
       })
   }, [product])
 
-console.log('this is overview: ', overview);
-console.log('this is style: ', styles);
-console.log(reviews)
+// console.log('this is overview: ', overview);
+// console.log('this is style: ', styles);
+// console.log(reviews)
 
   return (
     <div className="overview">
