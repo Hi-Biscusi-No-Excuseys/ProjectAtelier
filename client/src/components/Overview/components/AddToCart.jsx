@@ -7,12 +7,12 @@ import Favorite from './addtocart/Favorite';
 export default function AddToCart() {
   return (
     <div className="addtocart">
-      <form onSubmit={(e)=>{e.preventDefault()}}>
+      {/* <form onSubmit={(e)=>{e.preventDefault()}}> */}
         <SizeSelector />
         <QuantitySelector />
         <Add />
         <Favorite />
-      </form>
+      {/* </form> */}
     </div>
   );
 }
