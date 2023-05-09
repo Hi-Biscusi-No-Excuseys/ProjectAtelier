@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { createPortal } from 'react-dom';
 import SolidStars from './SolidStars.jsx';
+import axios from 'axios';
 
 export default function ReviewTile({review}) {
   const [showMore, setShowMore] = useState(false);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [photoURL, setPhotoURL] = useState('');
+  const [helpfulClicked, setHelpfulClicked] = useState(false);
 
   const date = new Date(review.date);
   const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -13,6 +15,17 @@ export default function ReviewTile({review}) {
   function handlePhotoModal(url) {
     setPhotoURL(url);
     setShowPhotoModal(true);
+  };
+
+  function handleHelpful() {
+    axios.put('/reviews/helpful', {review_id: review.review_id})
+      .then((response) => {
+        review.helpfulness = review.helpfulness + 1;
+        setHelpfulClicked(true);
+      })
+      .catch((err) => {
+        console.error('Failed to mark review helpful:', err)
+      })
   };
 
   return (
@@ -56,7 +69,7 @@ export default function ReviewTile({review}) {
 
       <div id='review-tile-buttons'>
         <label htmlFor="helpful">Helpful?</label>
-        <button name='helpful'>Yes ({review.helpfulness})</button>
+        <button name='helpful' onClick={handleHelpful} disabled={helpfulClicked}>Yes ({review.helpfulness})</button>
         <button>Report</button>
       </div>
     </div>
