@@ -10,6 +10,7 @@ export default function QuestionsListEntry({question, request, setRequest, produ
   const[helpfulClicked, setHelpfulClicked] = useState(false);
   const[addAnswerForm, setAddAnswerForm] = useState(false);
   const[answers, setAnswers] = useState([]);
+  const [showAllAnswers, setShowAllAnswers] = useState(false);
 
   const handleQHelpfulClick = (questionID) => {
     if(!helpfulClicked ) {
@@ -33,9 +34,13 @@ export default function QuestionsListEntry({question, request, setRequest, produ
   }, [request]);
 
 
+  const buttonText = showAllAnswers ? 'Collapse answers' : 'See more answers';
+  const answersToRender = showAllAnswers ? answers : answers.slice(0, 2);
+
+
   return (
-    <div className="questionsList">
-      <div style={{display: 'flex', marginBottom: '8px'}}>
+    <div className="questionsList" >
+      <div className="questionBody" style={{display: 'flex', marginBottom: '8px'}} >
         <div><strong>Q: {question.question_body}</strong></div> &nbsp;&nbsp;
         <div>Helpful?
           <span style={{textDecoration: 'underline'}}
@@ -55,8 +60,20 @@ export default function QuestionsListEntry({question, request, setRequest, produ
 
 
       </div>
-      <div style={{display: 'flex'}}>
-      <strong>A:</strong>  <AnswersList answers={answers} request={request} setRequest={setRequest}/>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '200px'}}>
+        <strong>A:</strong>
+        <div style={{ maxWidth: '50%', overflowY: 'auto'}}>
+          <AnswersList
+            answers={answersToRender}
+            request={request}
+            setRequest={setRequest}
+          />
+        </div>
+        <div style={{display: 'block'}}>
+        {answers.length > 2 &&
+          <button onClick={() => setShowAllAnswers(!showAllAnswers)}>{buttonText}</button>
+        }
+        </div>
       </div>
     </div>
   );
