@@ -1,15 +1,31 @@
 import React from 'react';
 
-export default function ReviewTile() {
+export default function ReviewTile({review}) {
+
+
   return (
     <div className='review-tile'>
-      <span>★★★★★</span>
-      <p>Summary</p>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui ipsam commodi vel sint libero inventore ea aliquam id adipisci sed aperiam dolorum quis nostrum doloremque ab iure atque, quo eligendi.</p>
+      <div className='review-tile-top'>
+        <span>★★★★★ | {review.rating}</span>
+        <span>{review.reviewer_name}</span>
+        <span>{review.date}</span>
+      </div>
 
-      <div id='tile-buttons'>
+      <p>{review.summary}</p>
+      <p>{review.body}</p>
+
+      {review.recommend ? <div className='recommend'>✓ I recommend this product</div> : null}
+      
+      {review.response ?       
+      <div className='response'>
+        <div>Response:</div>
+        <div>review.response</div>
+      </div> : null}
+
+
+      <div id='review-tile-buttons'>
         <label htmlFor="helpful">Helpful?</label>
-        <button name='helpful'>Yes</button>
+        <button name='helpful'>Yes ({review.helpfulness})</button>
         <button>Report</button>
       </div>
     </div>
