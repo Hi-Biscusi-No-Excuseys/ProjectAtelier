@@ -7,7 +7,7 @@ export default function AddToOutfitCard( {product, addToOutfit} ) {
 
   const handleAddClick = (e) => {
     // will make request to /overview/products/${productID}
-    console.log(`Adding product (ID: ${product.id}) to outfit.`);
+    // console.log(`Adding product (ID: ${product.id}) to outfit.`);
     addToOutfit(product);
   };
 

@@ -4,10 +4,10 @@ import styles from './Styles.jsx';
 const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
 
 export default function RelatedProductCard({item, setProduct}) {
-  console.log('What dis', item);
+  // console.log('What dis', item);
+
 
   // const [style, setStyle] = useState('');
-
   // useEffect(() => {
   //   axios.get(`/overview/products/${item.id}/styles`)
   //     .then((response) => {
@@ -26,7 +26,7 @@ export default function RelatedProductCard({item, setProduct}) {
     <div>
       <Card id="product-card">
         <CardImageContainer onClick={(e) => {
-          console.log('CLICKED: ', item.id);
+          // console.log('CLICKED: ', item.id);
           setProduct(item);
         }}>
           <CardImage src={item.results[0].photos[0].url}/>

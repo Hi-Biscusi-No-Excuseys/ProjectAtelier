@@ -12,10 +12,10 @@ export default function RelatedItems( {product, setProduct} ) {
   const [items, setItems] = useState([]);
   const [outfit, setOutfit] = useState([]);
 
-// move the sessionStorage (and change to localStorage) into the YourOutfit component. Not sure it's really needed here. But it was useful during development to avoid hitting the API so many times.
+// move the sessionStorage (and/or change to localStorage) into the YourOutfit component. Not sure it's really needed here. But it was useful during development to avoid hitting the API so many times.
   useEffect(() => {
     if (sessionStorage.getItem('RelatedItems') && items.length === 0) {
-      console.log('Snagging from sessionStorage:');
+      // console.log('Snagging from sessionStorage:');
       setItems(JSON.parse(sessionStorage.getItem('RelatedItems')));
     } else {
       axios.get(`/relateditems/related/${product.id}`)
@@ -45,7 +45,7 @@ export default function RelatedItems( {product, setProduct} ) {
                     for (let j = 0; j < styledItems.length; j++) {
                       if (styledItems[j].id === firstResponse.data[i].id) {
                         found = true;
-                        console.log('>>>>> Found duplicate, do not save.');
+                        // console.log('>>>>> Found duplicate, do not save.');
                         break;
                       }
                     }
@@ -59,7 +59,7 @@ export default function RelatedItems( {product, setProduct} ) {
 
               setItems(styledItems);
               sessionStorage.setItem('RelatedItems', JSON.stringify(styledItems));
-              console.log('We set something : ', JSON.parse(sessionStorage.getItem('RelatedItems')));
+              // console.log('We set something : ', JSON.parse(sessionStorage.getItem('RelatedItems')));
             })
             .catch((err) => {
               console.log('Error retrieving style.', err);
@@ -73,11 +73,11 @@ export default function RelatedItems( {product, setProduct} ) {
   },[product]);
 
   const addToOutfit = (item) => {
-    console.log(`What we received from addToOutfit card: ${item.name}`);
-    axios.get(`/overview/products/${product.id}/styles`)
+    // console.log(`What we received from addToOutfit card: ${item.name}`);
+    axios.get(`/overview/products/${item.id}/styles`)
       .then((response) => {
         setOutfit([...outfit, Object.assign(item, response.data)]);
-        console.log('Current outfit:', outfit);
+        // console.log('Current outfit:', outfit);
       })
       .catch((err) => {
         console.log('Unable to add outfit: ', err);

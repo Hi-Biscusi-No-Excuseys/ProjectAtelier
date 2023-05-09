@@ -6,6 +6,8 @@ const { ProductContainer, Title } = styles;
 export default function RelatedProductsList({ items, setProduct }) {
 
 
+  // need to make sure we dont display items already in our Outfit list and/or the current Product.
+  // At the moment, both display.
 
   return (
     <div id="related-items-list">
