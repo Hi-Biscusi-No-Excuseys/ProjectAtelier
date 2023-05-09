@@ -4,7 +4,7 @@ import ProductBreakdown from './components/ProductBreakdown.jsx';
 import SortOptions from './components/SortOptions.jsx';
 import ReviewsList from './components/ReviewsList.jsx';
 
-export default function RatingsReviews({productID}) {
+export default function RatingsReviews({product}) {
 
   return (
     <div id='reviews'>
@@ -12,13 +12,13 @@ export default function RatingsReviews({productID}) {
 
       <div id='breakdown-list'>
         <aside>
-          <RatingBreakdown productID={productID}/>
-          <ProductBreakdown productID={productID}/>
+          <RatingBreakdown product={product.id}/>
+          <ProductBreakdown product={product.id}/>
         </aside>
 
         <div id='sort-and-list'>
           <SortOptions />
-          <ReviewsList productID={productID}/>
+          <ReviewsList product={product.id}/>
         </div>
       </div>
 
