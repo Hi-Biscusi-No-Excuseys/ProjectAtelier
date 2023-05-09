@@ -5,14 +5,14 @@ require('dotenv').config();
 
 
 router.get('/list', (req, res) => {
-  // clients req.body should look like:
+  // clients params should look like:
   // {
   //   page: 1,
   //   count: 2,
   //   sort: 'relevant',
-  //   product_id: 40344 
+  //   product_id: 40432 
   // }
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.product_id}&page=${req.body.page}&count=${req.body.count}&sort=${req.body.sort}`;
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.query.product_id}&page=${req.query.page}&count=${req.query.count}&sort=${req.query.sort}`;
 
   axios.get(url, {
     headers:
@@ -23,7 +23,7 @@ router.get('/list', (req, res) => {
     })
     .catch((err) => {
       console.error('Failed to get reviews:', err.response.data);
-      res.send(err.response.status);
+      res.sendStatus(err.response.status);
     })
 });
 
@@ -31,9 +31,9 @@ router.get('/list', (req, res) => {
 router.get('/meta', (req, res) => {
   // clients req.body should look like:
   // {
-  //   product_id: 40344 
+  //   product_id: 40432 
   // }
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.body.product_id}`;
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.query.product_id}`;
 
   axios.get(url, {
     headers:
@@ -79,7 +79,7 @@ router.post('/', (req, res) => {
 router.put('/helpful', (req, res) => {
   // clients req.body should look like:
   // {
-  //   review_id: 40344 
+  //   review_id: 40344
   // }
 
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.review_id}/helpful`, {}, { headers: { Authorization: process.env.AUTH } })
@@ -96,7 +96,7 @@ router.put('/helpful', (req, res) => {
 router.put('/report', (req, res) => {
   // clients req.body should look like:
   // {
-  //   review_id: 40344 
+  //   review_id: 40344
   // }
 
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.review_id}/report`, {}, { headers: { Authorization: process.env.AUTH } })
