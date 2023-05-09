@@ -12,6 +12,7 @@ export default function Overview({product}) {
   const [reviews, setReviews] = useState(0);
 
   useEffect(()=>{
+    setOverview(product);
     axios.get(`/overview/products/${product.id}/styles`)
       .then((response) => {
         setStyles(response.data.results);
