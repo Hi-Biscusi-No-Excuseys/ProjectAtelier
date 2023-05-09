@@ -32,7 +32,7 @@ export default function AnswersListEntry({answer, request, setRequest }) {
   const date = new Date(answer.date);
   const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   return(
-    <div >
+    <div>
       <div style={{marginBottom: '8px'}}>
         {answer.body} <br/>
       </div>

@@ -21,7 +21,7 @@ export default function QuestionsAnswers({product}) {
   }, [request, product]);
 
   return (
-    <div>
+    <div class="QuestionsAnswers">
       <h1>Questions & Answers</h1>
       <Search filterText={filterText} setFilterText={setFilterText} />
       <QuestionsList productName={product.name}filterText={filterText} questions={questions} request={request} setRequest={setRequest}/>

@@ -5,7 +5,7 @@ import AnswersListEntry from './AnswersListEntry.jsx';
 
 export default function AnswersList({answers, request, setRequest }) {
   const sortByHelpfulness = (a, b) => b.helpfulness - a.helpfulness;
-  console.log('these are answers', answers.sort(sortByHelpfulness));
+  // console.log('these are answers', answers.sort(sortByHelpfulness));
   return (
     <div style={{marginLeft: '4px'}}>
        {answers.length > 0 ? (

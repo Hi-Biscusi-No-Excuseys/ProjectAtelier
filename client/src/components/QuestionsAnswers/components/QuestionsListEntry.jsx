@@ -25,8 +25,8 @@ export default function QuestionsListEntry({question, request, setRequest, produ
   useEffect(() => {
     axios.get(`http://localhost:3000/questionsanswers/questions/${question.question_id}/answers`)
     .then(({data}) => {
-      console.log('this is question id', question.question_id);
-      console.log('these are answersLIST!', data.results); // add this line to confirm data is being retrieved
+      // console.log('this is question id', question.question_id);
+      // console.log('these are answersLIST!', data.results); // add this line to confirm data is being retrieved
       setAnswers(data.results)
     })
     .catch((err) => console.log(`error getting questions: ${err}`))
@@ -34,7 +34,7 @@ export default function QuestionsListEntry({question, request, setRequest, produ
 
 
   return (
-    <div>
+    <div className="questionsList">
       <div style={{display: 'flex', marginBottom: '8px'}}>
         <div><strong>Q: {question.question_body}</strong></div> &nbsp;&nbsp;
         <div>Helpful?
