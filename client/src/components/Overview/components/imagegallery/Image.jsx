@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Image({styles}) {
+export default function Image({style, imgSwitch}) {
+
   return (
-    <div className="productImage">
-      {/* <h1>{styles[0].name}</h1> */}
-      <img src={styles[0]?.photos[0]?.url} alt={styles[0]?.name} height="400" width="500" />
+    <div>
+      <img className="productIcon" id="test" src={style.photos[0]?.thumbnail_url} alt={style.name} height='75' width='75' onClick={()=>{ imgSwitch(style.photos[0]) }}/>
     </div>
   );
 }
