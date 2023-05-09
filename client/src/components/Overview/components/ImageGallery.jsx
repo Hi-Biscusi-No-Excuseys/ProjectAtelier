@@ -5,7 +5,7 @@ export default function ImageGallery({styles}) {
 
   const imgSwitch = (smallImg) => {
     const main = document.getElementById('mainImg');
-    main.src = smallImg.src;
+    main.src = smallImg.url;
   }
 
   return (
