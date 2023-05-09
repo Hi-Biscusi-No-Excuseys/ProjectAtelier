@@ -79,7 +79,7 @@ router.post('/', (req, res) => {
 router.put('/helpful', (req, res) => {
   // clients req.body should look like:
   // {
-  //   review_id: 40344 
+  //   review_id: 40344
   // }
 
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.review_id}/helpful`, {}, { headers: { Authorization: process.env.AUTH } })
@@ -96,7 +96,7 @@ router.put('/helpful', (req, res) => {
 router.put('/report', (req, res) => {
   // clients req.body should look like:
   // {
-  //   review_id: 40344 
+  //   review_id: 40344
   // }
 
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.review_id}/report`, {}, { headers: { Authorization: process.env.AUTH } })
