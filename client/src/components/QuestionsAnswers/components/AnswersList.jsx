@@ -16,9 +16,9 @@ export default function AnswersList({answers, request, setRequest }) {
   return (
     <div style={{marginLeft: '4px', flexDirection: 'column'}}>
        {answers.length > 0 ? (
-      answers.sort(sortByHelpfulness).map((answer) => {
+      answers.sort(sortByHelpfulness).map((answer, i) => {
         return (
-          <AnswersListEntry answer={answer} key={answer.id} request={request} setRequest={setRequest}/>
+          <AnswersListEntry answer={answer} key={i} request={request} setRequest={setRequest}/>
         )
       })) : <div>No Answers found</div>}
     </div>

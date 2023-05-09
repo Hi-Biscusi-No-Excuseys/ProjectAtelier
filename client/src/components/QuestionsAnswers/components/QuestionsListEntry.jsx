@@ -39,8 +39,8 @@ export default function QuestionsListEntry({question, request, setRequest, produ
 
 
   return (
-    <div class="questionsList" >
-      <div class="questionBody" style={{display: 'flex', marginBottom: '8px'}} >
+    <div className="questionsList" >
+      <div className="questionBody" style={{display: 'flex', marginBottom: '8px'}} >
         <div><strong>Q: {question.question_body}</strong></div> &nbsp;&nbsp;
         <div>Helpful?
           <span style={{textDecoration: 'underline'}}
