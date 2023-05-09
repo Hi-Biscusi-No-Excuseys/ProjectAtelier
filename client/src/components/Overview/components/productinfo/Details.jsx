@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Details({overview}) {
+export default function Details({overview, reviews}) {
 
   return (
     <div className="productDetails">
       <div>⭐️⭐️⭐️⭐️⭐️</div>
-      <div>1 Review</div>
+      <div>{reviews} Review</div>
       {/* change this to proper review ID */}
       <button type="button" className="reviewScrollButton" onClick={()=>{
         let element = document.getElementById('reviews-list')

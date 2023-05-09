@@ -7,8 +7,9 @@ import Description from './components/Description';
 const axios = require('axios');
 
 export default function Overview({product}) {
-  const [overview, setOverview] = useState({});
+  const [overview, setOverview] = useState(product);
   const [styles, setStyles] = useState([]);
+  const [reviews, setReviews] = useState(0);
 
   useEffect(()=>{
     axios.get(`/overview/products/${product.id}/styles`)
@@ -18,23 +19,25 @@ export default function Overview({product}) {
       .catch((err) => {
         console.log('Unable to fetch data: ', err);
       });
-    axios.get(`/overview/products/${product.id}`)
+    axios.get('/reviews/meta', { params: {product_id: product.id} })
       .then((response) => {
-        setOverview(response.data);
+        console.log('This is the response: ', response);
+        setReviews(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10))
       })
       .catch((err) => {
-        console.log('Unable to fetch data: ', err);
+        console.error('Client failed to get reviews:', err);
       })
   }, [product])
 
 console.log('this is overview: ', overview);
 console.log('this is style: ', styles);
+console.log(reviews)
 
   return (
     <div className="overview">
       <ImageGallery styles={styles}/>
       <div>
-        <ProductInfo overview={overview}/>
+        <ProductInfo overview={overview} styles={styles} reviews={reviews}/>
         <StyleSelector styles={styles}/>
         <AddToCart styles={styles}/>
       </div>
