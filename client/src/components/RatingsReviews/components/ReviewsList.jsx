@@ -3,13 +3,11 @@ import ReviewTile from './ReviewTile.jsx';
 import axios from 'axios';
 
 export default function ReviewsList({product, sort, amount}) {
-  // product = 40432;
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const opt = {
-      params: {
+    const opt = { params: {
         page: page,
         count: 2,
         sort: sort,
