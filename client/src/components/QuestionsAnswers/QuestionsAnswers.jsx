@@ -9,6 +9,7 @@ export default function QuestionsAnswers({product}) {
   const [questions, setQuestions] = useState([]);
   const [filterText, setFilterText] = useState('');
   const [request, setRequest] =useState(false);
+  const [showAllQuestions, setShowAllQuestions] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/questionsanswers/questions/?product_id=${product.id}`)
@@ -19,11 +20,18 @@ export default function QuestionsAnswers({product}) {
     .catch((err) => console.log(`error getting questions: ${err}`))
   }, [request, product]);
 
+  const questionsToRender = showAllQuestions ? questions : questions.slice(0, 4);
+  const buttonText = showAllQuestions ? "Collapse Answered Questions" : "More Answered Questions";
   return (
     <div className="QuestionsAnswers">
       <h1>Questions & Answers</h1>
       <Search filterText={filterText} setFilterText={setFilterText} />
-      <QuestionsList productName={product.name}filterText={filterText} questions={questions} request={request} setRequest={setRequest}/>
+      <QuestionsList productName={product.name}filterText={filterText} questions={questionsToRender} request={request} setRequest={setRequest}/>
+      <div>
+        {questions.length > 2 &&
+          <button className="moreAnsweredQuestionsButton" onClick={() => setShowAllQuestions(!showAllQuestions)}>{buttonText}</button>
+        }
+        </div>
       <AddQuestion />
     </div>
   );

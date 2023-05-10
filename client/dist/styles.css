@@ -145,3 +145,52 @@
   width: 80%;
   margin: 2rem auto;
 }
+
+/* philip's css*/
+
+.QuestionsAnswers {
+  display: flex;
+  flex-direction: column;
+  max-height: 800px;
+  width: 650px;
+  align-items: center;
+  margin: auto;
+}
+
+.questionsList {
+  overflow-y: auto;
+}
+.questionsBody {
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.bold {
+  display: inline-block
+}
+
+.answerBody {
+  display: flex;
+  width: 500px;
+  max-height: 140px;
+  flex-direction: row;
+}
+ .answersAndButton {
+  overflow-y: auto;
+  width: 500px;
+  max-height: 140px;
+}
+
+.seeMoreAnwersButton {
+  font: bold;
+  background: white;
+  width: 20px;
+}
+
+.moreAnsweredQuestionsButton {
+  align-items: start;
+  width: 180px;
+  height: 50px;
+  background: white;
+}
+
