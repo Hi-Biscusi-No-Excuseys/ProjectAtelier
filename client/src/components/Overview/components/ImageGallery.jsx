@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Image from './imagegallery/Image';
 
 export default function ImageGallery({styles}) {
+
 const [expanded, setExpanded] = useState(false);
 
   const imgSwitch = (smallImg) => {
@@ -26,7 +27,7 @@ const [expanded, setExpanded] = useState(false);
   return (
     <div className="ImageGallery">
       <div className="scroll">
-        {styles.map((style, i)=>{
+        {styles[0]?.photos.map((style, i)=>{
           return <Image key={i} style={style} imgSwitch={imgSwitch}/>
         })}
       </div>
