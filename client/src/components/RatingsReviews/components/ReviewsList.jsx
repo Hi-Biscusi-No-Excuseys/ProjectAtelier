@@ -2,10 +2,9 @@ import React, {useEffect, useState} from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import axios from 'axios';
 
-export default function ReviewsList({product}) {
-  product = 40432; //^ For testing only
+export default function ReviewsList({product, sort, amount, setAmount}) {
+  // product = 40432;
   const [reviews, setReviews] = useState([]);
-  const [amount, setAmount] = useState(0);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -13,7 +12,7 @@ export default function ReviewsList({product}) {
       params: {
         page: page,
         count: 2,
-        sort: 'relevant',
+        sort: sort,
         product_id: product
       }
     }
@@ -33,7 +32,7 @@ export default function ReviewsList({product}) {
       .catch((err) => {
         console.error('Client failed to get reviews:', err);
       })
-  }, [product]); //TODO: Add new review posted dependency
+  }, [product, sort]); //TODO: Add new review posted dependency
 
 
   function handleMore () {
