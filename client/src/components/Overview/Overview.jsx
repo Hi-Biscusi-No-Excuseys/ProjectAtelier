@@ -10,12 +10,14 @@ export default function Overview({product}) {
   const [overview, setOverview] = useState(product);
   const [styles, setStyles] = useState([]);
   const [reviews, setReviews] = useState(0);
+  const [currentStyle, setCurrentStyle] = useState(undefined)
 
   useEffect(()=>{
     setOverview(product);
     axios.get(`/overview/products/${product.id}/styles`)
       .then((response) => {
         setStyles(response.data.results);
+        setCurrentStyle(response.data.results[0]);
       })
       .catch((err) => {
         console.log('Unable to fetch data: ', err);
@@ -29,12 +31,16 @@ export default function Overview({product}) {
       })
   }, [product])
 
+  const styleSwap = (style) => {
+    setCurrentStyle(style);
+  }
+
   return (
     <div className="overview">
-      <ImageGallery styles={styles}/>
+      <ImageGallery currentStyle={currentStyle}/>
       <div>
         <ProductInfo overview={overview} styles={styles} reviews={reviews}/>
-        <StyleSelector styles={styles}/>
+        <StyleSelector styles={styles} currentStyle={currentStyle} styleSwap={styleSwap}/>
         <AddToCart styles={styles}/>
       </div>
       <Description overview={overview}/>
