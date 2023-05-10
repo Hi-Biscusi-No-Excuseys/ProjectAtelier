@@ -16,7 +16,7 @@ router.get('/questions', (req, res) => {
     params: {
       product_id: req.query.product_id || 40399, // set a default value if product_id is not provided
       page: req.query.page || 1,
-      count: req.query.count ||50,
+      count: req.query.count ||100,
     },
   })
     .then((response) => {
@@ -35,7 +35,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
     },
     params: {
       page: req.query.page || 1,
-      count: req.query.count || 1000,
+      count: req.query.count || 100,
     },
   })
     .then((response) => {

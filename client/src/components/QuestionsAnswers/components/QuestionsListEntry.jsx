@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import AddAnswer from './AddAnswer.jsx';
 import AnswersList from './AnswersList.jsx';
-//
+
 export default function QuestionsListEntry({question, request, setRequest, productName}) {
   // console.log('question.question_body', question.question_body);
   const[helpfulClicked, setHelpfulClicked] = useState(false);
