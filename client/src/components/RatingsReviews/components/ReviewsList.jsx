@@ -3,12 +3,7 @@ import ReviewTile from './ReviewTile.jsx';
 import axios from 'axios';
 
 export default function ReviewsList({product}) {
-<<<<<<< HEAD
-  product = 40432; //^ For testing only
-=======
- //^ For testing only
   product=40432;
->>>>>>> 93f7f5d (kodi's css)
   const [reviews, setReviews] = useState([]);
   const [amount, setAmount] = useState(0);
   const [page, setPage] = useState(1);
