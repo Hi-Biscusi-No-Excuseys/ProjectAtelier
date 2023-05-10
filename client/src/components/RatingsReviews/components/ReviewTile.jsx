@@ -37,12 +37,13 @@ export default function ReviewTile({review}) {
       <p className='review-summary'>{review.summary}</p>
       <p className='review-body'>
         {showMore ? review.body : review.body.substring(0, 250)}
-        {review.body.length > 250 ? 
+        {review.body.length > 250 ?
         <button onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}</button>
         : null}
       </p>
 
-      {review.photos.length ? 
+
+      {review.photos.length ?
         <div className='review-photos'>
           {review.photos.map((photo) => {
             return <img className="review-photo-thumb" src={photo.url} key={photo.id} onClick={() => handlePhotoModal(photo.url)}/>
@@ -58,8 +59,8 @@ export default function ReviewTile({review}) {
       , document.body)}
 
       {review.recommend ? <div className='recommend'>✓ I recommend this product</div> : null}
-      
-      {review.response ?       
+
+      {review.response ?
       <div className='response'>
         <div>Response:</div>
         <div>review.response</div>
