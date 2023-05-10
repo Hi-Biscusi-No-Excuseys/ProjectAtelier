@@ -5,6 +5,7 @@ import SortOptions from './components/SortOptions.jsx';
 import ReviewsList from './components/ReviewsList.jsx';
 
 export default function RatingsReviews({product}) {
+  product = 40432;
   const [sort, setSort] = useState('relevant');
   const [amount, setAmount] = useState(0);
 
@@ -14,13 +15,13 @@ export default function RatingsReviews({product}) {
 
       <div id='breakdown-list'>
         <aside>
-          <RatingBreakdown product={product.id}/>
+          <RatingBreakdown product={product.id} setAmount={setAmount}/>
           <ProductBreakdown product={product.id}/>
         </aside>
 
         <div id='sort-and-list'>
           <SortOptions sort={sort} setSort={setSort} amount={amount} />
-          <ReviewsList product={product.id} sort={sort} amount={amount} setAmount={setAmount}/>
+          <ReviewsList product={product.id} sort={sort} amount={amount}/>
         </div>
       </div>
 
