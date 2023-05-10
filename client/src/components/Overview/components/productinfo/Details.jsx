@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Details({overview, reviews, currentStyle}) {
-  console.log(overview);
 
   return (
     <div className="productDetails">
