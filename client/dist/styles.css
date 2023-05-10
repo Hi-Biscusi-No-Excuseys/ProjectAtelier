@@ -160,11 +160,15 @@ table {
 #reviews aside {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 #sort-and-list {
   display: flex;
   flex-direction: column;
+  flex-grow: 2;
+  flex-shrink: 2;
 }
 
 #reviews-container {
@@ -208,4 +212,9 @@ table {
   max-width: 80%;
   max-height: 80%;
   margin: 1rem auto;
+}
+
+#overall-rating {
+  display: flex;
+  align-items: center;
 }

@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import QuarterStars from './QuarterStars.jsx';
+import PartialStars from './PartialStars.jsx';
+import StarBar from './StarBar.jsx';
 
-export default function RatingBreakdown({product, setAmount}) {
-  const [metaData, setMetaData] = useState({});
+export default function RatingBreakdown({product, amount, setAmount}) {
+  const [metaData, setMetaData] = useState(null);
   const [avg, setAvg] = useState(5);
 //^ metaData obj:
 //   {
@@ -26,9 +27,9 @@ export default function RatingBreakdown({product, setAmount}) {
 // }
 
   useEffect(() => {
-    //^ Sets total amount of reviews, meta data, and average review score
     axios.get('/reviews/meta', { params: {product_id: product} })
     .then((response) => {
+      //^ Sets average review rating to nearest 10th decimal place
       const ratings = response.data.ratings;
       let numOfReviews = 0;
       let numOfStars = 0;
@@ -39,7 +40,10 @@ export default function RatingBreakdown({product, setAmount}) {
       const longAvg = numOfStars / numOfReviews;
       setAvg(Math.round(longAvg * 10) / 10);
 
+      //^ Sets number of reviews
       setAmount(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10));
+
+      //^ Sets meta data
       setMetaData(response.data);
     })
     .catch((err) => {
@@ -48,23 +52,43 @@ export default function RatingBreakdown({product, setAmount}) {
   }, [product])
 
 
-
-
-
-
-
   return (
-    <div id="rating-breakdown">
+    metaData && 
+    (<div id="rating-breakdown">
+  
+      <div id='overall-rating'> {avg} <PartialStars avg={avg} /> </div>
 
-      <div id='overall-rating'> {avg} <QuarterStars avg={avg} /> </div>
-
-      <p>% of reviews recommend this product.</p>
+      <p>{
+        Math.round((parseInt(metaData.recommended.true, 10) / (parseInt(metaData.recommended.true, 10) + parseInt(metaData.recommended.false, 10))) * 100)
+        }% of reviews recommend this product.
+      </p>
 
       <div id='5-stars'>
-        <a>5 stars</a>
-        <span>% bar</span>
+        <a>5 Stars</a>
+        <StarBar percentage={Math.floor((parseInt(metaData.ratings["5"], 10) / amount) * 100)} />
       </div>
 
-    </div>
-  );
+      <div id='4-stars'>
+        <a>4 Stars</a>
+        <StarBar percentage={Math.floor((parseInt(metaData.ratings["4"], 10) / amount) * 100)} />
+      </div>
+
+      <div id='3-stars'>
+        <a>3 Stars</a>
+        <StarBar percentage={Math.floor((parseInt(metaData.ratings["3"], 10) / amount) * 100)} />
+      </div>
+
+      <div id='2-stars'>
+        <a>2 Stars</a>
+        <StarBar percentage={Math.floor((parseInt(metaData.ratings["2"], 10) / amount) * 100)} />
+      </div>
+      
+      <div id='1-stars'>
+        <a>1 Stars</a>
+        <StarBar percentage={Math.floor((parseInt(metaData.ratings["1"], 10) / amount) * 100)} />
+      </div>
+  
+    </div>)
+    
+  )
 }

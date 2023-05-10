@@ -15,7 +15,7 @@ export default function RatingsReviews({product}) {
 
       <div id='breakdown-list'>
         <aside>
-          <RatingBreakdown product={product.id} setAmount={setAmount}/>
+          <RatingBreakdown product={product.id} amount={amount} setAmount={setAmount}/>
           <ProductBreakdown product={product.id}/>
         </aside>
 
