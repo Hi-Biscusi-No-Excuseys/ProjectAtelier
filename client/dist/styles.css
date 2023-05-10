@@ -1,9 +1,10 @@
 .overview {
-  /* margin-left: 150px;
-  margin-right: 150px; */
+  margin-left: 20%;
+  /* margin-right: 150px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 1000px;
 }
 
 .ImageGallery {
