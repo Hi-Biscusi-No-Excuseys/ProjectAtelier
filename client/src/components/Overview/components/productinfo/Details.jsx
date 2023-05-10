@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function Details({overview, reviews}) {
+export default function Details({overview, reviews, currentStyle}) {
+  console.log(overview);
 
   return (
     <div className="productDetails">
@@ -13,7 +14,7 @@ export default function Details({overview, reviews}) {
       }}>Read All Reviews</button>
       <h3>{overview.category}</h3>
       <h1>{overview.name}</h1>
-      <p>${overview.default_price}</p>
+      {currentStyle?.sale_price === null ? <p>${overview.default_price}</p> : <p className='sale'>${currentStyle?.sale_price} <strike id='strikethrough'>${overview.default_price}</strike></p>}
     </div>
   );
 }

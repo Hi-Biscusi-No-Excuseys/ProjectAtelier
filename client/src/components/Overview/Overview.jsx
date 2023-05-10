@@ -39,7 +39,7 @@ export default function Overview({product}) {
     <div className="overview">
       <ImageGallery currentStyle={currentStyle}/>
       <div>
-        <ProductInfo overview={overview} styles={styles} reviews={reviews}/>
+        <ProductInfo overview={overview} reviews={reviews} currentStyle={currentStyle}/>
         <StyleSelector styles={styles} currentStyle={currentStyle} styleSwap={styleSwap}/>
         <AddToCart styles={styles}/>
       </div>

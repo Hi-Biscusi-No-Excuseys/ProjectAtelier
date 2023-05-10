@@ -1,3 +1,5 @@
+/* ------------------------- OVERVIEW -------------------------- */
+
 .overview {
   margin-left: 20%;
   /* margin-right: 150px; */
@@ -43,6 +45,14 @@
 .productDescription {
   margin-left: 50px;
   margin-right: 50px;
+}
+
+.sale {
+  color: red;
+}
+
+#strikethrough {
+  color: grey
 }
 
 .productIcon {
