@@ -34,7 +34,6 @@ export default function ReviewTile({review}) {
         <SolidStars rating={review.rating} />
         <span>{review.reviewer_name}, {formattedDate}</span>
       </div>
-//^ /////////////////////////////////////////////////////////////////////////////////////////
       <p className='review-summary'>{review.summary}</p>
       <p className='review-body'>
         {showMore ? review.body : review.body.substring(0, 250)}
@@ -42,7 +41,6 @@ export default function ReviewTile({review}) {
         <button onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}</button>
         : null}
       </p>
-//^ /////////////////////////////////////////////////////////////////////////////////////////
 
       {review.photos.length ? 
         <div className='review-photos'>
