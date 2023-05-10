@@ -78,10 +78,6 @@
 }
 
 
-
-/*^ ------------------------- REVIEWS -------------------------- */
-
-
 #reviews {
   display: flex;
   flex-direction: column;
@@ -126,9 +122,6 @@
   overflow-y: auto;
 }
 
-.review-photo-thumb {
-  width: 75px;
-}
 
 #review-photo-modal {
   display: flex;
