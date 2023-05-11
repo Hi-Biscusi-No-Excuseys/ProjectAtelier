@@ -1,3 +1,6 @@
+
+/* ------------------------- OVERVIEW -------------------------- */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,7 +56,6 @@ table {
 /*^ ------------------------- OVERVIEW -------------------------- */
 .overview {
   margin-left: 20%;
-  /* margin-right: 150px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -98,13 +100,17 @@ table {
   margin-right: 50px;
 }
 
+.sale {
+  color: red;
+}
+
+#strikethrough {
+  color: grey
+}
+
 .productIcon {
   padding-bottom: 10px;
 }
-
-/* .productIcon:hover {
-  opacity: 1;
-} */
 
 .descBox {
   display: flex;
