@@ -39,8 +39,9 @@ export default function QuestionsListEntry({question, request, setRequest, produ
 
 
   return (
-    <div className="questionsList" >
-      <div className="questionBody" style={{display: 'flex', marginBottom: '8px'}} >
+    <div className="questionsBody" >
+
+      <div className="singleQuestion" style={{display: 'flex', marginBottom: '8px'}} >
         <div><strong>Q: {question.question_body}</strong></div> &nbsp;&nbsp;
         <div>Helpful?
           <span style={{textDecoration: 'underline'}}
@@ -57,24 +58,24 @@ export default function QuestionsListEntry({question, request, setRequest, produ
               document.body
             )
           }
-
-
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', height: '200px'}}>
-        <strong>A:</strong>
-        <div style={{ maxWidth: '50%', overflowY: 'auto'}}>
+
+
+      <div className="answerBody">
+        <span><strong >A:</strong></span>
+        <div className='answersAndButton' >
           <AnswersList
             answers={answersToRender}
             request={request}
             setRequest={setRequest}
           />
-        </div>
-        <div style={{display: 'block'}}>
-        {answers.length > 2 &&
-          <button onClick={() => setShowAllAnswers(!showAllAnswers)}>{buttonText}</button>
-        }
+          {answers.length > 2 &&
+            <button className='seeMoreAnswersButton' onClick={() => setShowAllAnswers(!showAllAnswers)}>{buttonText}</button>
+          }
         </div>
       </div>
+
+
     </div>
   );
 }

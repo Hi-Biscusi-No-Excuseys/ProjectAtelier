@@ -6,7 +6,7 @@ export default function QuestionsList({questions, request, setRequest, productNa
   // console.log('these are questions', questions)
   const sortByHelpfulness = (a, b) => b.question_helpfulness - a.question_helpfulness;
   return (
-    <div>
+    <div className="questionsList">
      {questions.length > 0 ? (
       questions.sort(sortByHelpfulness).map((question) => {
         return (
