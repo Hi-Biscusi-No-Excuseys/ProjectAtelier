@@ -27,24 +27,24 @@ export default function RelatedItems( {product, setProduct} ) {
 
           // need to check and see if related items are already saved,
           // if so, setItems with those instead of retrieving new ones.
-          console.log('What is in ALL items >>>>>>>> ', allItems);
+          // console.log('What is in ALL items >>>>>>>> ', allItems);
           const unique = new Set();
           firstResponse.data.map((item) => unique.add(item));
-          console.log('Unique:', unique);
+          // console.log('Unique:', unique);
 
           const needIDs = [];
           const resultData = [];
 
           // for (let i = 0; i < firstResponse.data.length; i++) {
           for (const value of unique) {
-            console.log('What are we looking at: ', value);
+            // console.log('What are we looking at: ', value);
             let foundItem = allItems.find((item) => {
-              console.log(item);
+              // console.log(item);
               return value === item.id;
             });
 
             if (foundItem) {
-              console.log('What are we pushing?', foundItem);
+              // console.log('What are we pushing?', foundItem);
               resultData.push(foundItem);
             } else {
               needIDs.push(value);
@@ -52,7 +52,7 @@ export default function RelatedItems( {product, setProduct} ) {
           }
 
           console.log('The IDs we still need.', needIDs);
-          console.log('Already saved in allItems: ', resultData);
+          // console.log('Already saved in allItems: ', resultData);
 
 
           for (let i = 0; i < needIDs.length; i++) {
@@ -90,31 +90,29 @@ export default function RelatedItems( {product, setProduct} ) {
                   for (let i = 0; i < productInfo.length; i++) {
                       // console.log('Ending up with: ', Object.assign(productInfo[i], thirdResponse[i].data));
                       if (styledItems.length === 0) {
-                        styledItems.push({
-                          id: productInfo[i].id,
-                          data: Object.assign(productInfo[i], thirdResponse[i].data)
-                        });
+                        styledItems.push(Object.assign(productInfo[i], thirdResponse[i].data));
                       } else {
                         let found = false;
                         for (let j = 0; j < styledItems.length; j++) {
                           if (styledItems[j].id === productInfo[i].id) {
                             found = true;
-                            console.log('>>>>> Found duplicate, do not save.');
+                            // console.log('>>>>> Found duplicate, do not save.');
                             break;
                           }
                         }
 
                         if (!found) {
-                          styledItems.push({
-                            id: productInfo[i].id,
-                            data: Object.assign(productInfo[i], thirdResponse[i].data)
-                          });
+                          // styledItems.push({
+                          //   id: productInfo[i].id,
+                          //   data: Object.assign(productInfo[i], thirdResponse[i].data)
+                          // });
+                          styledItems.push(Object.assign(productInfo[i], thirdResponse[i].data));
                         }
                       }
                   }
 
                   setItems([...resultData, ...styledItems]);
-                  console.log('>>>>>>>>>>>>>>> ', resultData, styledItems, allItems);
+                  // console.log('>>>>>>>>>>>>>>> ', resultData, styledItems, allItems);
                   setAllItems([...allItems, ...styledItems]);
 
                   // console.log('>>>>>>>>>>>>>>> NEW DATA: ', styledItems);
@@ -165,7 +163,7 @@ export default function RelatedItems( {product, setProduct} ) {
     <div id="related-items-component">
     <ListContainer>
       <RelatedProductsList items={items} setProduct={setProduct}/>
-      <YourOutfitList product={{id: product.id, data: product}} outfit={outfit} addToOutfit={addToOutfit}/>
+      <YourOutfitList product={product} outfit={outfit} addToOutfit={addToOutfit}/>
 
       {/* adding just to test */}
       <Comparison />
