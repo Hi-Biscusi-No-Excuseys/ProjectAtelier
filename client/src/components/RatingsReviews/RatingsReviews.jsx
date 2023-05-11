@@ -5,7 +5,7 @@ import SortOptions from './components/SortOptions.jsx';
 import ReviewsList from './components/ReviewsList.jsx';
 
 export default function RatingsReviews({product}) {
-  product.id = 40432;
+  // product.id = 40432;
   const [sort, setSort] = useState('relevant');
   const [amount, setAmount] = useState(0);
 
