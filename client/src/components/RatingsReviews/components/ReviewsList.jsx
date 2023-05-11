@@ -2,18 +2,15 @@ import React, {useEffect, useState} from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import axios from 'axios';
 
-export default function ReviewsList({product}) {
-  product = 40432; //^ For testing only
+export default function ReviewsList({product, sort, amount}) {
   const [reviews, setReviews] = useState([]);
-  const [amount, setAmount] = useState(0);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const opt = {
-      params: {
+    const opt = { params: {
         page: page,
         count: 2,
-        sort: 'relevant',
+        sort: sort,
         product_id: product
       }
     }
@@ -25,15 +22,7 @@ export default function ReviewsList({product}) {
       .catch((err) => {
         console.error('Client failed to get reviews:', err);
       })
-    //^ Sets total amount of reviews
-    axios.get('/reviews/meta', { params: {product_id: product} })
-      .then((response) => {
-        setAmount(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10))
-      })
-      .catch((err) => {
-        console.error('Client failed to get reviews:', err);
-      })
-  }, [product]); //TODO: Add new review posted dependency
+  }, [product, sort]); //TODO: Add new review posted dependency
 
 
   function handleMore () {

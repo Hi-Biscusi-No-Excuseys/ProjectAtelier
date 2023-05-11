@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Image from './imagegallery/Image';
 
-export default function ImageGallery({styles}) {
+export default function ImageGallery({currentStyle}) {
 const [expanded, setExpanded] = useState(false);
 
   const imgSwitch = (smallImg) => {
@@ -26,15 +26,16 @@ const [expanded, setExpanded] = useState(false);
   return (
     <div className="ImageGallery">
       <div className="scroll">
-        {styles.map((style, i)=>{
+        {currentStyle?.photos.map((style, i)=>{
           return <Image key={i} style={style} imgSwitch={imgSwitch}/>
         })}
       </div>
       <div className="productImage" id="productImage">
-        <img className="mainImg" id='mainImg' src={styles[0]?.photos[0]?.url} alt={styles[0]?.name} height="500" width="500" />
+        <img className="mainImg" id='mainImg' src={currentStyle?.photos[0].url} alt={currentStyle?.name} height="500" width="500" />
         {!expanded ? <button className='expandButton' onClick={()=>{expand()}}>&#8680;</button> : <button className='expandButton' onClick={()=>{expand()}}>&#8678;</button>}
-
       </div>
     </div>
   );
 }
+
+// currentStyle?.photos.length > 0 ? currentStyle?.photos[0].url : '';

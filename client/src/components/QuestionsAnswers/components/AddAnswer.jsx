@@ -35,8 +35,8 @@ export default function AddAnswer({question, request, setRequest, onClose, produ
       .catch(() => console.log('error posting new answer'));
   }
   return(
-    <div>
-        <div className="modal-content">
+    <div id='addAnswer-modal'>
+        <div className="addAnswer-modal-content">
           <h2>Submit your Answer</h2>
           <h3>{productName}: {question.question_body}</h3>
           <form method="post" onSubmit={(e) => {
