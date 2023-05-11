@@ -1,3 +1,5 @@
+/* ------------------------- OVERVIEW -------------------------- */
+
 
 /* ------------------------- OVERVIEW -------------------------- */
 
@@ -207,6 +209,7 @@ table {
 .questionsList {
   overflow-y: auto;
 }
+
 .questionsBody {
   max-height: 200px;
   margin-bottom: 10px;
@@ -218,7 +221,8 @@ table {
   max-height: 140px;
   flex-direction: row;
 }
- .answersAndButton {
+
+.answersAndButton {
   overflow-y: auto;
   width: 500px;
   max-height: 140px;
@@ -233,6 +237,7 @@ table {
 .twoButtons {
   align-items: left;
 }
+
 .moreAnsweredQuestionsButton {
   width: 180px;
   height: 50px;
