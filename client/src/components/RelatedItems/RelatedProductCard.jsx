@@ -4,7 +4,7 @@ import styles from './Styles.jsx';
 const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
 
 export default function RelatedProductCard({item, setProduct}) {
-  // console.log('What dis', item);
+  console.log('What dis', item);
 
 
   // const [style, setStyle] = useState('');
@@ -27,15 +27,15 @@ export default function RelatedProductCard({item, setProduct}) {
       <Card id="product-card">
         <CardImageContainer onClick={(e) => {
           // console.log('CLICKED: ', item.id);
-          setProduct(item);
+          setProduct(item.data);
         }}>
-          <CardImage src={item.results[0].photos[0].url}/>
+          <CardImage src={item.data.results[0].photos[0].url}/>
           <Star>&#x2729;</Star>
         </CardImageContainer>
         <CardDetails>
-          <div>{item.category}</div>
-          <div>{item.name}</div>
-          <div>{item.default_price}</div>
+          <div>{item.data.category}</div>
+          <div>{item.data.name}</div>
+          <div>{item.data.default_price}</div>
           <small>STAR COMPONENT PLACEHOLDER</small>
         </CardDetails>
       </Card>
