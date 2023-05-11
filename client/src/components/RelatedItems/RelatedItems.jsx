@@ -70,8 +70,6 @@ export default function RelatedItems( {product, setProduct} ) {
                 productInfo.push(secondResponse[i].data);
               }
 
-
-              // begin refactor here
               const promiseStyleLevel = [];
 
               for (let i = 0; i < productInfo.length; i++) {
@@ -111,9 +109,37 @@ export default function RelatedItems( {product, setProduct} ) {
                       }
                   }
 
-                  setItems([...resultData, ...styledItems]);
-                  // console.log('>>>>>>>>>>>>>>> ', resultData, styledItems, allItems);
-                  setAllItems([...allItems, ...styledItems]);
+                  const metaInfo = [];
+                  const promiseMetaLevel = [];
+
+                  for (let i = 0; i < styledItems.length; i++) {
+                    let relatedID = styledItems[i].id;
+                    // url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${relatedID}/styles`;
+                    url = '/reviews/meta';
+                    console.log('URL #', i, url, relatedID);
+                    promiseMetaLevel.push(axios.get(url, { params: {product_id: relatedID} }));
+                  }
+                  console.log('Dis:', styledItems);
+
+                  axios.all(promiseMetaLevel)
+                  .then((fourthResponse) => {
+                      console.log('Wut:', fourthResponse);
+                      for (let i = 0; i < fourthResponse.length; i++) {
+                        metaInfo.push(Object.assign(styledItems[i], fourthResponse[i]));
+                      }
+
+                      setItems([...resultData, ...metaInfo]);
+                      // console.log('>>>>>>>>>>>>>>> ', resultData, styledItems, allItems);
+                      setAllItems([...allItems, ...metaInfo]);
+                    })
+                    .catch((err) => {
+                      console.log('Error with META.', err);
+                      throw (err);
+                    });
+
+
+
+
 
                   // console.log('>>>>>>>>>>>>>>> NEW DATA: ', styledItems);
                   // sessionStorage.setItem('RelatedItems', JSON.stringify(styledItems));
