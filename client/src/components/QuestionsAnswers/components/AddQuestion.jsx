@@ -29,8 +29,8 @@ export default function AddQuestion({product, questions, request, setRequest, on
       .catch(() => console.log('error posting new question'));
   }
   return (
-    <div>
-      <div className="addAnswer-modal-content">
+    <div id="addQuestion-modal">
+      <div className="addQuestion-modal-content">
           <h2>Ask Your Question</h2>
           <h3>About the {productName}</h3>
             <form method="post" onSubmit={(e) => {

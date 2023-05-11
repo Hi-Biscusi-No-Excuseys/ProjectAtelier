@@ -168,6 +168,41 @@ table {
   padding: 10px;
   opacity: 0.5
 }
+#addAnswer-modal {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.addAnswer-modal-content {
+  background-color: white;
+}
+
+#addQuestion-modal {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.addQuestion-modal-content {
+  background-color: white;
+}
 
 .questionsList {
   overflow-y: auto;
