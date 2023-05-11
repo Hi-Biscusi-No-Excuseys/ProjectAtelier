@@ -1,3 +1,4 @@
+/* ------------------------- Reset -------------------------- */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,7 +54,6 @@ table {
 /*^ ------------------------- OVERVIEW -------------------------- */
 .overview {
   margin-left: 20%;
-  /* margin-right: 150px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -98,13 +98,17 @@ table {
   margin-right: 50px;
 }
 
+.sale {
+  color: red;
+}
+
+#strikethrough {
+  color: grey
+}
+
 .productIcon {
   padding-bottom: 10px;
 }
-
-/* .productIcon:hover {
-  opacity: 1;
-} */
 
 .descBox {
   display: flex;
@@ -129,6 +133,126 @@ table {
   flex-wrap: wrap;
   width: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------ philip's css ----------------------------------------*/
+
+.QuestionsAnswers {
+  display: flex;
+  flex-direction: column;
+  max-height: 800px;
+  width: 650px;
+  align-items: center;
+  margin: auto;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-bar {
+  width: 570px;
+  height: 40px;
+  padding-right: 40px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 20;
+  right: 0;
+  width: 15px;
+  height: 25px;
+  padding: 10px;
+  opacity: 0.5
+}
+
+.questionsList {
+  overflow-y: auto;
+}
+
+.questionsBody {
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.answerBody {
+  display: flex;
+  width: 500px;
+  max-height: 140px;
+  flex-direction: row;
+}
+
+.answersAndButton {
+  overflow-y: auto;
+  width: 500px;
+  max-height: 140px;
+}
+
+.seeMoreAnwersButton {
+  font: bold;
+  background: white;
+  width: 20px;
+}
+
+.twoButtons {
+  align-items: left;
+}
+
+.moreAnsweredQuestionsButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+  margin-right: 15px;
+}
+
+.addAQuestionButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
