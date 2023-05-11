@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import RatingBreakdown from './components/RatingBreakdown.jsx';
 import ProductBreakdown from './components/ProductBreakdown.jsx';
 import SortOptions from './components/SortOptions.jsx';
 import ReviewsList from './components/ReviewsList.jsx';
 
 export default function RatingsReviews({product}) {
+  const [sort, setSort] = useState('relevant');
+  const [amount, setAmount] = useState(0);
 
   return (
     <div id='reviews'>
@@ -17,8 +19,8 @@ export default function RatingsReviews({product}) {
         </aside>
 
         <div id='sort-and-list'>
-          <SortOptions />
-          <ReviewsList product={product.id}/>
+          <SortOptions sort={sort} setSort={setSort} amount={amount} />
+          <ReviewsList product={product.id} sort={sort} amount={amount} setAmount={setAmount}/>
         </div>
       </div>
 
