@@ -2,46 +2,17 @@ import React, {useEffect, useState} from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import axios from 'axios';
 
-export default function ReviewsList({product, sort, amount}) {
-  const [reviews, setReviews] = useState([]);
-  const [page, setPage] = useState(1);
+export default function ReviewsList({amount, reviews}) {
+  const [reviewsShown, setReviewsShown] = useState(reviews.slice(0, 2))
+  const [slice, setSlice] = useState({start: 0, end: 2});
 
   useEffect(() => {
-    const opt = { params: {
-        page: page,
-        count: 2,
-        sort: sort,
-        product_id: product
-      }
-    }
-    //^ Sets initial 2 reviews
-    axios.get('/reviews/list', opt)
-      .then((response) => {
-        setReviews(response.data.results);
-      })
-      .catch((err) => {
-        console.error('Client failed to get reviews:', err);
-      })
-  }, [product, sort]); //TODO: Add new review posted dependency
-
+    setReviewsShown(reviews.slice(0,2));
+  }, [reviews])
 
   function handleMore () {
-    const opt = {
-      params: {
-        page: page + 1,
-        count: 2,
-        sort: 'relevant',
-        product_id: product
-      }
-    }
-    axios.get('/reviews/list', opt)
-      .then((response) => {
-        setReviews([...reviews, ...response.data.results]);
-        setPage(page + 1);
-      })
-      .catch((err) => {
-        console.error('Client failed to get reviews:', err);
-      })
+    setSlice({start: slice.start += 2, end: slice.end += 2});
+    setReviewsShown([...reviewsShown, ...reviews.slice(slice.start, slice.end)])
   };
 
 
@@ -49,13 +20,13 @@ export default function ReviewsList({product, sort, amount}) {
     <div id='reviews-container'>
 
       <div id="reviews-list">
-        {reviews.map((review) => {
+        {reviewsShown.map((review) => {
           return <ReviewTile review={review} key={review.review_id}/>
         })}
       </div>
 
       <div id='reviews-buttons'>
-        {amount > 2 && reviews.length < amount ? <button onClick={handleMore}>More Reviews</button> : null}
+        {amount > 2 && reviewsShown.length < amount ? <button onClick={handleMore}>More Reviews</button> : null}
         <button>Add a Review</button>
       </div>
 
