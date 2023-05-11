@@ -1,9 +1,4 @@
-/* ------------------------- OVERVIEW -------------------------- */
-
-
-/* ------------------------- OVERVIEW -------------------------- */
-
-html, body, div, span, applet, object, iframe,
+/* html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -51,11 +46,10 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
+} */
 
+/* ------------------------- OVERVIEW -------------------------- */
 
-
-/*^ ------------------------- OVERVIEW -------------------------- */
 .overview {
   margin-left: 20%;
   display: flex;
@@ -140,113 +134,76 @@ table {
 
 
 
-/* ------------------------------ philip's css ----------------------------------------*/
+/*^ ------------------------- REVIEWS -------------------------- */
 
-.QuestionsAnswers {
+
+#reviews {
   display: flex;
   flex-direction: column;
-  max-height: 800px;
-  width: 650px;
+  height: 100%;
+  width: 80%;
   align-items: center;
   margin: auto;
 }
 
-.search-container {
-  position: relative;
-}
-
-.search-bar {
-  width: 570px;
-  height: 40px;
-  padding-right: 40px;
-}
-
-.search-icon {
-  position: absolute;
-  top: 20;
-  right: 0;
-  width: 15px;
-  height: 25px;
-  padding: 10px;
-  opacity: 0.5
-}
-#addAnswer-modal {
+#breakdown-list {
   display: flex;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  z-index: 10000;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.addAnswer-modal-content {
-  background-color: white;
-}
-
-#addQuestion-modal {
-  display: flex;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  z-index: 10000;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.addQuestion-modal-content {
-  background-color: white;
-}
-
-.questionsList {
-  overflow-y: auto;
-}
-
-.questionsBody {
-  max-height: 200px;
-  margin-bottom: 10px;
-}
-
-.answerBody {
-  display: flex;
-  width: 500px;
-  max-height: 140px;
   flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
-.answersAndButton {
+#reviews-buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem 2rem;
+}
+
+#reviews aside {
+  display: flex;
+  flex-direction: column;
+}
+
+#sort-and-list {
+  display: flex;
+  flex-direction: column;
+}
+
+#reviews-container {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+#reviews-list {
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  width: 500px;
-  max-height: 140px;
 }
 
-.seeMoreAnwersButton {
-  font: bold;
-  background: white;
-  width: 20px;
+.review-photo-thumb {
+  width: 75px;
 }
 
-.twoButtons {
-  align-items: left;
+#review-photo-modal {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.moreAnsweredQuestionsButton {
-  width: 180px;
-  height: 50px;
-  background: white;
-  margin-right: 15px;
+#review-photo-modal button {
+  width: fit-content;
 }
 
-.addAQuestionButton {
-  width: 180px;
-  height: 50px;
-  background: white;
+.review-photo {
+  width: 80%;
+  margin: 2rem auto;
 }

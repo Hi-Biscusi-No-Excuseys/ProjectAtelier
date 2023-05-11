@@ -1,9 +1,11 @@
 import React from 'react';
+import PartialStars from '../../../RatingsReviews/components/PartialStars.jsx';
 
 export default function Details({overview, reviews, currentStyle}) {
 
   return (
     <div className="productDetails">
+      <PartialStars />
       <div>⭐️⭐️⭐️⭐️⭐️</div>
       <div>{reviews} Review</div>
       {/* change this to proper review ID */}

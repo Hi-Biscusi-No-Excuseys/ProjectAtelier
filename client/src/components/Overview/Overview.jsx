@@ -41,7 +41,7 @@ export default function Overview({product}) {
       <div>
         <ProductInfo overview={overview} reviews={reviews} currentStyle={currentStyle}/>
         <StyleSelector styles={styles} currentStyle={currentStyle} styleSwap={styleSwap}/>
-        <AddToCart styles={styles}/>
+        <AddToCart overview={overview} styles={styles} currentStyle={currentStyle}/>
       </div>
       <Description overview={overview}/>
       </div>

@@ -4,11 +4,11 @@ import SizeSelector from './addtocart/SizeSelector';
 import Add from './addtocart/Add';
 import Favorite from './addtocart/Favorite';
 
-export default function AddToCart() {
+export default function AddToCart({overview, styles, currentStyle}) {
   return (
     <div className="addtocart">
       {/* <form onSubmit={(e)=>{e.preventDefault()}}> */}
-        <SizeSelector />
+        <SizeSelector styles={styles} currentStyle={currentStyle} overview={overview}/>
         <QuantitySelector />
         <Add />
         <Favorite />
