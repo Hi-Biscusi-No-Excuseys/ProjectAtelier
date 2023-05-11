@@ -18,7 +18,6 @@ export default function RatingsReviews({product}) {
 
 
   useEffect(() => {
-    // setLoading(true);
     axios.get('/reviews/meta', { params: {product_id: product.id} })
     .then((response) => {
       //^ Sets average review rating to nearest 10th decimal place
@@ -70,7 +69,7 @@ export default function RatingsReviews({product}) {
 
         <div id='sort-and-list'>
           <SortOptions sort={sort} setSort={setSort} amount={amount} />
-          <ReviewsList product={product.id} sort={sort} amount={amount} reviews={reviews}/>
+          <ReviewsList reviews={reviews} starFilter={starFilter} />
         </div>
       </div>
 
