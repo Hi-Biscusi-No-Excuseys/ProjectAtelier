@@ -219,7 +219,6 @@ table {
   flex-direction: row;
 }
  .answersAndButton {
-  overflow-y: auto;
   width: 500px;
   max-height: 140px;
 }
