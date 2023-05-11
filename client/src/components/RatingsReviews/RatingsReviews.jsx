@@ -13,6 +13,8 @@ export default function RatingsReviews({product}) {
   const [avg, setAvg] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [starFilter, setStarFilter] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
+
 
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export default function RatingsReviews({product}) {
 
       <div id='breakdown-list'>
         <aside>
-          <RatingBreakdown product={product.id} amount={amount} metaData={metaData} avg={avg}/>
+          <RatingBreakdown product={product.id} amount={amount} metaData={metaData} avg={avg} setStarFilter={setStarFilter} starFilter={starFilter}/>
           <ProductBreakdown product={product.id}/>
         </aside>
 
@@ -80,24 +82,3 @@ export default function RatingsReviews({product}) {
     </div>
   );
 }
-
-
-//^ metaData obj:
-//   {
-//     "product_id": "40432",
-//     "ratings": {
-//         "3": "1",
-//         "4": "2",
-//         "5": "6"
-//     },
-//     "recommended": {
-//         "false": "2",
-//         "true": "7"
-//     },
-//     "characteristics": {
-//         "Quality": {
-//             "id": 135514,
-//             "value": "4.6250000000000000"
-//         }
-//     }
-// }

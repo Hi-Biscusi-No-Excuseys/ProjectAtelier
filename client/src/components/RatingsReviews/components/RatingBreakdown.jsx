@@ -2,12 +2,16 @@ import React, {useState, useEffect} from 'react';
 import PartialStars from './PartialStars.jsx';
 import StarBar from './StarBar.jsx';
 
-export default function RatingBreakdown({amount, metaData, avg}) {
+export default function RatingBreakdown({amount, metaData, avg, starFilter, setStarFilter}) {
+
+  useEffect(() => {
+    console.log(starFilter)
+  }, [starFilter])
 
 
   return (
     metaData && 
-    (<div id="rating-breakdown">
+    <div id="rating-breakdown">
   
       <div id='overall-rating'> {avg} <PartialStars avg={avg} /> </div>
 
@@ -16,32 +20,32 @@ export default function RatingBreakdown({amount, metaData, avg}) {
         }% of reviews recommend this product.
       </p>
 
-      <div id='5-stars'>
+      <div id='5-stars' className={starFilter[5] ? 'star-filtered' : null} onClick={() => setStarFilter({...starFilter, 5: !starFilter[5]})}>
         <a>5 Stars</a>
         <StarBar percentage={Math.floor((parseInt(metaData.ratings["5"], 10) / amount) * 100)} />
       </div>
 
-      <div id='4-stars'>
+      <div id='4-stars' className={starFilter[4] ? 'star-filtered' : null} onClick={() => setStarFilter({...starFilter, 4: !starFilter[4]})}>
         <a>4 Stars</a>
         <StarBar percentage={Math.floor((parseInt(metaData.ratings["4"], 10) / amount) * 100)} />
       </div>
 
-      <div id='3-stars'>
+      <div id='3-stars' className={starFilter[3] ? 'star-filtered' : null} onClick={() => setStarFilter({...starFilter, 3: !starFilter[3]})}>
         <a>3 Stars</a>
         <StarBar percentage={Math.floor((parseInt(metaData.ratings["3"], 10) / amount) * 100)} />
       </div>
 
-      <div id='2-stars'>
+      <div id='2-stars' className={starFilter[2] ? 'star-filtered' : null} onClick={() => setStarFilter({...starFilter, 2: !starFilter[2]})}>
         <a>2 Stars</a>
         <StarBar percentage={Math.floor((parseInt(metaData.ratings["2"], 10) / amount) * 100)} />
       </div>
       
-      <div id='1-stars'>
+      <div id='1-stars' className={starFilter[1] ? 'star-filtered' : null} onClick={() => setStarFilter({...starFilter, 1: !starFilter[1]})}>
         <a>1 Stars</a>
         <StarBar percentage={Math.floor((parseInt(metaData.ratings["1"], 10) / amount) * 100)} />
       </div>
   
-    </div>)
+    </div>
+    )
     
-  )
 }

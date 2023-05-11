@@ -50,7 +50,9 @@
 }
 
 .review-photo-thumb {
-  width: 75px;
+  max-width: 75px;
+  max-height: 75px;
+  border-radius: 8px;
 }
 
 #review-photo-modal {
@@ -83,4 +85,8 @@
 #overall-rating {
   display: flex;
   align-items: center;
+}
+
+.star-filtered {
+  background-color: rgba(0, 0, 0, 0.3);
 }
