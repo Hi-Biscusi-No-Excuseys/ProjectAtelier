@@ -36,7 +36,7 @@ export default function AddAnswer({question, request, setRequest, onClose, produ
   }
   return(
     <div>
-        <div className="modal-content">
+        <div className="addAnswer-modal-content">
           <h2>Submit your Answer</h2>
           <h3>{productName}: {question.question_body}</h3>
           <form method="post" onSubmit={(e) => {
