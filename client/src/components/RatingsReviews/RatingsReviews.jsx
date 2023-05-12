@@ -64,7 +64,7 @@ export default function RatingsReviews({product}) {
       <div id='breakdown-list'>
         <aside>
           <RatingBreakdown product={product.id} amount={amount} metaData={metaData} avg={avg} setStarFilter={setStarFilter} starFilter={starFilter}/>
-          <ProductBreakdown product={product.id}/>
+          <ProductBreakdown characteristics={metaData.characteristics}/>
         </aside>
 
         <div id='sort-and-list'>

@@ -145,3 +145,9 @@ table {
 .star-filtered {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.char-labels {
+  display: flex;
+  font-size: 0.7rem;
+  justify-content: space-between;
+}
