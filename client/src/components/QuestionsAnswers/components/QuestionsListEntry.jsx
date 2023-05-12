@@ -41,28 +41,31 @@ export default function QuestionsListEntry({question, request, setRequest, produ
   return (
     <div className="questionsBody" >
 
-      <div className="singleQuestion" style={{display: 'flex', marginBottom: '8px'}} >
-        <div><strong>Q: {question.question_body}</strong></div> &nbsp;&nbsp;
-        <div>Helpful?
-          <span style={{textDecoration: 'underline'}}
-          onClick={() => handleQHelpfulClick(question.question_id)}>Yes</span>
-          ({question.question_helpfulness}) &nbsp;
+      <div className="singleQuestion_Helpful_AddAnswer" >
+        <div className="singleQuestion">Q: {question.question_body}</div>
+
+        <div className="helpful_addAnswer">
+          <div>Helpful? &nbsp;
+            <span className ="helpfulYesButton"
+            onClick={() => handleQHelpfulClick(question.question_id)}>Yes</span>
+             ({question.question_helpfulness}) &nbsp;
+          </div>
+            | &nbsp; {!addAnswerForm ?
+            <div>
+            <span className="addAnswerButton" 
+            onClick={() =>setAddAnswerForm(!addAnswerForm)}> Add Answer</span>
+          </div>
+              : createPortal(
+                <AddAnswer onClose={() => setAddAnswerForm(!addAnswerForm)} question={question} request={request} productName={productName} setRequest={setRequest} />,
+                document.body
+              )
+            }
         </div>
-          | &nbsp; {!addAnswerForm ?
-           <div>
-           <span style={{textDecoration: 'underline'}}
-           onClick={() =>setAddAnswerForm(!addAnswerForm)}> Add Answer</span>
-         </div>
-            : createPortal(
-              <AddAnswer onClose={() => setAddAnswerForm(!addAnswerForm)} question={question} request={request} productName={productName} setRequest={setRequest} />,
-              document.body
-            )
-          }
       </div>
 
 
-      <div className="answerBody">
-        <span><strong >A:</strong></span>
+      <div className="answerBodyContainer">
+        <span className="bold">A:</span>
         <div className='answersAndButton' >
           <AnswersList
             answers={answersToRender}

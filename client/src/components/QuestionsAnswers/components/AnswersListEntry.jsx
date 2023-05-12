@@ -33,25 +33,25 @@ export default function AnswersListEntry({answer, request, setRequest }) {
   const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   return(
     <div className="singleAnswer">
-      <div style={{marginBottom: '8px'}}>
+      <div className="singleAnswerBody">
         {answer.body} <br/>
       </div>
-      <div style={{display: 'flex', marginBottom: '8px' }}>
+      <div className="singleAnswerUserInfo_HelpfulYes_Report" style={{display: 'flex' }}>
         <div>
           {answer.answerer_name === "Seller" ?
-          <div>by <strong>{answer.answerer_name} </strong>, {formattedDate}&nbsp; | &nbsp; </div>
+          <div>by <span className="seller">{answer.answerer_name},</span> {formattedDate}&nbsp; | &nbsp; </div>
           : <div>by {answer.answerer_name}, {formattedDate}&nbsp; | &nbsp; </div>}
 
         </div>
 
-        <div>Helpful?
-          <span style={{textDecoration: 'underline'}}
+        <div>Helpful? &nbsp;
+          <span className="helpfulYesButton"
                 onClick={() => handleAHelpfulClick(answer.answer_id)}>Yes</span>
                 ({answer.helpfulness}) &nbsp; | &nbsp;
         </div>
         <div>
           {!reportClicked ?
-            <span style={{textDecoration: 'underline'}}
+            <span className="reportButton"
             onClick={() => handleReportClick(answer.answer_id)}>Report</span>
           : <span>Reported</span>}
 
