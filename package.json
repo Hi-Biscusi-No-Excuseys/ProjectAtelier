@@ -7,7 +7,9 @@
     "test": "jest --env=jsdom",
     "dev": "npx webpack --watch --mode development & npx nodemon --watch ./server ./server/index.js",
     "build": "npx webpack --mode production",
-    "start": "node ./server/index.js"
+    "start": "node ./server/index.js",
+    "lint": "eslint",
+    "lint:fix": "lint -- --fix"
   },
   "repository": {
     "type": "git",
