@@ -1,141 +1,35 @@
-/* ------------------------- OVERVIEW -------------------------- */
 
-.overview {
-  margin-left: 20%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 1000px;
-}
+/* ------------------------------ philip's css ----------------------------------------*/
 
-.ImageGallery {
-  display: flex;
-  height: 400px;
-}
-
-.scroll {
-  margin-top: 50px;
-  height: 300px;
-  position: absolute;
-  overflow-y: auto;
-  z-index: 2;
-}
-
-.productImage {
-  margin-top: auto;
-  margin-bottom: auto;
-  position: relative;
-}
-
-.productImage .mainImage {
-  width: 100%;
-  height: auto;
-}
-
-.productImage .expandButton {
-  position: absolute;
-  top: 1%;
-  left: 92%;
-  background-color: transparent;
-  border: transparent;
-  font-size: xx-large;
-}
-
-.productDescription {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.sale {
-  color: red;
-}
-
-#strikethrough {
-  color: grey
-}
-
-.productIcon {
-  padding-bottom: 10px;
-}
-
-.descBox {
-  display: flex;
-}
-
-.stylesBox {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 350px;
-  height: 270px;
-}
-
-.styleIcon {
-  border-radius: 50%;
-}
-
-.addtocart {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 150px;
-}
-
-
-
-/*^ ------------------------- REVIEWS -------------------------- */
-
-
-#reviews {
+.QuestionsAnswers {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 80%;
+  max-height: 800px;
+  width: 650px;
   align-items: center;
   margin: auto;
 }
 
-#breakdown-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+.search-container {
+  position: relative;
 }
 
-#reviews-buttons {
-  display: flex;
-  flex-direction: row;
-  margin: 2rem 2rem;
+.search-bar {
+  width: 570px;
+  height: 40px;
+  padding-right: 40px;
 }
 
-#reviews aside {
-  display: flex;
-  flex-direction: column;
+.search-icon {
+  position: absolute;
+  top: 20;
+  right: 0;
+  width: 15px;
+  height: 25px;
+  padding: 10px;
+  opacity: 0.5
 }
-
-#sort-and-list {
-  display: flex;
-  flex-direction: column;
-}
-
-#reviews-container {
-  display: flex;
-  flex-direction: column;
-  height: 600px;
-}
-
-#reviews-list {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.review-photo-thumb {
-  width: 75px;
-}
-
-#review-photo-modal {
+#addAnswer-modal {
   display: flex;
   flex-direction: column;
   top: 0;
@@ -143,17 +37,75 @@
   bottom: 0;
   right: 0;
   position: fixed;
-  z-index: 9999;
+  z-index: 10000;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-#review-photo-modal button {
-  width: fit-content;
+.addAnswer-modal-content {
+  background-color: white;
 }
 
-.review-photo {
-  width: 80%;
-  margin: 2rem auto;
+#addQuestion-modal {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.addQuestion-modal-content {
+  background-color: white;
+}
+
+.questionsList {
+  overflow-y: auto;
+}
+
+.questionsBody {
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.answerBody {
+  display: flex;
+  width: 500px;
+  max-height: 140px;
+  flex-direction: row;
+}
+
+.answersAndButton {
+  overflow-y: auto;
+  width: 500px;
+  max-height: 140px;
+}
+
+.seeMoreAnwersButton {
+  font: bold;
+  background: white;
+  width: 20px;
+}
+
+.twoButtons {
+  align-items: left;
+}
+
+.moreAnsweredQuestionsButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+  margin-right: 15px;
+}
+
+.addAQuestionButton {
+  width: 180px;
+  height: 50px;
+  background: white;
 }
