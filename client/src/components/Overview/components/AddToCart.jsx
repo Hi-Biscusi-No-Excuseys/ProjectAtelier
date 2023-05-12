@@ -16,10 +16,6 @@ export default function AddToCart({overview, styles, currentStyle}) {
     setSelectedSize(size);
   }
 
-  // console.log('sku id: ', skuID);
-  // console.log('selected size: ', selectedSize);
-  // console.log('chosen count: ', chosenCount);
-
   useEffect(()=>{
     setParams({sku_id: skuID, size: selectedSize, count: chosenCount});
     console.log(params);
