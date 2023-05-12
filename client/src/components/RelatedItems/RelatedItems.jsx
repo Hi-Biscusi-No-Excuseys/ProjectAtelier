@@ -152,8 +152,8 @@ export default function RelatedItems( {product, setProduct} ) {
       <YourOutfitList product={product} outfit={outfit} addToOutfit={addToOutfit}/>
 
       {/* adding just to test */}
-      {/* {compare && <Comparison product={product} compare={compare}/>} */}
-      {<Comparison product={product} compare={compare}/>}
+      {product && compare && <Comparison product={product} compare={compare}/>}
+      {/* {<Comparison product={product} compare={compare}/>} */}
 
     </ListContainer>
     </div>

@@ -33,8 +33,8 @@ export default function RelatedProductCard({item, setProduct, setCompare}) {
   return (
     <div>
       <Card id="product-card">
-        <CardImageContainer onClick={handleImageClick}>
-            <CardImage src={item.results[0].photos[0].url}></CardImage>
+        <CardImageContainer>
+            <CardImage src={item.results[0].photos[0].url} onClick={handleImageClick}></CardImage>
           <Star onClick={handleStarClick}>&#x2729;</Star>
         </CardImageContainer>
         <CardDetails>

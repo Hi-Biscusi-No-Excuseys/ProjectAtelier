@@ -54,7 +54,7 @@ const CardImage = styled.img`
 position: absolute;
 height: 280px;
 width: 260px;
-z-index: -1;
+z-index: 1;
 `;
 
 
@@ -84,6 +84,7 @@ font-size: 30px;
 // font-weight: 1100;
 align-self: flex-start;
 padding-right: 10px;
+z-index: 10;
 `;
 
 const Table = styled.div`
