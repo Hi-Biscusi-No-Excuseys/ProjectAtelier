@@ -11,9 +11,9 @@ export default function RelatedProductCard({item, setProduct}) {
   let avg = 0;
   let numOfReviews = 0;
   let numOfStars = 0;
-  for (const key in item.data.ratings) {
-    numOfStars = numOfStars + (key * item.data.ratings[key]);
-    numOfReviews = numOfReviews + parseInt(item.data.ratings[key], 10);
+  for (const key in item.ratings) {
+    numOfStars = numOfStars + (key * item.ratings[key]);
+    numOfReviews = numOfReviews + parseInt(item.ratings[key], 10);
   }
   const longAvg = numOfStars / numOfReviews;
   avg = (Math.round(longAvg * 10) / 10);
