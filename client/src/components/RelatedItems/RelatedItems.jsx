@@ -37,7 +37,7 @@ export default function RelatedItems( {product, setProduct} ) {
 
           // for (let i = 0; i < firstResponse.data.length; i++) {
           for (const value of unique) {
-            // console.log('What are we looking at: ', value);
+            console.log('What are we looking at: ', value, product.id);
             let foundItem = allItems.find((item) => {
               // console.log(item);
               return value === item.id;
@@ -94,7 +94,7 @@ export default function RelatedItems( {product, setProduct} ) {
                         for (let j = 0; j < styledItems.length; j++) {
                           if (styledItems[j].id === productInfo[i].id) {
                             found = true;
-                            // console.log('>>>>> Found duplicate, do not save.');
+                            console.log('>>>>>>>>>>>>>>>>>>>>>> Found duplicate, do not save.');
                             break;
                           }
                         }
@@ -119,7 +119,7 @@ export default function RelatedItems( {product, setProduct} ) {
                     console.log('URL #', i, url, relatedID);
                     promiseMetaLevel.push(axios.get(url, { params: {product_id: relatedID} }));
                   }
-                  console.log('Dis:', styledItems);
+                  // console.log('Dis:', styledItems);
 
                   axios.all(promiseMetaLevel)
                   .then((fourthResponse) => {
@@ -129,8 +129,14 @@ export default function RelatedItems( {product, setProduct} ) {
                       }
 
                       setItems([...resultData, ...metaInfo]);
-                      // console.log('>>>>>>>>>>>>>>> ', resultData, styledItems, allItems);
                       setAllItems([...allItems, ...metaInfo]);
+
+                      const updatedProduct = [...allItems, ...metaInfo].find((item) => {
+                        return item.id === product.id;
+                      });
+
+                      console.log('Did we get it: ', updatedProduct);
+                      setProduct(updatedProduct);
                     })
                     .catch((err) => {
                       console.log('Error with META.', err);
@@ -188,7 +194,7 @@ export default function RelatedItems( {product, setProduct} ) {
   return (
     <div id="related-items-component">
     <ListContainer>
-      <RelatedProductsList items={items} setProduct={setProduct}/>
+      <RelatedProductsList product={product} items={items} setProduct={setProduct}/>
       <YourOutfitList product={product} outfit={outfit} addToOutfit={addToOutfit}/>
 
       {/* adding just to test */}

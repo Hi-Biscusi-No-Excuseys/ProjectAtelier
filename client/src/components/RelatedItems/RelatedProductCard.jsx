@@ -5,21 +5,18 @@ import styles from './Styles.jsx';
 const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
 
 export default function RelatedProductCard({item, setProduct}) {
-  const [avg, setAvg] = useState(0);
-  console.log('What dis', item);
+  // const [avg, setAvg] = useState(0);
+  // console.log('What dis', item);
 
-
-  // const [style, setStyle] = useState('');
-  useEffect(() => {
-    let numOfReviews = 0;
-    let numOfStars = 0;
-    for (const key in item.data.ratings) {
-      numOfStars = numOfStars + (key * item.data.ratings[key]);
-      numOfReviews = numOfReviews + parseInt(item.data.ratings[key], 10);
-    }
-    const longAvg = numOfStars / numOfReviews;
-    setAvg(Math.round(longAvg * 10) / 10);
-  }, [item]);
+  let avg = 0;
+  let numOfReviews = 0;
+  let numOfStars = 0;
+  for (const key in item.data.ratings) {
+    numOfStars = numOfStars + (key * item.data.ratings[key]);
+    numOfReviews = numOfReviews + parseInt(item.data.ratings[key], 10);
+  }
+  const longAvg = numOfStars / numOfReviews;
+  avg = (Math.round(longAvg * 10) / 10);
 
 
   return (
