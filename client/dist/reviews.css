@@ -48,6 +48,13 @@ table {
   border-spacing: 0;
 }
 
+/*^ ------------------------- Overall -------------------------- */
+
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+
 
 /*^ ------------------------- REVIEWS -------------------------- */
 
@@ -138,6 +145,10 @@ table {
 #review-photo-modal button {
   width: fit-content;
   margin-bottom: 1rem;
+}
+
+.review-photos button {
+  display: none;
 }
 
 #review-photo {

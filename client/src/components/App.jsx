@@ -7,8 +7,7 @@ import RelatedItems from './RelatedItems/RelatedItems';
 const axios = require('axios');
 
 export default function App() {
-  // eslint-disable-next-line no-unused-vars
-  const [defaultProductID, setDefaultProductID] = useState(40346);
+  const [defaultProductID] = useState(40347);
   const [product, setProduct] = useState(null);
   useEffect(() => {
     axios.get(`/overview/products/${defaultProductID}`)
