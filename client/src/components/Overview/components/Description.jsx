@@ -10,12 +10,12 @@ const features = overview.features
       <div className="descBox">
       <div>
         {/* eslint-disable-next-line max-len */}
-        <p>{overview.description}</p>
+        <p className="productDescription">{overview.description}</p>
       </div>
       <div>
         {features?.map((list, i) => {
           if (list.value !== null) {
-            return <ul key={i}>{list.feature}, {list.value}</ul>
+            return <ul key={i} className="productFeatures">{list.feature}, {list.value}</ul>
           } else {
             return <ul key={i}>{list.feature}</ul>
           }
