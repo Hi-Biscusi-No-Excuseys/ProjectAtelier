@@ -46,7 +46,7 @@ export default function ReviewTile({review}) {
       {review.photos.length ?
         <div className='review-photos'>
           {review.photos.map((photo) => {
-            return <img className="review-photo-thumb" src={photo.url} key={photo.id} onClick={() => handlePhotoModal(photo.url)}/>
+            return <img onError={(e) => e.target.style.display='none'} className="review-photo-thumb" src={photo.url} key={photo.id} onClick={() => handlePhotoModal(photo.url)}/>
           })}
         </div>
       : null}
