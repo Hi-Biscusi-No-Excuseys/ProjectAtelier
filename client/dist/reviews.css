@@ -7,39 +7,45 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
+
 body {
-	line-height: 1;
+  line-height: 1;
 }
+
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
+
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 
@@ -74,7 +80,7 @@ table {
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 1;
-  min-width: 175px;
+  width: 200px;
   margin-right: 3rem;
 }
 
@@ -89,7 +95,7 @@ table {
   flex-direction: column;
   flex-grow: 2;
   flex-shrink: 2;
-  min-width: 370px;
+  width: 600px;
 }
 
 #reviews-container {
@@ -102,6 +108,10 @@ table {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+}
+
+.review-tile {
+  padding: 1rem 1rem;
 }
 
 .review-photo-thumb {
@@ -137,6 +147,10 @@ table {
   margin: 1rem auto;
 }
 
+#rating-breakdown {
+  margin-bottom: 3rem;
+}
+
 #overall-rating {
   display: flex;
   align-items: center;
@@ -150,4 +164,24 @@ table {
   display: flex;
   font-size: 0.7rem;
   justify-content: space-between;
+  width: 200px;
+}
+
+#add-review-modal {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2%;
+}
+
+#add-review-modal form {
+  background-color: white;
 }
