@@ -10,101 +10,150 @@ const { useState, useEffect } = React;
 
 export default function RelatedItems( {product, setProduct} ) {
   const [items, setItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   const [outfit, setOutfit] = useState([]);
+  const [compare, setCompare] = useState(null);
 
-// move the sessionStorage (and/or change to localStorage) into the YourOutfit component. Not sure it's really needed here. But it was useful during development to avoid hitting the API so many times.
   useEffect(() => {
-    if (sessionStorage.getItem('RelatedItems') && items.length === 0) {
-      // console.log('Snagging from sessionStorage:');
-      setItems(JSON.parse(sessionStorage.getItem('RelatedItems')));
-    } else {
       axios.get(`/relateditems/related/${product.id}`)
         .then((firstResponse) => {
-          // console.log('What did we get? : ', firstResponse.data);
+          // console.log('1) :', firstResponse);
+          let url = '';
+          const promiseProductLevel = [];
+          const unique = new Set();
 
-          const promises = [];
+          firstResponse.data.map((item) => unique.add(item));
 
-          for (let i = 0; i < firstResponse.data.length; i++) {
-            let relatedID = firstResponse.data[i].id;
-            let url = `/overview/products/${relatedID}/styles`;
-            // console.log('URL #', i, url);
-            promises.push(axios.get(url));
+          const needIDs = [];
+          const resultData = [];
+
+          for (const value of unique) {
+            let foundItem = allItems.find((item) => {
+              return value === item.id;
+            });
+
+            if (foundItem) {
+              resultData.push(foundItem);
+            } else {
+              needIDs.push(value);
+            }
           }
 
-          axios.all(promises)
+          // console.log('The IDs we still need.', needIDs);
+
+          for (let i = 0; i < needIDs.length; i++) {
+            url = `/overview/products/${needIDs[i]}`;
+            // console.log('URL #', i, url);
+            promiseProductLevel.push(axios.get(url));
+          }
+
+          axios.all(promiseProductLevel)
             .then((secondResponse) => {
-              // console.log('What styles did we get? : ', secondResponse);
-              const styledItems = [];
+              // console.log('2) :', secondResponse);
+              const productInfo = [];
 
-              for (let i = 0; i < firstResponse.data.length; i++) {
-                  // console.log('Ending up with: ', Object.assign(firstResponse.data[i], secondResponse[i].data));
-                  if (styledItems.length === 0) {
-                    styledItems.push(Object.assign(firstResponse.data[i], secondResponse[i].data));
-                  } else {
-                    let found = false;
-                    for (let j = 0; j < styledItems.length; j++) {
-                      if (styledItems[j].id === firstResponse.data[i].id) {
-                        found = true;
-                        // console.log('>>>>> Found duplicate, do not save.');
-                        break;
-                      }
-                    }
-
-                    if (!found) {
-                      styledItems.push(Object.assign(firstResponse.data[i], secondResponse[i].data));
-                    }
-                  }
-
+              for (let i = 0; i < secondResponse.length; i++) {
+                let { data } = secondResponse[i];
+                // console.log('What is this: ', data);
+                productInfo.push(data);
               }
 
-              setItems(styledItems);
-              sessionStorage.setItem('RelatedItems', JSON.stringify(styledItems));
-              // console.log('We set something : ', JSON.parse(sessionStorage.getItem('RelatedItems')));
+              const promiseStyleLevel = [];
+
+              for (let i = 0; i < productInfo.length; i++) {
+                let relatedID = productInfo[i].id;
+                url = `/overview/products/${relatedID}/styles`;
+                // console.log('URL #', i, url);
+                promiseStyleLevel.push(axios.get(url));
+              }
+
+              axios.all(promiseStyleLevel)
+                .then((thirdResponse) => {
+                  // console.log('3) :', thirdResponse);
+                  const styledItems = [];
+
+                  for (let i = 0; i < productInfo.length; i++) {
+                      let { data } = thirdResponse[i];
+                      if (styledItems.length === 0) {
+                        // console.log('What is this: ', productInfo[i], data);
+                        styledItems.push(Object.assign(productInfo[i], data));
+                      } else {
+                        let found = false;
+                        for (let j = 0; j < styledItems.length; j++) {
+                          if (styledItems[j].id === productInfo[i].id) {
+                            found = true;
+                            // console.log('>>>>>>>>>>>>>>>>>>>>>> Found duplicate, do not save.');
+                            break;
+                          }
+                        }
+
+                        if (!found) {
+                          // console.log('What is this: ', productInfo[i], data);
+                          styledItems.push(Object.assign(productInfo[i], data));
+                        }
+                      }
+                  }
+
+                  const metaInfo = [];
+                  const promiseMetaLevel = [];
+
+                  for (let i = 0; i < styledItems.length; i++) {
+                    let relatedID = styledItems[i].id;
+                    url = '/reviews/meta';
+                    // console.log('URL #', i, url, relatedID);
+                    promiseMetaLevel.push(axios.get(url, { params: {product_id: relatedID} }));
+                  }
+
+                  axios.all(promiseMetaLevel)
+                  .then((fourthResponse) => {
+                      // console.log('4) ', fourthResponse);
+                      for (let i = 0; i < fourthResponse.length; i++) {
+                        let { data } = fourthResponse[i];
+                        // console.log('What is this: ', styledItems[i], data);
+                        metaInfo.push(Object.assign(styledItems[i], data));
+                      }
+
+                      setItems([...resultData, ...metaInfo]);
+                      setAllItems([...allItems, ...metaInfo]);
+
+                      const updatedProduct = [...allItems, ...metaInfo].find((item) => {
+                        return item.id === product.id;
+                      });
+
+                      // console.log('Did we get it: ', updatedProduct);
+                      setProduct(updatedProduct);
+                    })
+                    .catch((err) => {
+                      console.log('Error with META.', err);
+                      throw (err);
+                    });
+                })
+                .catch((err) => {
+                  console.log('Error retrieving styles.', err);
+                });
             })
             .catch((err) => {
-              console.log('Error retrieving style.', err);
-              throw (err);
-            })
+              console.log('Error retrieving multiple products info from API.', err);
+            });
         })
         .catch((err) => {
-          console.log('ERROR:', err);
+          console.log('ERROR with new GET request:', err);
         });
-    }
   },[product]);
 
   const addToOutfit = (item) => {
-    // console.log(`What we received from addToOutfit card: ${item.name}`);
-    axios.get(`/overview/products/${item.id}/styles`)
-      .then((response) => {
-        setOutfit([...outfit, Object.assign(item, response.data)]);
-        // console.log('Current outfit:', outfit);
-      })
-      .catch((err) => {
-        console.log('Unable to add outfit: ', err);
-      });
+    setOutfit([...outfit, item]);
   };
-
-  // useEffect(() => {
-  //   axios.get(`/overview/products/${item.id}/styles`)
-  //     .then((response) => {
-  //       console.log('What styles did we get? : ', response.data);
-  //       const defaultStyle = response.data.results[0].photos[0].url;
-  //       setStyle(defaultStyle);
-  //     })
-  //     .catch((err) => {
-  //       console.log('Error retrieving style.', err);
-  //       // throw (err);
-  //     });
-  // }, [item]);
 
   return (
     <div id="related-items-component">
     <ListContainer>
-      <RelatedProductsList items={items} setProduct={setProduct}/>
+      <RelatedProductsList product={product} items={items} setProduct={setProduct} setCompare={setCompare}/>
       <YourOutfitList product={product} outfit={outfit} addToOutfit={addToOutfit}/>
 
       {/* adding just to test */}
-      <Comparison />
+      {/* {compare && <Comparison product={product} compare={compare}/>} */}
+      {<Comparison product={product} compare={compare}/>}
 
     </ListContainer>
     </div>

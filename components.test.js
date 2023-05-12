@@ -7,6 +7,16 @@ import ImageGallery from './client/src/components/Overview/components/ImageGalle
 import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers.jsx';
 
 
+
+// describe('renders all pieces to frontend', () => {
+//   it('should render Overview outer div container', () => {
+//     const { container } = render(<Overview />);
+//     console.log('YNOWORK', container.firstChild)
+//     expect(container.firstChild).toHaveClass('overview');
+//   })
+// })
+
+
 test('QuestionsAnswers renders', () => {
   const product = { id: 123 };
   const { container } = render(<QuestionsAnswers product={product} />)

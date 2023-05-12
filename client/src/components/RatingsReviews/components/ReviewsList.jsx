@@ -1,72 +1,60 @@
 import React, {useEffect, useState} from 'react';
 import ReviewTile from './ReviewTile.jsx';
-import axios from 'axios';
 
-
-export default function ReviewsList({product, sort, amount, setAmount}) {
-  // product = 40432;
-  const [reviews, setReviews] = useState([]);
-  const [page, setPage] = useState(1);
+export default function ReviewsList({reviews, starFilter}) {
+  const [reviewsShown, setReviewsShown] = useState(null)
+  const [reviewsFiltered, setReviewsFiltered] = useState(null)
+  const [slice, setSlice] = useState({start: 0, end: 2});
 
   useEffect(() => {
-    const opt = {
-      params: {
-        page: page,
-        count: 2,
-        sort: sort,
-        product_id: product
+    let filteredReviews;
+
+    //^ if any starFilters are true filteredReviews = [], else filteredReviews = reviews
+    function anyFilters () {
+      for (const key in starFilter) {
+        if (starFilter[key]) {
+          return true;
+        }
       }
+      return false;
+    };
+
+    if (anyFilters()) {
+      filteredReviews = [];
+      for (const key in starFilter) {
+        if (starFilter[key]) {
+          filteredReviews = [...filteredReviews, ...reviews.filter(review => review.rating === parseInt(key, 10))]
+        }
+      }
+    } else {
+      filteredReviews = reviews;
     }
-    //^ Sets initial 2 reviews
-    axios.get('/reviews/list', opt)
-      .then((response) => {
-        setReviews(response.data.results);
-      })
-      .catch((err) => {
-        console.error('Client failed to get reviews:', err);
-      })
-    //^ Sets total amount of reviews
-    axios.get('/reviews/meta', { params: {product_id: product} })
-      .then((response) => {
-        setAmount(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10))
-      })
-      .catch((err) => {
-        console.error('Client failed to get reviews:', err);
-      })
-  }, [product, sort]); //TODO: Add new review posted dependency
+    
+    setReviewsFiltered(filteredReviews);
+    setReviewsShown(filteredReviews.slice(0, 2));
+    setSlice({start: 0, end: 2});
 
-
+  }, [reviews, starFilter]);
+  
+  
   function handleMore () {
-    const opt = {
-      params: {
-        page: page + 1,
-        count: 2,
-        sort: 'relevant',
-        product_id: product
-      }
-    }
-    axios.get('/reviews/list', opt)
-      .then((response) => {
-        setReviews([...reviews, ...response.data.results]);
-        setPage(page + 1);
-      })
-      .catch((err) => {
-        console.error('Client failed to get reviews:', err);
-      })
+    setSlice({start: slice.start += 2, end: slice.end += 2});
+    setReviewsShown([...reviewsShown, ...reviewsFiltered.slice(slice.start, slice.end)])
   };
-
-
+  
+  
   return (
+    reviewsShown &&
     <div id='reviews-container'>
 
       <div id="reviews-list">
-        {reviews.map((review) => {
+        {reviewsShown.map((review) => {
           return <ReviewTile review={review} key={review.review_id}/>
         })}
       </div>
 
       <div id='reviews-buttons'>
-        {amount > 2 && reviews.length < amount ? <button onClick={handleMore}>More Reviews</button> : null}
+        {reviewsFiltered.length > 2 && reviewsShown.length < reviewsFiltered.length ? <button onClick={handleMore}>More Reviews</button> : null}
         <button>Add a Review</button>
       </div>
 
