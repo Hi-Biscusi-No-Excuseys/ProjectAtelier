@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import ReviewTile from './ReviewTile.jsx';
+import { createPortal } from 'react-dom';
 
 export default function ReviewsList({reviews, starFilter}) {
   const [reviewsShown, setReviewsShown] = useState(null)
   const [reviewsFiltered, setReviewsFiltered] = useState(null)
   const [slice, setSlice] = useState({start: 0, end: 2});
+  const [showAddReviewModal, setShowAddReviewModal] = useState(false);
 
   useEffect(() => {
     let filteredReviews;
@@ -44,7 +46,8 @@ export default function ReviewsList({reviews, starFilter}) {
   
   
   return (
-    reviewsShown &&
+    <>
+    {reviewsShown && (
     <div id='reviews-container'>
 
       <div id="reviews-list">
@@ -55,9 +58,22 @@ export default function ReviewsList({reviews, starFilter}) {
 
       <div id='reviews-buttons'>
         {reviewsFiltered.length > 2 && reviewsShown.length < reviewsFiltered.length ? <button onClick={handleMore}>More Reviews</button> : null}
-        <button>Add a Review</button>
+        <button onClick={() => setShowAddReviewModal(true)}>Add a Review</button>
       </div>
 
-    </div>
+    </div>)}
+
+    {showAddReviewModal && createPortal(
+      <div id='add-review-modal'>
+        <form action="submit">
+          <label htmlFor="summary">Title</label>
+          <input type="text" name='summary'/>
+          <label htmlFor="review-body">Review</label>
+          <input type="text" name='review-body'/>
+        </form>
+        <button onClick={() => setShowAddReviewModal(false)}>Close</button>
+      </div>
+    , document.body)}
+    </>
   );
 }
