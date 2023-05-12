@@ -1,42 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import PartialStars from '../RatingsReviews/components/PartialStars.jsx';
 import axios from 'axios';
 import styles from './Styles.jsx';
 const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
 
-export default function RelatedProductCard({item, setProduct}) {
+export default function RelatedProductCard({item, setProduct, setCompare}) {
+  // const [avg, setAvg] = useState(0);
   // console.log('What dis', item);
+  const [showCompare, setShowCompare] = useState(false);
 
+  let avg = 0;
+  let numOfReviews = 0;
+  let numOfStars = 0;
+  for (const key in item.ratings) {
+    numOfStars = numOfStars + (key * item.ratings[key]);
+    numOfReviews = numOfReviews + parseInt(item.ratings[key], 10);
+  }
+  const longAvg = numOfStars / numOfReviews;
+  avg = (Math.round(longAvg * 10) / 10);
 
-  // const [style, setStyle] = useState('');
-  // useEffect(() => {
-  //   axios.get(`/overview/products/${item.id}/styles`)
-  //     .then((response) => {
-  //       console.log('What styles did we get? : ', response.data);
-  //       const defaultStyle = response.data.results[0].photos[0].url;
-  //       setStyle(defaultStyle);
-  //     })
-  //     .catch((err) => {
-  //       console.log('Error retrieving style.', err);
-  //       // throw (err);
-  //     });
-  // }, [item]);
+  const handleStarClick = (e) => {
+    console.log('Compare Clicked.', item.id);
+    setCompare(item);
+  };
+
+  const handleImageClick = (e) => {
+    console.log('Image Clicked: ', item.id);
+    setProduct(item);
+  };
 
 
   return (
     <div>
       <Card id="product-card">
-        <CardImageContainer onClick={(e) => {
-          // console.log('CLICKED: ', item.id);
-          setProduct(item);
-        }}>
-          <CardImage src={item.results[0].photos[0].url}/>
-          <Star>&#x2729;</Star>
+        <CardImageContainer onClick={handleImageClick}>
+            <CardImage src={item.results[0].photos[0].url}></CardImage>
+          <Star onClick={handleStarClick}>&#x2729;</Star>
         </CardImageContainer>
         <CardDetails>
           <div>{item.category}</div>
           <div>{item.name}</div>
           <div>{item.default_price}</div>
-          <small>STAR COMPONENT PLACEHOLDER</small>
+          <PartialStars avg={avg}/>
         </CardDetails>
       </Card>
     </div>
