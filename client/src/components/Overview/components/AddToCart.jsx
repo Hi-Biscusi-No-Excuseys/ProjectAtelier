@@ -18,7 +18,6 @@ export default function AddToCart({overview, styles, currentStyle}) {
 
   useEffect(()=>{
     setParams({sku_id: skuID, size: selectedSize, count: chosenCount});
-    console.log(params);
   }, [skuID, selectedSize, chosenCount])
 
   const handleAdd = () => {

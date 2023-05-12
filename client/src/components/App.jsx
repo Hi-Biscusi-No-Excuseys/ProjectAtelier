@@ -15,6 +15,7 @@ export default function App() {
         setProduct(response.data);
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log('Unable to fetch data: ', err);
       });
   }, [defaultProductID]);
