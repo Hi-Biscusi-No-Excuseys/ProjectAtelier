@@ -14,7 +14,7 @@ export default function AnswersList({answers, request, setRequest }) {
       }
     };
   return (
-    <div className="answersList" style={{marginLeft: '4px'}}>
+    <div className="answersList">
        {answers.length > 0 ? (
       answers.sort(sortByHelpfulness).map((answer, i) => {
         return (

@@ -1,174 +1,78 @@
-/* ------------------------- OVERVIEW -------------------------- */
-
-
-/* ------------------------- OVERVIEW -------------------------- */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-
-
-/*^ ------------------------- OVERVIEW -------------------------- */
-.overview {
-  margin-left: 20%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 1000px;
-}
-
-.ImageGallery {
-  display: flex;
-  height: 400px;
-}
-
-.scroll {
-  margin-top: 50px;
-  height: 300px;
-  position: absolute;
-  overflow-y: auto;
-  z-index: 2;
-}
-
-.productImage {
-  margin-top: auto;
-  margin-bottom: auto;
-  position: relative;
-}
-
-.productImage .mainImage {
-  width: 100%;
-  height: auto;
-}
-
-.productImage .expandButton {
-  position: absolute;
-  top: 1%;
-  left: 92%;
-  background-color: transparent;
-  border: transparent;
-  font-size: xx-large;
-}
-
-.productDescription {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.sale {
-  color: red;
-}
-
-#strikethrough {
-  color: grey
-}
-
-.productIcon {
-  padding-bottom: 10px;
-}
-
-.descBox {
-  display: flex;
-}
-
-.stylesBox {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 350px;
-  height: 270px;
-}
-
-.styleIcon {
-  border-radius: 50%;
-}
-
-.addtocart {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 150px;
-}
-
-
 
 /* ------------------------------ philip's css ----------------------------------------*/
 
 .QuestionsAnswers {
+
   display: flex;
   flex-direction: column;
   max-height: 800px;
-  width: 650px;
-  align-items: center;
+  width: 720px;
+  align-items: left;
   margin: auto;
+  margin-top: 10px;
 }
 
+.QA-Header {
+  font-size: 20px;
+  font-weight: bold;
+}
 .search-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
   position: relative;
 }
 
 .search-bar {
-  width: 570px;
+  width: 720px;
   height: 40px;
-  padding-right: 40px;
+
 }
 
 .search-icon {
   position: absolute;
-  top: 20;
+  top: 0;
   right: 0;
   width: 15px;
   height: 25px;
-  padding: 10px;
+  padding: 12px;
   opacity: 0.5
+}
+
+/*questions & helpful click & add answer click */
+
+.questionsList {
+  overflow-y: auto;
+}
+.questionsBody {
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.singleQuestion_Helpful_AddAnswer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.singleQuestion, .bold {
+  font-weight: bold;
+}
+
+.helpful_addAnswer{
+  display: flex;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.helpfulYesButton {
+  text-decoration: underline;
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.addAnswerButton {
+  text-decoration: underline;
+  cursor: pointer;
 }
 #addAnswer-modal {
   display: flex;
@@ -188,6 +92,84 @@ table {
   background-color: white;
 }
 
+
+.questionsList {
+  overflow-y: auto;
+}
+
+.questionsBody {
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.answerBodyContainer {
+  display: flex;
+  width: 540px;
+  max-height: 145px;
+  flex-direction: row;
+}
+
+.answersAndButton {
+  overflow-y: auto;
+  width: 520px;
+  max-height: 140px;
+}
+
+.answersList {
+  margin-left: 4px;
+}
+
+.singleAnswerBody {
+  width: 490px;
+  font-size: 15px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.singleAnswerUserInfo_HelpfulYes_Report {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.seller {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.reportButton {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.seeMoreAnwersButton {
+  font: bold;
+  background: white;
+  width: 20px;
+  margin-bottom: 2px;
+}
+
+
+/* moreAnsweredQuestions & Add A Question Button*/
+
+.twoButtons {
+  align-items: left;
+  display: flex;
+  justify-content: start;
+}
+
+.moreAnsweredQuestionsButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+  margin-right: 15px;
+}
+
+.addAQuestionButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+}
+
 #addQuestion-modal {
   display: flex;
   flex-direction: column;
@@ -204,49 +186,4 @@ table {
 
 .addQuestion-modal-content {
   background-color: white;
-}
-
-.questionsList {
-  overflow-y: auto;
-}
-
-.questionsBody {
-  max-height: 200px;
-  margin-bottom: 10px;
-}
-
-.answerBody {
-  display: flex;
-  width: 500px;
-  max-height: 140px;
-  flex-direction: row;
-}
-
-.answersAndButton {
-  overflow-y: auto;
-  width: 500px;
-  max-height: 140px;
-}
-
-.seeMoreAnwersButton {
-  font: bold;
-  background: white;
-  width: 20px;
-}
-
-.twoButtons {
-  align-items: left;
-}
-
-.moreAnsweredQuestionsButton {
-  width: 180px;
-  height: 50px;
-  background: white;
-  margin-right: 15px;
-}
-
-.addAQuestionButton {
-  width: 180px;
-  height: 50px;
-  background: white;
 }

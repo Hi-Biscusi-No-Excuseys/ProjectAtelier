@@ -5,15 +5,15 @@ const { Card, AddToOutFitButton } = styles;
 
 export default function AddToOutfitCard( {product, addToOutfit} ) {
 
-  const handleAddClick = (e) => {
-    // will make request to /overview/products/${productID}
-    // console.log(`Adding product (ID: ${product.id}) to outfit.`);
-    addToOutfit(product);
-  };
+  // const handleAddClick = (e) => {
+  //   addToOutfit(product);
+  // };
 
   return (
     <div>
-      <Card id="add-to-outfit-card" onClick={handleAddClick}>
+      <Card id="add-to-outfit-card" onClick={(e) => {
+        addToOutfit(product);
+      }}>
         <AddToOutFitButton>&#43;</AddToOutFitButton>
       </Card>
     </div>

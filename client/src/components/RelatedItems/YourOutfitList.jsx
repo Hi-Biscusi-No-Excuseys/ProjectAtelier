@@ -14,9 +14,6 @@ export default function YourOutfitList( {product, outfit, addToOutfit} ) {
           // console.log('>>>> What outfit item:', item.id, item);
           return <RelatedProductCard key={item.id} item={item}/>;
         })}
-
-        {/* <RelatedProductCard />
-        <RelatedProductCard /> */}
       </ProductContainer>
     </div>
   );
