@@ -60,4 +60,40 @@ router.get('/products/:product_id/styles', (req, res) => {
     })
 })
 
+router.get('/cart', (req, res) => {
+  let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart`
+  let options = {
+    headers: {
+      'Authorization': auth
+    }
+  }
+  axios.get(url, options)
+    .then((response)=>{
+      res.json(response.data);
+    })
+    .catch((err)=>{
+      console.log('server error: ', err.response.data)
+      res.status(500).send('Error fetching cart data from API');
+    })
+})
+
+
+router.post('/cart', (req, res) => {
+  console.log('This is the request: ', req.body)
+  let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart`
+  let options = {
+    headers: {
+      'Authorization': auth
+    }
+  }
+  axios.post(url, req.body, options)
+    .then((response)=>{
+      res.status(201).json(response.data);
+    })
+    .catch((err) => {
+      console.log('server error: ', err.response.data);
+      res.status(500).send('Error sending data to cart API');
+    })
+})
+
 module.exports = router;
