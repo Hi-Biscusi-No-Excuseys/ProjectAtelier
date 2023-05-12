@@ -141,32 +141,77 @@ table {
 /* ------------------------------ philip's css ----------------------------------------*/
 
 .QuestionsAnswers {
+
   display: flex;
   flex-direction: column;
   max-height: 800px;
-  width: 650px;
-  align-items: center;
+  width: 720px;
+  align-items: left;
   margin: auto;
+  margin-top: 10px;
 }
 
+.QA-Header {
+  font-size: 20px;
+  font-weight: bold;
+}
 .search-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
   position: relative;
 }
 
 .search-bar {
-  width: 570px;
+  width: 720px;
   height: 40px;
-  padding-right: 40px;
+
 }
 
 .search-icon {
   position: absolute;
-  top: 20;
+  top: 0;
   right: 0;
   width: 15px;
   height: 25px;
-  padding: 10px;
+  padding: 12px;
   opacity: 0.5
+}
+
+/*questions & helpful click & add answer click */
+
+.questionsList {
+  overflow-y: auto;
+}
+.questionsBody {
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.singleQuestion_Helpful_AddAnswer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.singleQuestion, .bold {
+  font-weight: bold;
+}
+
+.helpful_addAnswer{
+  display: flex;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.helpfulYesButton {
+  text-decoration: underline;
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.addAnswerButton {
+  text-decoration: underline;
+  cursor: pointer;
 }
 #addAnswer-modal {
   display: flex;
@@ -186,6 +231,74 @@ table {
   background-color: white;
 }
 
+/* answers and seemoreanswers*/
+
+.answerBodyContainer {
+  display: flex;
+  width: 540px;
+  max-height: 145px;
+  flex-direction: row;
+}
+ .answersAndButton {
+  overflow-y: auto;
+  width: 520px;
+  max-height: 140px;
+}
+
+.answersList {
+  margin-left: 4px;
+}
+
+.singleAnswerBody {
+  width: 490px;
+  font-size: 15px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.singleAnswerUserInfo_HelpfulYes_Report {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.seller {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.reportButton {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.seeMoreAnwersButton {
+  font: bold;
+  background: white;
+  width: 20px;
+  margin-bottom: 2px;
+}
+
+
+/* moreAnsweredQuestions & Add A Question Button*/
+
+.twoButtons {
+  align-items: left;
+  display: flex;
+  justify-content: start;
+}
+.moreAnsweredQuestionsButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+  margin-right: 15px;
+}
+
+.addAQuestionButton {
+  width: 180px;
+  height: 50px;
+  background: white;
+}
+
 #addQuestion-modal {
   display: flex;
   flex-direction: column;
@@ -202,45 +315,4 @@ table {
 
 .addQuestion-modal-content {
   background-color: white;
-}
-
-.questionsList {
-  overflow-y: auto;
-}
-.questionsBody {
-  max-height: 200px;
-  margin-bottom: 10px;
-}
-
-.answerBody {
-  display: flex;
-  width: 500px;
-  max-height: 140px;
-  flex-direction: row;
-}
- .answersAndButton {
-  width: 500px;
-  max-height: 140px;
-}
-
-.seeMoreAnwersButton {
-  font: bold;
-  background: white;
-  width: 20px;
-}
-
-.twoButtons {
-  align-items: left;
-}
-.moreAnsweredQuestionsButton {
-  width: 180px;
-  height: 50px;
-  background: white;
-  margin-right: 15px;
-}
-
-.addAQuestionButton {
-  width: 180px;
-  height: 50px;
-  background: white;
 }

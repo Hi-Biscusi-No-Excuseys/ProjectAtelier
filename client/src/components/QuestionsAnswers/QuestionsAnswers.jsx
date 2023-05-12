@@ -27,7 +27,7 @@ export default function QuestionsAnswers({product}) {
   const buttonText = showAllQuestions ? "COLLAPSE ANSWERED QUESTIONS" : "MORE ANSWERED QUESTIONS";
   return (
     <div className="QuestionsAnswers">
-      <h1>Questions & Answers</h1>
+      <h1 className="QA-Header">Questions & Answers</h1>
       <Search filterText={filterText} setFilterText={setFilterText} />
       <QuestionsList productName={product.name} filterText={filterText} questions={questionsToRender} request={request} setRequest={setRequest}/>
 
