@@ -1,21 +1,21 @@
 /* ------------------------- OVERVIEW -------------------------- */
 
 .overview {
-  margin-left: 20%;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 1000px;
+  width: 90%;
 }
 
 .ImageGallery {
   display: flex;
-  height: 400px;
+  height: 700px;
 }
 
 .scroll {
-  margin-top: 50px;
-  height: 300px;
+  margin-top: 25px;
+  height: 600px;
   position: absolute;
   overflow-y: auto;
   z-index: 2;
@@ -44,6 +44,12 @@
 .productDescription {
   margin-left: 50px;
   margin-right: 50px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  width: 1400px;
 }
 
 .sale {
@@ -60,6 +66,7 @@
 
 .descBox {
   display: flex;
+  width: 900px
 }
 
 .stylesBox {
@@ -80,7 +87,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 150px;
-  /* height: 150px; */
+  height: 300px
 }
 
 .productName {
@@ -103,15 +110,6 @@
   font-weight: bold;
 }
 
-.productDescription {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  /* width: 600px; */
-}
-
 .productFeatures {
   display: block;
   list-style-type: disc;
@@ -120,4 +118,13 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 40px;
+}
+
+#featureList {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  width: 500px;
 }
