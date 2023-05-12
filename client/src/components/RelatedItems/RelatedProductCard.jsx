@@ -4,9 +4,10 @@ import axios from 'axios';
 import styles from './Styles.jsx';
 const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
 
-export default function RelatedProductCard({item, setProduct}) {
+export default function RelatedProductCard({item, setProduct, setCompare}) {
   // const [avg, setAvg] = useState(0);
   // console.log('What dis', item);
+  const [showCompare, setShowCompare] = useState(false);
 
   let avg = 0;
   let numOfReviews = 0;
@@ -18,16 +19,23 @@ export default function RelatedProductCard({item, setProduct}) {
   const longAvg = numOfStars / numOfReviews;
   avg = (Math.round(longAvg * 10) / 10);
 
+  const handleStarClick = (e) => {
+    console.log('Compare Clicked.', item.id);
+    setCompare(item);
+  };
+
+  const handleImageClick = (e) => {
+    console.log('Image Clicked: ', item.id);
+    setProduct(item);
+  };
+
 
   return (
     <div>
       <Card id="product-card">
-        <CardImageContainer onClick={(e) => {
-          // console.log('CLICKED: ', item.id);
-          setProduct(item);
-        }}>
-          <CardImage src={item.results[0].photos[0].url}/>
-          <Star>&#x2729;</Star>
+        <CardImageContainer onClick={handleImageClick}>
+            <CardImage src={item.results[0].photos[0].url}></CardImage>
+          <Star onClick={handleStarClick}>&#x2729;</Star>
         </CardImageContainer>
         <CardDetails>
           <div>{item.category}</div>

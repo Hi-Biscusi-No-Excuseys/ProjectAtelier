@@ -3,7 +3,7 @@ import RelatedProductCard from './RelatedProductCard';
 import styles from './Styles.jsx';
 const { ProductContainer, Title } = styles;
 
-export default function RelatedProductsList({ product, items, setProduct }) {
+export default function RelatedProductsList({ product, items, setProduct, setCompare }) {
   // console.log('The ITEMS passed to the list:', items);
 
   return (
@@ -11,7 +11,7 @@ export default function RelatedProductsList({ product, items, setProduct }) {
       <Title>RELATED PRODUCTS</Title>
       <ProductContainer>
         {items.map((item) => {
-          return product.id !== item.id && <RelatedProductCard key={item.id} item={item} setProduct={setProduct}/>;
+          return product.id !== item.id && <RelatedProductCard key={item.id} item={item} setProduct={setProduct} setCompare={setCompare}/>;
         })}
       </ProductContainer>
     </div>
