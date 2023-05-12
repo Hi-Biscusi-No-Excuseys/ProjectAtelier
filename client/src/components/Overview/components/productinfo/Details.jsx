@@ -1,12 +1,11 @@
 import React from 'react';
 import PartialStars from '../../../RatingsReviews/components/PartialStars.jsx';
 
-export default function Details({overview, reviews, currentStyle}) {
+export default function Details({overview, reviews, currentStyle, avg}) {
 
   return (
     <div className="productDetails">
-      <PartialStars />
-      <div>⭐️⭐️⭐️⭐️⭐️</div>
+      <PartialStars avg={avg} />
       <div>{reviews} Review</div>
       {/* change this to proper review ID */}
       <button type="button" className="reviewScrollButton" onClick={()=>{

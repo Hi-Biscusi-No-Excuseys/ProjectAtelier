@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 
-export default function QuantitySelector({styles, currentStyle, overview, selectedSizeCount}) {
+export default function QuantitySelector({currentStyle, selectedSize, selectedSizeCount, setChosenCount}) {
   const [maxCount, setMaxCount] = useState(0);
   const [quantityCount, setQuantityCount] = useState([]);
 
   useEffect(()=>{
-    if (selectedSizeCount) {
+    if (selectedSize) {
       const count = Math.min(selectedSizeCount, 15)
       setMaxCount(count);
       const options = [];
@@ -17,11 +17,17 @@ export default function QuantitySelector({styles, currentStyle, overview, select
       setMaxCount(0);
       setQuantityCount(['-']);
     }
-  }, [currentStyle, selectedSizeCount])
+  }, [currentStyle, selectedSize])
+
+  const handleQuantityChange = (e) => {
+    // Handle changes to the quantity dropdown
+    const newQuantity = parseInt(e.target.value);
+    setChosenCount(newQuantity);
+  };
 
   return (
     <div className="quantityselector">
-      <select disabled={!selectedSizeCount} defaultValue={1}>
+      <select disabled={!selectedSize} defaultValue={1} onChange={handleQuantityChange}>
         {quantityCount?.map((option, i)=>{
           return <option key={i} value={option}>{option}</option>
         })}

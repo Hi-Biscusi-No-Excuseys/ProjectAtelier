@@ -10,6 +10,7 @@ export default function Overview({product}) {
   const [overview, setOverview] = useState(product);
   const [styles, setStyles] = useState([]);
   const [reviews, setReviews] = useState(0);
+  const [avg, setAvg] = useState(null);
   const [currentStyle, setCurrentStyle] = useState(undefined)
 
   useEffect(()=>{
@@ -24,6 +25,15 @@ export default function Overview({product}) {
       });
     axios.get('/reviews/meta', { params: {product_id: product.id} })
       .then((response) => {
+        const ratings = response.data.ratings;
+        let numOfReviews = 0;
+        let numOfStars = 0;
+        for (const key in ratings) {
+          numOfStars += (key * ratings[key]);
+          numOfReviews += parseInt(ratings[key], 10);
+        }
+        const longAvg = numOfStars / numOfReviews;
+        setAvg(Math.round(longAvg * 10) / 10);
         setReviews(parseInt(response.data.recommended.false, 10) + parseInt(response.data.recommended.true, 10))
       })
       .catch((err) => {
@@ -39,7 +49,7 @@ export default function Overview({product}) {
     <div className="overview">
       <ImageGallery currentStyle={currentStyle}/>
       <div>
-        <ProductInfo overview={overview} reviews={reviews} currentStyle={currentStyle}/>
+        <ProductInfo overview={overview} reviews={reviews} currentStyle={currentStyle} avg={avg}/>
         <StyleSelector styles={styles} currentStyle={currentStyle} styleSwap={styleSwap}/>
         <AddToCart overview={overview} styles={styles} currentStyle={currentStyle}/>
       </div>
