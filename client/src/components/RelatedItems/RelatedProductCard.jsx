@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import PartialStars from '../RatingsReviews/components/PartialStars.jsx';
-import axios from 'axios';
-import styles from './Styles.jsx';
-const { Card, CardImageContainer, CardImage, CardDetails, Star } = styles;
+import React, { useState } from 'react';
+import PartialStars from '../RatingsReviews/components/PartialStars';
+import styles from './Styles';
 
-export default function RelatedProductCard({item, setProduct, setCompare}) {
+const {
+  Card, CardImageContainer, CardImage, CardDetails, Star, Cancel,
+} = styles;
+
+export default function RelatedProductCard({
+  item, setProduct, setCompare, isRelatedCard, removeOutfit,
+}) {
   // const [avg, setAvg] = useState(0);
   // console.log('What dis', item);
   const [showCompare, setShowCompare] = useState(false);
@@ -13,35 +17,39 @@ export default function RelatedProductCard({item, setProduct, setCompare}) {
   let numOfReviews = 0;
   let numOfStars = 0;
   for (const key in item.ratings) {
-    numOfStars = numOfStars + (key * item.ratings[key]);
-    numOfReviews = numOfReviews + parseInt(item.ratings[key], 10);
+    numOfStars += (key * item.ratings[key]);
+    numOfReviews += parseInt(item.ratings[key], 10);
   }
   const longAvg = numOfStars / numOfReviews;
   avg = (Math.round(longAvg * 10) / 10);
 
-  const handleStarClick = (e) => {
-    console.log('Compare Clicked.', item.id);
-    setCompare(item);
+  const handleActionClick = () => {
+    console.log('Action clicked.', item.id, item);
+    if (isRelatedCard) {
+      setCompare(item);
+    } else {
+      removeOutfit(item);
+    }
   };
 
-  const handleImageClick = (e) => {
+  const handleImageClick = () => {
     console.log('Image Clicked: ', item.id);
     setProduct(item);
   };
-
 
   return (
     <div>
       <Card id="product-card">
         <CardImageContainer>
-            <CardImage src={item.results[0].photos[0].url} onClick={handleImageClick}></CardImage>
-          <Star onClick={handleStarClick}>&#x2729;</Star>
+          <CardImage src={item.results[0].photos[0].url} onClick={handleImageClick} />
+          {isRelatedCard && <Star onClick={handleActionClick}>&#x2605;</Star>}
+          {!isRelatedCard && <Cancel onClick={handleActionClick}>&#x2716;</Cancel>}
         </CardImageContainer>
         <CardDetails>
           <div>{item.category}</div>
           <div>{item.name}</div>
           <div>{item.default_price}</div>
-          <PartialStars avg={avg}/>
+          <PartialStars avg={avg} />
         </CardDetails>
       </Card>
     </div>

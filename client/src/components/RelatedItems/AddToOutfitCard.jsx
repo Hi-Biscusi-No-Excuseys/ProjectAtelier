@@ -1,19 +1,21 @@
 import React from 'react';
-import axios from 'axios';
-import styles from './Styles.jsx';
+import styles from './Styles';
+
 const { Card, AddToOutFitButton } = styles;
 
-export default function AddToOutfitCard( {product, addToOutfit} ) {
-
+export default function AddToOutfitCard({ product, addToOutfit }) {
   // const handleAddClick = (e) => {
   //   addToOutfit(product);
   // };
 
   return (
     <div>
-      <Card id="add-to-outfit-card" onClick={(e) => {
-        addToOutfit(product);
-      }}>
+      <Card
+        id="add-to-outfit-card"
+        onClick={() => {
+          addToOutfit(product);
+        }}
+      >
         <AddToOutFitButton>&#43;</AddToOutFitButton>
       </Card>
     </div>

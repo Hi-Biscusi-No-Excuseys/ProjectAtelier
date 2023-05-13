@@ -10,7 +10,6 @@ width: 500px;
 padding 5px;
 `;
 
-
 const ListContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -57,7 +56,6 @@ width: 260px;
 z-index: 1;
 `;
 
-
 const CardDetails = styled.div`
 height: 120px;
 width: 260px;
@@ -79,12 +77,17 @@ const StarContainer = styled.div`
 `;
 
 const Star = styled.div`
-// color: white;
-font-size: 30px;
+color: white;
+font-size: 40px;
 // font-weight: 1100;
 align-self: flex-start;
 padding-right: 10px;
 z-index: 10;
+`;
+
+const Cancel = styled(Star)`
+color: black;
+font-size: 50px;
 `;
 
 const Table = styled.div`
@@ -111,21 +114,22 @@ padding: 10px;
 `;
 
 export default {
-  Container: Container,
-  ComparisonContainer: ComparisonContainer,
-  ListContainer: ListContainer,
-  ProductContainer: ProductContainer,
-  Title: Title,
-  Card: Card,
-  CardImageContainer: CardImageContainer,
-  CardImage: CardImage,
-  Star: Star,
-  StarContainer: StarContainer,
-  CardDetails: CardDetails,
-  CardTitle: CardTitle,
-  CardHeader: CardHeader,
-  AddToOutFitButton: AddToOutFitButton,
-  Table: Table,
-  TableRow: TableRow,
-  TableCol: TableCol,
-}
+  Container,
+  ComparisonContainer,
+  ListContainer,
+  ProductContainer,
+  Title,
+  Card,
+  CardImageContainer,
+  CardImage,
+  Star,
+  Cancel,
+  StarContainer,
+  CardDetails,
+  CardTitle,
+  CardHeader,
+  AddToOutFitButton,
+  Table,
+  TableRow,
+  TableCol,
+};
