@@ -5,7 +5,7 @@ export default function RelatedProductCard({
   item, setProduct, setCompare, isRelatedCard, removeOutfit, setShowCompare,
 }) {
   // const [avg, setAvg] = useState(0);
-  console.log('What dis', item);
+  // console.log('What dis', item);
   // const [showCompare, setShowCompare] = useState(false);
 
   let avg = 0;
@@ -19,7 +19,7 @@ export default function RelatedProductCard({
   avg = (Math.round(longAvg * 10) / 10);
 
   const handleActionClick = () => {
-    console.log('Action clicked.', item.id, item);
+    // console.log('Action clicked.', item.id, item);
     if (isRelatedCard) {
       setCompare(item);
       setShowCompare(true);
@@ -29,7 +29,7 @@ export default function RelatedProductCard({
   };
 
   const handleImageClick = () => {
-    console.log('Image Clicked: ', item.id);
+    // console.log('Image Clicked: ', item.id);
     setProduct(item);
   };
 
