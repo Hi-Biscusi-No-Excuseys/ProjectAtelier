@@ -56,6 +56,7 @@ export default function RatingsReviews({ product }) {
         setLoading(false);
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.error('Client failed to get reviews:', err);
         setLoading(false);
       });
@@ -70,7 +71,6 @@ export default function RatingsReviews({ product }) {
           <div id="breakdown-list">
             <aside>
               <RatingBreakdown
-                product={product.id}
                 amount={amount}
                 metaData={metaData}
                 avg={avg}
@@ -82,14 +82,14 @@ export default function RatingsReviews({ product }) {
 
             <div id="sort-and-list">
               <SortOptions sort={sort} setSort={setSort} amount={amount} />
-              <ReviewsList reviews={reviews} starFilter={starFilter} />
+              <ReviewsList reviews={reviews} starFilter={starFilter} product={product} />
             </div>
           </div>
 
         </div>
       )
       : (
-        <div id="loading-container">
+        <div id="reviews">
           <h3>Ratings & Reviews</h3>
           <p id="loading">Loading...</p>
         </div>

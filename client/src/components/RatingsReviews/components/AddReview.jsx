@@ -1,8 +1,11 @@
-import React from 'react';
-// import axios from 'axios';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import axios from 'axios';
+import SelectStars from './SelectStars';
 
-export default function AddReview({ setShowAddReviewModal }) {
+export default function AddReview({ setShowAddReviewModal, product }) {
+  const [activeStar, setActiveStar] = useState(-1);
+
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -12,7 +15,14 @@ export default function AddReview({ setShowAddReviewModal }) {
       <div id="add-review-modal">
         <form action="submit" onSubmit={(e) => handleSubmit(e)}>
           <h3>Write Your Review</h3>
-          <h4>About the -product-</h4>
+          <h4>
+            About the
+            {' '}
+            {product.name}
+            {' '}
+          </h4>
+
+          <SelectStars activeStar={activeStar} setActiveStar={setActiveStar} />
 
           <label htmlFor="summary">
             Title
