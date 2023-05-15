@@ -7,7 +7,7 @@ import RelatedItems from './RelatedItems/RelatedItems';
 const axios = require('axios');
 
 export default function App() {
-  const [defaultProductID] = useState(40347);
+  const [defaultProductID] = useState(40348);
   const [product, setProduct] = useState(null);
   useEffect(() => {
     axios.get(`/overview/products/${defaultProductID}`)
