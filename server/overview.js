@@ -15,12 +15,12 @@ router.get('/products', (req, res) => {
     },
   };
   axios.get(url, options)
-    .then((response) => {
-      console.log('These are the products: ', response.data);
+    .then((response)=>{
+      // console.log('These are the products: ', response.data);
       res.json(response.data);
     })
-    .catch((err) => {
-      console.log('server error: ', err.response.data);
+    .catch((err)=>{
+      // console.log('server error: ', err.response.data)
       res.status(500).send('Error fetching data from API');
     });
 });
