@@ -7,7 +7,7 @@ import RelatedItems from './RelatedItems/RelatedItems';
 const axios = require('axios');
 
 export default function App() {
-  const [defaultProductID, setDefaultProductID] = useState(40347);
+  const [defaultProductID, setDefaultProductID] = useState(40438);
   const [product, setProduct] = useState(null);
   useEffect(() => {
     axios.get(`/overview/products/${defaultProductID}`)
@@ -30,6 +30,5 @@ export default function App() {
       </div>
       ) }
     </div>
-
   );
 }

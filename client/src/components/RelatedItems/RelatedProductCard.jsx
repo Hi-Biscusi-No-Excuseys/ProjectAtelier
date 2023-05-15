@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import PartialStars from '../RatingsReviews/components/PartialStars';
-import styles from './Styles';
-
-const {
-  Card, CardImageContainer, CardImage, CardDetails, Star, Cancel,
-} = styles;
 
 export default function RelatedProductCard({
-  item, setProduct, setCompare, isRelatedCard, removeOutfit,
+  item, setProduct, setCompare, isRelatedCard, removeOutfit, setShowCompare,
 }) {
   // const [avg, setAvg] = useState(0);
   // console.log('What dis', item);
-  const [showCompare, setShowCompare] = useState(false);
+  // const [showCompare, setShowCompare] = useState(false);
 
   let avg = 0;
   let numOfReviews = 0;
@@ -27,6 +22,7 @@ export default function RelatedProductCard({
     console.log('Action clicked.', item.id, item);
     if (isRelatedCard) {
       setCompare(item);
+      setShowCompare(true);
     } else {
       removeOutfit(item);
     }
@@ -38,20 +34,18 @@ export default function RelatedProductCard({
   };
 
   return (
-    <div>
-      <Card id="product-card">
-        <CardImageContainer>
-          <CardImage src={item.results[0].photos[0].url} onClick={handleImageClick} />
-          {isRelatedCard && <Star onClick={handleActionClick}>&#x2605;</Star>}
-          {!isRelatedCard && <Cancel onClick={handleActionClick}>&#x2716;</Cancel>}
-        </CardImageContainer>
-        <CardDetails>
-          <div>{item.category}</div>
-          <div>{item.name}</div>
-          <div>{item.default_price}</div>
-          <PartialStars avg={avg} />
-        </CardDetails>
-      </Card>
+    <div className="Card">
+      <div className="CardImageContainer">
+        <img className="CardImage" src={item.results[0].photos[0].url} onClick={handleImageClick} alt="Product Image" />
+        {isRelatedCard && <div className="Star" onClick={handleActionClick}>&#x2605;</div>}
+        {!isRelatedCard && <div className="Cancel" onClick={handleActionClick}>&#x2716;</div>}
+      </div>
+      <div className="CardDetails">
+        <div>{item.category}</div>
+        <div>{item.name}</div>
+        <div>{item.default_price}</div>
+        <PartialStars avg={avg} />
+      </div>
     </div>
   );
 }

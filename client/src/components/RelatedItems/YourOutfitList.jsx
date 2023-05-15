@@ -1,19 +1,16 @@
 import React from 'react';
 import RelatedProductCard from './RelatedProductCard';
 import AddToOutfitCard from './AddToOutfitCard';
-import styles from './Styles';
-
-const { ProductContainer, Title } = styles;
 
 export default function YourOutfitList({
-  product, outfit, addToOutfit, isRelatedCard, removeOutfit,
+  product, outfit, addToOutfit, isRelatedCard, removeOutfit, setProduct,
 }) {
   // need to make sure we can remove an Outfit item.
 
   return (
     <div id="your-outfit-list">
-      <Title>YOUR OUTFIT</Title>
-      <ProductContainer>
+      <div className="Title">YOUR OUTFIT</div>
+      <div className="ProductContainer">
         <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
         {outfit.map((item) => (
           <RelatedProductCard
@@ -21,9 +18,10 @@ export default function YourOutfitList({
             item={item}
             isRelatedCard={isRelatedCard}
             removeOutfit={removeOutfit}
+            setProduct={setProduct}
           />
         ))}
-      </ProductContainer>
+      </div>
     </div>
   );
 }

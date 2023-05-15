@@ -1,11 +1,10 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import axios from 'axios';
 import RelatedProductsList from './RelatedProductsList';
 import YourOutfitList from './YourOutfitList';
 import Comparison from './Comparison';
-import styles from './Styles';
 
-const { ListContainer } = styles;
 const { useState, useEffect } = React;
 
 export default function RelatedItems({ product, setProduct }) {
@@ -13,6 +12,7 @@ export default function RelatedItems({ product, setProduct }) {
   const [allItems, setAllItems] = useState([]);
   const [outfit, setOutfit] = useState([]);
   const [compare, setCompare] = useState(null);
+  const [showCompare, setShowCompare] = useState(false);
 
   useEffect(() => {
     axios.get(`/relateditems/related/${product.id}`)
@@ -139,8 +139,14 @@ export default function RelatedItems({ product, setProduct }) {
       });
   }, [product]);
 
-  const addToOutfit = (item) => {
-    setOutfit([...outfit, item]);
+  const addToOutfit = (find) => {
+    const search = outfit.find((item) => item.id === find.id);
+
+    if (!search) {
+      setOutfit([...outfit, find]);
+    } else {
+      console.log('Already saved!');
+    }
   };
 
   const removeOutfit = (find) => {
@@ -150,30 +156,35 @@ export default function RelatedItems({ product, setProduct }) {
   };
 
   const isRelatedCard = true;
+  const compareRoot = document.getElementById('related-items');
 
   return (
-    <div id="related-items-component">
-      <ListContainer>
+    <div id="related-items">
+      <div className="ListContainer">
         <RelatedProductsList
           product={product}
           items={items}
           setProduct={setProduct}
           setCompare={setCompare}
           isRelatedCard={isRelatedCard}
+          showCompare={showCompare}
+          setShowCompare={setShowCompare}
         />
         <YourOutfitList
           product={product}
           outfit={outfit}
+          setProduct={setProduct}
           addToOutfit={addToOutfit}
           removeOutfit={removeOutfit}
           isRelatedCard={!isRelatedCard}
         />
 
-        {/* adding just to test */}
-        {product && compare && <Comparison product={product} compare={compare} />}
-        {/* {<Comparison product={product} compare={compare}/>} */}
+        {showCompare && createPortal(<Comparison
+          product={product}
+          compare={compare}
+        />, compareRoot)}
 
-      </ListContainer>
+      </div>
     </div>
   );
 }
