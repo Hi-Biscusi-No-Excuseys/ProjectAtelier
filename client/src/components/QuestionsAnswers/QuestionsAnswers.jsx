@@ -64,7 +64,6 @@ export default function QuestionsAnswers({ product }) {
           : createPortal(
             <AddQuestion
               onClose={() => setAddQuestionForm(!addQuestionForm)}
-              questions={questions}
               request={request}
               product={product}
               productName={product.name}
