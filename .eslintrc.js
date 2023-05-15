@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    // 'plugin:styled-components',
     // 'plugin:styled-components-a11y/recommended',
   ],
   overrides: [

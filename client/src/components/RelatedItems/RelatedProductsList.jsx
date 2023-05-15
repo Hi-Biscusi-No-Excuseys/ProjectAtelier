@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RelatedProductCard from './RelatedProductCard';
-import styles from './Styles.jsx';
-const { ProductContainer, Title } = styles;
 
-export default function RelatedProductsList({ product, items, setProduct, setCompare }) {
+export default function RelatedProductsList({
+  product, items, setProduct, setCompare, isRelatedCard, setShowCompare,
+}) {
   // console.log('The ITEMS passed to the list:', items);
 
   return (
     <div id="related-items-list">
-      <Title>RELATED PRODUCTS</Title>
-      <ProductContainer>
-        {items.map((item) => {
-          return product.id !== item.id && <RelatedProductCard key={item.id} item={item} setProduct={setProduct} setCompare={setCompare}/>;
-        })}
-      </ProductContainer>
+      <div className="Title">RELATED PRODUCTS</div>
+      <div className="ProductContainer">
+        {items.map((item) => product.id !== item.id
+         && (
+         <RelatedProductCard
+           key={item.id}
+           item={item}
+           setProduct={setProduct}
+           setCompare={setCompare}
+           isRelatedCard={isRelatedCard}
+           setShowCompare={setShowCompare}
+         />
+         ))}
+      </div>
     </div>
   );
 }

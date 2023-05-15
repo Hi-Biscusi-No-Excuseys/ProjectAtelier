@@ -1,20 +1,27 @@
 import React from 'react';
 import RelatedProductCard from './RelatedProductCard';
 import AddToOutfitCard from './AddToOutfitCard';
-import styles from './Styles.jsx';
-const { ProductContainer, Title } = styles;
 
-export default function YourOutfitList( {product, outfit, addToOutfit} ) {
+export default function YourOutfitList({
+  product, outfit, addToOutfit, isRelatedCard, removeOutfit, setProduct,
+}) {
+  // need to make sure we can remove an Outfit item.
+
   return (
     <div id="your-outfit-list">
-      <Title>YOUR OUTFIT</Title>
-      <ProductContainer>
-        <AddToOutfitCard product={product} addToOutfit={addToOutfit}/>
-        {outfit.map((item) => {
-          // console.log('>>>> What outfit item:', item.id, item);
-          return <RelatedProductCard key={item.id} item={item}/>;
-        })}
-      </ProductContainer>
+      <div className="Title">YOUR OUTFIT</div>
+      <div className="ProductContainer">
+        <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
+        {outfit.map((item) => (
+          <RelatedProductCard
+            key={item.id}
+            item={item}
+            isRelatedCard={isRelatedCard}
+            removeOutfit={removeOutfit}
+            setProduct={setProduct}
+          />
+        ))}
+      </div>
     </div>
   );
 }
