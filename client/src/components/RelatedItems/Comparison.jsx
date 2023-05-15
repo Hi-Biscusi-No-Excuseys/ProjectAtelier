@@ -3,7 +3,7 @@ import React from 'react';
 export default function Comparison({ product, compare, setShowCompare }) {
   const combined = {};
 
-  console.log('COMPARING: ', product.features.length, compare.features.length, combined);
+  // console.log('COMPARING: ', product.features.length, compare.features.length, combined);
 
   const closeModal = () => {
     setShowCompare(false);
@@ -31,10 +31,10 @@ export default function Comparison({ product, compare, setShowCompare }) {
       : [undefined, value];
   }
 
-  console.log(Object.entries(combined));
+  // console.log(Object.entries(combined));
 
   const rows = Object.entries(combined);
-  console.log('Items:', rows);
+  // console.log('Items:', rows);
 
   return (
   // <div id="ModalBackdrop">
