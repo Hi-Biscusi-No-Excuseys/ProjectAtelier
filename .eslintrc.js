@@ -22,7 +22,6 @@ module.exports = {
     // 'styled-components-a11y',
   ],
   rules: {
-    // 'import/no-extraneous-dependencies': 'off',
     'react/prop-types': 'off',
   },
   settings: {
