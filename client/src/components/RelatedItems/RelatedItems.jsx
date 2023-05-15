@@ -20,7 +20,7 @@ export default function RelatedItems({ product, setProduct }) {
     let url = `/overview/products/${product.id}/styles`;
     let updated = {};
     axios.get(url)
-    .then((firstResponse) => {
+      .then((firstResponse) => {
       // console.log('Style info:', firstResponse.data);
         updated = Object.assign(product, firstResponse.data);
         url = '/reviews/meta';
@@ -79,7 +79,7 @@ export default function RelatedItems({ product, setProduct }) {
 
             for (let i = 0; i < secondResponse.length; i += 1) {
               const { data } = secondResponse[i];
-              // console.log('What is this: ', data);
+              // console.log('What is this: ', data.features);
               productInfo.push(data);
             }
 
@@ -210,6 +210,7 @@ export default function RelatedItems({ product, setProduct }) {
         {showCompare && createPortal(<Comparison
           product={product}
           compare={compare}
+          setShowCompare={setShowCompare}
         />, compareRoot)}
 
       </div>
