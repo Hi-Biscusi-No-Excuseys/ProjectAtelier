@@ -69,7 +69,6 @@ export default function QuestionsListEntry({
             ) &nbsp;
           </div>
           | &nbsp;
-          {' '}
           {!addAnswerForm
             ? (
               <div>
