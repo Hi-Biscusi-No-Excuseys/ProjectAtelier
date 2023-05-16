@@ -16,7 +16,7 @@ export default function AnswersList({ answers, request, setRequest }) {
         answers.sort(sortByHelpfulness).map((answer) => (
           <AnswersListEntry
             answer={answer}
-            key={answer.id}
+            key={answer.answer_id}
             request={request}
             setRequest={setRequest}
           />

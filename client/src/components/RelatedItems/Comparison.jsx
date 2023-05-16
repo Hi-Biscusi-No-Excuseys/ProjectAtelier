@@ -3,7 +3,7 @@ import React from 'react';
 export default function Comparison({ product, compare, setShowCompare }) {
   const combined = {};
 
-  console.log('COMPARING: ', product.features.length, compare.features.length, combined);
+  // console.log('COMPARING: ', product.features.length, compare.features.length, combined);
 
   const closeModal = () => {
     setShowCompare(false);
@@ -31,30 +31,34 @@ export default function Comparison({ product, compare, setShowCompare }) {
       : [undefined, value];
   }
 
-  console.log(Object.entries(combined));
+  // console.log(Object.entries(combined));
 
   const rows = Object.entries(combined);
-  console.log('Items:', rows);
+  // console.log('Items:', rows);
 
   return (
   // <div id="ModalBackdrop">
     <div id="ComparisonContainer" onClick={closeModal}>
       {product && compare && (
-        <div className="Table">
-          <div className="TableRow">
-            COMPARING
-          </div>
-          <div className="TableRow">
-            <div className="Left">{product.name}</div>
-            <div className="Right">{compare.name}</div>
-          </div>
-          {rows.map((item) => (
-            <div className="TableRow" key={item[0]}>
-              <div className="Left">{item[1][0]}</div>
-              <div className="Center">{item[0]}</div>
-              <div className="Right">{item[1][1]}</div>
+        <div>
+          <div className="Table Header">
+            <div className="TableRow">
+              COMPARING
             </div>
-          ))}
+            <div className="TableRow">
+              <div className="Left">{product.name}</div>
+              <div className="Right">{compare.name}</div>
+            </div>
+          </div>
+          <div className="Table">
+            {rows.map((item) => (
+              <div className="TableRow" key={item[0]}>
+                <div className="Left">{item[1][0]}</div>
+                <div className="Center">{item[0]}</div>
+                <div className="Right">{item[1][1]}</div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

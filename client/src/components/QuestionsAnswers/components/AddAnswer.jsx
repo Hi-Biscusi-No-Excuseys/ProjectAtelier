@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export default function AddAnswer({
-  question, request, setRequest, onClose, productName,
+  question, request, setRequest, onClose, productName, setAnswers, answers,
 }) {
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
@@ -25,17 +25,21 @@ export default function AddAnswer({
     }
 
     // make the post request
-    axios.post(`http://localhost:3000/questionsanswers/questions/${questionID}/answers`, {
+    const newAnswer = {
       body: answer,
       name: nickname,
       email,
-    })
+      photos: [],
+    };
+    axios.post(`http://localhost:3000/questionsanswers/questions/${questionID}/answers`, newAnswer)
       .then(() => {
-        setRequest(!request);
+        setAnswers([newAnswer, ...answers]);
+        // setRequest(!request);
       })
       // eslint-disable-next-line no-console
       .catch(() => console.log('error posting new answer'));
   };
+  console.log('these are ANSWERSSSSS', answers);
   return (
     <div id="addAnswer-modal">
       <div className="addAnswer-modal-content">
@@ -86,6 +90,7 @@ export default function AddAnswer({
             <label htmlFor="email">
               Your email *
               <input
+                required
                 name="email"
                 value={email}
                 type="email"

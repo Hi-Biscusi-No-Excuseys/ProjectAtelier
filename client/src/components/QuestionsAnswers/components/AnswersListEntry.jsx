@@ -37,6 +37,10 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
     setPhotoURL(url);
     setShowPhotoModal(true);
   }
+  // function handlePhotoError() {
+  //   setShowPhotoModal(false);
+  //   setPhotoURL('');
+  // }
 
   const date = new Date(answer.date);
   const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -105,9 +109,9 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
             )
             : (
               <div>
-                by
+                by &nbsp;
                 {answer.answerer_name}
-                ,
+                , &nbsp;
                 {formattedDate}
                 &nbsp; | &nbsp;
               </div>
