@@ -1,6 +1,7 @@
 
 /* ------------------------------ philip's css ----------------------------------------*/
 
+
 .QuestionsAnswers {
 
   display: flex;
@@ -67,12 +68,24 @@
 .helpfulYesButton {
   text-decoration: underline;
   margin-right: 2px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
   cursor: pointer;
+  outline: inherit;
 }
 
 .addAnswerButton {
   text-decoration: underline;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
   cursor: pointer;
+  outline: inherit;
 }
 #addAnswer-modal {
   display: flex;
@@ -99,7 +112,9 @@
 
 .questionsBody {
   max-height: 200px;
-  margin-bottom: 10px;
+  flex: row;
+
+  margin-bottom: 15px;
 }
 
 .answerBodyContainer {
@@ -124,6 +139,16 @@
   font-size: 15px;
   margin-bottom: 15px;
   word-wrap: break-word;
+}
+
+.answer_photos button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .answer_photo_thumb {
@@ -164,6 +189,7 @@
 .seller {
   font-weight: bold;
   font-size: 14px;
+  margin-right: 3px;
 }
 
 .reportButton {

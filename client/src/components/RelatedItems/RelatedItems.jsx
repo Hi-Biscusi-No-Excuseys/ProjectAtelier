@@ -14,10 +14,37 @@ export default function RelatedItems({ product, setProduct }) {
   const [compare, setCompare] = useState(null);
   const [showCompare, setShowCompare] = useState(false);
 
+  // Making things work... refactor someday.
+  useEffect(() => {
+    // console.log('What we start with:', product);
+    let url = `/overview/products/${product.id}/styles`;
+    let updated = {};
+    axios.get(url)
+      .then((firstResponse) => {
+      // console.log('Style info:', firstResponse.data);
+        updated = Object.assign(product, firstResponse.data);
+        url = '/reviews/meta';
+        axios.get(url, { params: { product_id: product.id } })
+          .then((secondResponse) => {
+            // console.log('Meta info:', secondResponse.data);
+            updated = Object.assign(updated, secondResponse.data);
+            // console.log('OUR NEW UPDATED PRODUCT: ', updated);
+            setProduct(updated);
+          })
+          .catch((err) => {
+            console.log('Problem snagging meta information', err);
+          });
+      })
+      .catch((err) => {
+        console.log('Problem snagging the style information', err);
+      });
+  }, []);
+
   useEffect(() => {
     axios.get(`/relateditems/related/${product.id}`)
       .then((firstResponse) => {
         // console.log('1) :', firstResponse);
+        // console.log('What product ID are we looking for:', product.id);
         let url = '';
         const promiseProductLevel = [];
         const unique = new Set();
@@ -52,7 +79,7 @@ export default function RelatedItems({ product, setProduct }) {
 
             for (let i = 0; i < secondResponse.length; i += 1) {
               const { data } = secondResponse[i];
-              // console.log('What is this: ', data);
+              // console.log('What is this: ', data.features);
               productInfo.push(data);
             }
 
@@ -114,12 +141,13 @@ export default function RelatedItems({ product, setProduct }) {
                     setItems([...resultData, ...metaInfo]);
                     setAllItems([...allItems, ...metaInfo]);
 
-                    const updatedProduct = [...allItems, ...metaInfo].find(
-                      (item) => item.id === product.id,
-                    );
+                    // const updatedProduct = [...allItems, ...metaInfo].find(
+                    //   (item) => item.id === product.id,
+                    // );
 
-                    console.log('Did we get it: ', updatedProduct);
-                    setProduct(updatedProduct);
+                    // console.log('What is in here: ', [...allItems, ...metaInfo]);
+                    // console.log('Did we get it: ', updatedProduct);
+                    // setProduct(updatedProduct);
                   })
                   .catch((err) => {
                     console.log('Error with META.', err);
@@ -139,6 +167,7 @@ export default function RelatedItems({ product, setProduct }) {
       });
   }, [product]);
 
+  // Persist the data in localStorage.
   const addToOutfit = (find) => {
     const search = outfit.find((item) => item.id === find.id);
 
@@ -150,10 +179,26 @@ export default function RelatedItems({ product, setProduct }) {
   };
 
   const removeOutfit = (find) => {
-    console.log(find);
+    // console.log(find);
     const index = outfit.findIndex((item) => item.id === find.id);
     setOutfit(outfit.toSpliced(index, 1));
   };
+  //
+
+  useEffect(() => {
+    // console.log('Retrieving previous outfit:\n');
+    const prevEntry = JSON.parse(localStorage.getItem('saved-outfit'));
+    // console.log(prevEntry);
+    if (prevEntry !== '[]') {
+      setOutfit(JSON.parse(localStorage.getItem('saved-outfit')));
+      // console.log('Go ahead?');
+    }
+  }, []);
+
+  useEffect(() => {
+    // console.log('Setting new outfit entry\n', outfit);
+    localStorage.setItem('saved-outfit', JSON.stringify(outfit));
+  }, [outfit]);
 
   const isRelatedCard = true;
   const compareRoot = document.getElementById('related-items');
@@ -182,6 +227,7 @@ export default function RelatedItems({ product, setProduct }) {
         {showCompare && createPortal(<Comparison
           product={product}
           compare={compare}
+          setShowCompare={setShowCompare}
         />, compareRoot)}
 
       </div>

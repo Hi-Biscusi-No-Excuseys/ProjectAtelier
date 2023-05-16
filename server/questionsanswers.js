@@ -42,8 +42,9 @@ router.get('/questions/:question_id/answers', (req, res) => {
       // response.data.results = arrays of answers(objects)
       res.json(response.data);
     })
-    .catch((error) => {
-      res.status(500).send('Error fetching data from API', error);
+    .catch((err) => {
+      // res.status(500).send('Error fetching data from API', error);
+      res.sendStatus(err.response.status);
     });
 });
 
