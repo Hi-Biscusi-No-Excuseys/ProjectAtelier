@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 export default function Favorite() {
   const [favorite, setFavorite] = useState(false);
@@ -6,18 +6,27 @@ export default function Favorite() {
   if (!favorite) {
     return (
       <div className="favorite">
-        <button onClick={()=>{
-          setFavorite(!favorite);
-        }}>&#9734;</button>
-      </div>
-    );
-  } else {
-    return (
-      <div className="favorite">
-        <button onClick={()=>{
-          setFavorite(!favorite);
-        }}>&#9733;</button>
+        <button
+          type="button"
+          onClick={() => {
+            setFavorite(!favorite);
+          }}
+        >
+          &#9734;
+        </button>
       </div>
     );
   }
+  return (
+    <div className="favorite">
+      <button
+        type="button"
+        onClick={() => {
+          setFavorite(!favorite);
+        }}
+      >
+        &#9733;
+      </button>
+    </div>
+  );
 }

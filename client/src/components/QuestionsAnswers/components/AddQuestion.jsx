@@ -53,6 +53,7 @@ export default function AddQuestion({
             <label htmlFor="question">
               Your Question *
               <textarea
+                required
                 name="question"
                 id={question}
                 maxLength={1000}
@@ -65,6 +66,7 @@ export default function AddQuestion({
             <label htmlFor="nickname">
               What is your nickname? *
               <input
+                required
                 name="nickname"
                 type="text"
                 maxLength={60}
@@ -79,6 +81,7 @@ export default function AddQuestion({
             <label htmlFor="email">
               Your email *
               <input
+                required
                 name="email"
                 value={email}
                 type="email"

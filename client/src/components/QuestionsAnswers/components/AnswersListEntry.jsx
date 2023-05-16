@@ -33,9 +33,14 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
   };
 
   function handlePhotoModal(url) {
+    console.log('photomodal CLICKED');
     setPhotoURL(url);
     setShowPhotoModal(true);
   }
+  // function handlePhotoError() {
+  //   setShowPhotoModal(false);
+  //   setPhotoURL('');
+  // }
 
   const date = new Date(answer.date);
   const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -52,11 +57,11 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
             {answer.photos.map((photo) => (
               <button
                 type="button"
-                key={photo}
-                onClick={() => handlePhotoModal(photo)}
+                key={photo.id}
+                onClick={() => handlePhotoModal(photo.url)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
-                    handlePhotoModal(photo);
+                    handlePhotoModal(photo.url);
                   }
                 }}
               >
@@ -66,7 +71,7 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
                     e.target.style.display = 'none';
                   }}
                   className="answer_photo_thumb"
-                  src={photo}
+                  src={photo.url}
                 />
 
               </button>
@@ -94,30 +99,23 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
             ? (
               <div>
                 by
-                {' '}
                 <span className="seller">
                   {answer.answerer_name}
                   ,
                 </span>
-                {' '}
                 {formattedDate}
-&nbsp; | &nbsp;
-                {' '}
+                  &nbsp; | &nbsp;
               </div>
             )
             : (
               <div>
-                by
-                {' '}
+                by &nbsp;
                 {answer.answerer_name}
-                ,
-                {' '}
+                , &nbsp;
                 {formattedDate}
-&nbsp; | &nbsp;
-                {' '}
+                &nbsp; | &nbsp;
               </div>
             )}
-
         </div>
 
         <div>

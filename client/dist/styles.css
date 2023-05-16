@@ -1,6 +1,7 @@
 
 /* ------------------------------ philip's css ----------------------------------------*/
 
+
 .QuestionsAnswers {
 
   display: flex;
@@ -67,12 +68,24 @@
 .helpfulYesButton {
   text-decoration: underline;
   margin-right: 2px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
   cursor: pointer;
+  outline: inherit;
 }
 
 .addAnswerButton {
   text-decoration: underline;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
   cursor: pointer;
+  outline: inherit;
 }
 #addAnswer-modal {
   display: flex;
@@ -99,7 +112,9 @@
 
 .questionsBody {
   max-height: 200px;
-  margin-bottom: 10px;
+  flex: row;
+
+  margin-bottom: 15px;
 }
 
 .answerBodyContainer {
@@ -126,6 +141,46 @@
   word-wrap: break-word;
 }
 
+.answer_photos button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.answer_photo_thumb {
+  max-width: 75px;
+  max-height: 75px;
+  border-radius: 8px;
+}
+
+#answer_photo {
+  width: auto;
+  max-width: 80%;
+  max-height: 80%;
+  margin: 1rem auto;
+}
+
+
+#answer_photo_modal {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2%;
+}
+
+
 .singleAnswerUserInfo_HelpfulYes_Report {
   font-size: 12px;
   margin-bottom: 15px;
@@ -134,6 +189,7 @@
 .seller {
   font-weight: bold;
   font-size: 14px;
+  margin-right: 3px;
 }
 
 .reportButton {

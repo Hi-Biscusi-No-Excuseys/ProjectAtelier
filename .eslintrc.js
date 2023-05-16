@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    // 'plugin:styled-components',
     // 'plugin:styled-components-a11y/recommended',
   ],
   overrides: [
@@ -21,7 +22,6 @@ module.exports = {
     // 'styled-components-a11y',
   ],
   rules: {
-    // 'import/no-extraneous-dependencies': 'off',
     'react/prop-types': 'off',
   },
   settings: {
