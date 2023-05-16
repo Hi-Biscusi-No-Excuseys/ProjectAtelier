@@ -40,29 +40,37 @@ export default function ImageGallery({ currentStyle }) {
   }
 
   const zoom = () => {
-    setZoomLevel(2.5);
+    if (zoomLevel === 1) {
+      setZoomLevel(2.5);
+    } else {
+      setZoomLevel(1);
+    }
   }
 
   const handleMouseMove = (e) => {
     setMouseX(e.clientX);
     setMouseY(e.clientY);
-    console.log(e.clientX, e.clientY);
+    // console.log(e.clientX, e.clientY);
   }
 
   const calculatePan = () => {
     const img = document.getElementById('zoomedImg');
     const imgRect = img?.getBoundingClientRect();
-    const offsetX = ((mouseX - imgRect?.left) / imgRect?.width) * zoomLevel;
-    const offsetY = ((mouseY - imgRect?.top) / imgRect?.height) * zoomLevel;
-    const maxOffsetX = img?.naturalWidth / imgRect?.width - 1;
-    const maxOffsetY = img?.naturalHeight / imgRect?.height - 1;
-    const left = Math.min(offsetX * maxOffsetX) * 100;
-    const top = Math.min(offsetY * maxOffsetY) * 100;
-    return {left, top};
+    const scaledWidth = imgRect?.width / zoomLevel;
+    const scaledHeight = imgRect?.height / zoomLevel;
+    const offsetX = ((mouseX - imgRect?.left) / scaledWidth) * zoomLevel;
+    const offsetY = ((mouseY - imgRect?.top) / scaledHeight) * zoomLevel;
+    const maxOffsetX = img?.naturalWidth / scaledWidth - 1;
+    const maxOffsetY = img?.naturalHeight / scaledHeight - 1;
+    const scaledValue = 0.1;
+    const left = Math.min(offsetX * scaledValue, maxOffsetX) * 100;
+    const top = Math.min(offsetY * scaledValue, maxOffsetY) * 100;
+    return { left, top };
   };
 
+
   const panStyle = calculatePan();
-  console.log(panStyle);
+  // console.log(panStyle);
 
   return (expanded
     ? (
@@ -76,7 +84,6 @@ export default function ImageGallery({ currentStyle }) {
         id="productImage"
         style={{overflow: 'hidden', position: 'relative'}}
         >
-          <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
           <img
             className="zoomedImg"
             id="zoomedImg"
@@ -87,13 +94,14 @@ export default function ImageGallery({ currentStyle }) {
               height: 750,
               width: 1400,
               transform: `scale(${zoomLevel})`,
-              left: `-${panStyle.left}%`,
-              top: `-${panStyle.top}%`,
+              left: `${-panStyle.left}%`,
+              top: `${-panStyle.top}%`,
               zIndex: 1000,
             }}
             onClick={zoom}
             onMouseMove={handleMouseMove}
           />
+          <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
         </div>
          :
          <div className="productImage" id="productImage">
