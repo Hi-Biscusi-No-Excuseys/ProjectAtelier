@@ -167,6 +167,7 @@ export default function RelatedItems({ product, setProduct }) {
       });
   }, [product]);
 
+  // Persist the data in localStorage.
   const addToOutfit = (find) => {
     const search = outfit.find((item) => item.id === find.id);
 
@@ -178,10 +179,26 @@ export default function RelatedItems({ product, setProduct }) {
   };
 
   const removeOutfit = (find) => {
-    console.log(find);
+    // console.log(find);
     const index = outfit.findIndex((item) => item.id === find.id);
     setOutfit(outfit.toSpliced(index, 1));
   };
+  //
+
+  useEffect(() => {
+    // console.log('Retrieving previous outfit:\n');
+    const prevEntry = JSON.parse(localStorage.getItem('saved-outfit'));
+    // console.log(prevEntry);
+    if (prevEntry !== '[]') {
+      setOutfit(JSON.parse(localStorage.getItem('saved-outfit')));
+      // console.log('Go ahead?');
+    }
+  }, []);
+
+  useEffect(() => {
+    // console.log('Setting new outfit entry\n', outfit);
+    localStorage.setItem('saved-outfit', JSON.stringify(outfit));
+  }, [outfit]);
 
   const isRelatedCard = true;
   const compareRoot = document.getElementById('related-items');

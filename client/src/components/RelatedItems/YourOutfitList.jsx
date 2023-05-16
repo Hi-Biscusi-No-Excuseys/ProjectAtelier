@@ -27,8 +27,8 @@ export default function YourOutfitList({
     <div id="your-outfit-list">
       <div className="Title">YOUR OUTFIT</div>
       <div className="ProductContainer">
-          <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
-        <div className="Directional" onClick={handleBackwardClick}>&#60;</div>
+        <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
+        {transformVal > 0 && <div className="Directional" onClick={handleBackwardClick}>&#60;</div>}
         <div className="CarouselView">
           <div className="InnerList" style={{ transform: `translateX(-${transformVal * 272.22}px)` }}>
             {outfit.map((item) => (
@@ -42,7 +42,7 @@ export default function YourOutfitList({
             ))}
           </div>
         </div>
-        <div className="Directional" onClick={handleForwardClick}>&#62;</div>
+        {(transformVal < outfit.length - 1) && <div className="Directional" onClick={handleForwardClick}>&#62;</div>}
       </div>
     </div>
   );
