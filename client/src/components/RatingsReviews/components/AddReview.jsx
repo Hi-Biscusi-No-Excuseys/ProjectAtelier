@@ -53,6 +53,7 @@ export default function AddReview({ setShowAddReviewModal, product, characterist
 
       });
   }
+
   return (
     createPortal(
       <div id="add-review-modal">
