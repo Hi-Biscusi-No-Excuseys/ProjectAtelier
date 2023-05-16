@@ -40,21 +40,25 @@ export default function Comparison({ product, compare, setShowCompare }) {
   // <div id="ModalBackdrop">
     <div id="ComparisonContainer" onClick={closeModal}>
       {product && compare && (
-        <div className="Table">
-          <div className="TableRow">
-            COMPARING
-          </div>
-          <div className="TableRow">
-            <div className="Left">{product.name}</div>
-            <div className="Right">{compare.name}</div>
-          </div>
-          {rows.map((item) => (
-            <div className="TableRow" key={item[0]}>
-              <div className="Left">{item[1][0]}</div>
-              <div className="Center">{item[0]}</div>
-              <div className="Right">{item[1][1]}</div>
+        <div>
+          <div className="Table Header">
+            <div className="TableRow">
+              COMPARING
             </div>
-          ))}
+            <div className="TableRow">
+              <div className="Left">{product.name}</div>
+              <div className="Right">{compare.name}</div>
+            </div>
+          </div>
+          <div className="Table">
+            {rows.map((item) => (
+              <div className="TableRow" key={item[0]}>
+                <div className="Left">{item[1][0]}</div>
+                <div className="Center">{item[0]}</div>
+                <div className="Right">{item[1][1]}</div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
