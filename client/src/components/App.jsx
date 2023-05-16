@@ -8,7 +8,7 @@ const axios = require('axios');
 
 export default function App() {
   // eslint-disable-next-line no-unused-vars
-  const [defaultProductID, setDefaultProductID] = useState(40348);
+  const [defaultProductID, setDefaultProductID] = useState(40347);
 
   const [product, setProduct] = useState(null);
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function App() {
       {product && (
       <div>
         <Overview product={product} />
-        <RelatedItems product={product} setProduct={setProduct} />
+        {/* <RelatedItems product={product} setProduct={setProduct} /> */}
         <QuestionsAnswers product={product} />
         <RatingsReviews product={product} />
       </div>
