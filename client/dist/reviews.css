@@ -186,9 +186,10 @@ html {
 
 .star-filter {
   display: flex;
+  align-items: center;
 }
 
-.star-filtered {
+#rating-breakdown button.star-filtered {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -214,6 +215,15 @@ html {
   padding: 2%;
 }
 
+#uploading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 25%;
+  width: 25%;
+}
+
 #add-review-modal form {
   background-color: white;
 }
@@ -230,11 +240,4 @@ html {
 
 #image-upload-thumbs img {
   width: 75px;
-}
-
-#custom-upload {
-  padding: 10px;
-  border: 1px solid #ccc;
-  display: inline-block;
-  cursor: pointer;
 }

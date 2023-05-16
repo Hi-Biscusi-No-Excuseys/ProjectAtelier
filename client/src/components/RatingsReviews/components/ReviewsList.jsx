@@ -3,7 +3,7 @@ import ReviewTile from './ReviewTile';
 import AddReview from './AddReview';
 
 export default function ReviewsList({
-  reviews, starFilter, product, characteristics, reviewAdded, setReviewAdded
+  reviews, starFilter, product, characteristics, setReviewAdded,
 }) {
   const [reviewsShown, setReviewsShown] = useState(null);
   const [reviewsFiltered, setReviewsFiltered] = useState(null);
@@ -32,7 +32,7 @@ export default function ReviewsList({
     setReviewsFiltered(filteredReviews);
     setReviewsShown(filteredReviews.slice(0, 2));
     setSlice({ start: 0, end: 2 });
-  }, [reviews, starFilter, reviewAdded]);
+  }, [reviews, starFilter]);
 
   function handleMore() {
     setSlice({ start: slice.start += 2, end: slice.end += 2 });

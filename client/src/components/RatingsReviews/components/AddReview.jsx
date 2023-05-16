@@ -60,7 +60,7 @@ export default function AddReview({
     e.preventDefault();
     if (images.length) {
       setUploading(true);
-    };
+    }
 
     const promises = images.map((image) => {
       const data = new FormData();
@@ -107,7 +107,7 @@ export default function AddReview({
 
       <div id="add-review-modal">
         {uploading ? (
-          <h3>Uploading photos...</h3>
+          <h3 id="uploading">Uploading photos...</h3>
         ) : (
           <form action="submit" onSubmit={(e) => handleSubmit(e)}>
 

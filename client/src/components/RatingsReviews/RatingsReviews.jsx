@@ -61,7 +61,7 @@ export default function RatingsReviews({ product }) {
         console.error('Client failed to get reviews:', err);
         setLoading(false);
       });
-  }, [product, sort]); // TODO: Add new review posted and star filter dependencies
+  }, [product, sort, reviewAdded]);
 
   return (
     !loading
