@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Image({
-  style, imgSwitch, index, currentIndex,
+  style, imgSwitch, index, currentIndex
 }) {
   return (
     <div className="iconContainer">
