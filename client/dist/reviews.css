@@ -227,3 +227,14 @@ html {
   cursor: pointer;
   outline: inherit;
 }
+
+#image-upload-thumbs img {
+  width: 75px;
+}
+
+#custom-upload {
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
+}

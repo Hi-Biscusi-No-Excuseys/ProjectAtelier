@@ -17,6 +17,7 @@ export default function RatingsReviews({ product }) {
   const [starFilter, setStarFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
   });
+  const [reviewAdded, setReviewAdded] = useState(0);
 
   useEffect(() => {
     axios.get('/reviews/meta', { params: { product_id: product.id } })
@@ -87,6 +88,8 @@ export default function RatingsReviews({ product }) {
                 starFilter={starFilter}
                 product={product}
                 characteristics={metaData.characteristics}
+                reviewAdded={reviewAdded}
+                setReviewAdded={setReviewAdded}
               />
             </div>
           </div>
