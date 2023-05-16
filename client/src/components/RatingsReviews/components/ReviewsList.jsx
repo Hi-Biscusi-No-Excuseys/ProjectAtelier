@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ReviewTile from './ReviewTile';
 import AddReview from './AddReview';
 
-export default function ReviewsList({ reviews, starFilter, product }) {
+export default function ReviewsList({
+  reviews, starFilter, product, characteristics,
+}) {
   const [reviewsShown, setReviewsShown] = useState(null);
   const [reviewsFiltered, setReviewsFiltered] = useState(null);
   const [slice, setSlice] = useState({ start: 0, end: 2 });
@@ -55,8 +57,13 @@ export default function ReviewsList({ reviews, starFilter, product }) {
       </div>
       )}
 
-      {showAddReviewModal
-      && <AddReview setShowAddReviewModal={setShowAddReviewModal} product={product} />}
+      {showAddReviewModal && (
+      <AddReview
+        setShowAddReviewModal={setShowAddReviewModal}
+        product={product}
+        characteristics={characteristics}
+      />
+      )}
     </>
   );
 }

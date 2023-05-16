@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function SelectStars({ activeStar, setActiveStar }) {
   const handleClick = (i) => {
     setActiveStar(i + 1);
   };
-console.log(activeStar)
+
   return (
-    <span style={{cursor: 'pointer'}}>
-      {[...new Array(5)].map((_, i) => (i < activeStar ? <span onClick={() => handleClick(i)}>★</span> : <span onClick={() => handleClick(i)}>☆</span>))}
+    <span id="select-stars">
+      {[...new Array(5)].map((_, i) => (i < activeStar ? <button type="button" onClick={() => handleClick(i)}>★</button>
+        : <button type="button" onClick={() => handleClick(i)}>☆</button>))}
     </span>
   );
 }

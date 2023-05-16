@@ -82,7 +82,12 @@ export default function RatingsReviews({ product }) {
 
             <div id="sort-and-list">
               <SortOptions sort={sort} setSort={setSort} amount={amount} />
-              <ReviewsList reviews={reviews} starFilter={starFilter} product={product} />
+              <ReviewsList
+                reviews={reviews}
+                starFilter={starFilter}
+                product={product}
+                characteristics={metaData.characteristics}
+              />
             </div>
           </div>
 
