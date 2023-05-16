@@ -113,7 +113,6 @@
 .questionsBody {
   max-height: 200px;
   flex: row;
-
   margin-bottom: 15px;
 }
 
@@ -141,6 +140,9 @@
   word-wrap: break-word;
 }
 
+.noAnswer {
+  line-height: 14px;
+}
 .answer_photos button {
   background: none;
   color: inherit;
