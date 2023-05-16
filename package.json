@@ -56,5 +56,10 @@
     "style-loader": "^3.3.2",
     "webpack": "^5.82.0",
     "webpack-cli": "^5.0.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    }
   }
 }

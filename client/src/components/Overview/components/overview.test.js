@@ -16,9 +16,10 @@ import QuestionsAnswers from './client/src/components/QuestionsAnswers/Questions
 //   })
 // })
 
-
-test('QuestionsAnswers renders', () => {
-  const product = { id: 123 };
-  const { container } = render(<QuestionsAnswers product={product} />)
-  expect(container.querySelector('.QuestionsAnswers')).toBeInTheDocument()
+describe('Overview Component', () => {
+  test('Overview component renders', () => {
+    let product = {id: 40347}
+    const { container } = render(<Overview product={product} />)
+    expect(container.querySelector('.overview')).toBeInTheDocument();
+  })
 })

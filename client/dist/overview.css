@@ -40,6 +40,10 @@
   cursor: zoom-in;
 }
 
+.expandedImg:hover {
+  cursor: crosshair;
+}
+
 .leftarrow, .rightarrow {
   position: absolute;
   font-size: 50px;
@@ -54,6 +58,13 @@
 
 .rightarrow {
   margin-left: 90%
+}
+
+.reduceImage {
+  position: absolute;
+  font-size: 50px;
+  margin-left: 140%;
+  z-index: 9999;
 }
 
 .productDescription {
