@@ -1,21 +1,23 @@
 import React from 'react';
-import axios from 'axios';
-import styles from './Styles.jsx';
-const { Card, AddToOutFitButton } = styles;
 
-export default function AddToOutfitCard( {product, addToOutfit} ) {
-
+export default function AddToOutfitCard({ product, addToOutfit }) {
   // const handleAddClick = (e) => {
   //   addToOutfit(product);
   // };
 
+  const wtfStyle = {
+    alignSelf: 'center',
+    fontSize: '200px',
+  };
+
   return (
-    <div>
-      <Card id="add-to-outfit-card" onClick={(e) => {
+    <div
+      className="Card"
+      onClick={() => {
         addToOutfit(product);
-      }}>
-        <AddToOutFitButton>&#43;</AddToOutFitButton>
-      </Card>
+      }}
+    >
+      <div className="AddToOutfitButton" style={wtfStyle}>&#43;</div>
     </div>
   );
 }

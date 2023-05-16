@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 // import App from './client/src/components/App.jsx';
 // import Overview from './client/src/components/Overview/Overview.jsx'
 // import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers.jsx';
-import RelatedItems from './client/src/components/RelatedItems/RelatedItems.jsx';
+import RelatedItems from './client/src/components/RelatedItems/RelatedItems';
 
 // describe('renders all pieces to frontend', () => {
 //   it('should render Overview outer div container', () => {
