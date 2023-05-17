@@ -2,13 +2,29 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export default function AddAnswer({
-  question, request, setRequest, onClose, productName, setAnswers, answers,
+  question, onClose, productName, setAnswers, answers, request, setRequest,
 }) {
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [images, setImages] = useState([]);
+  // const [imageURLs, setImageURLs] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const handleImageUpload = (image) => {
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('upload_preset', 'FECimages');
+
+    return axios
+      .post('https://api.cloudinary.com/v1_1/pwang0407/image/upload', formData)
+      .then((response) => response.data.secure_url)
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log('Error uploading image:', error);
+        return null;
+      });
+  };
 
   const handleAddAnswer = (questionID) => {
     // check if mandatory fields are filled
@@ -24,22 +40,39 @@ export default function AddAnswer({
       return;
     }
 
-    // make the post request
     const newAnswer = {
       body: answer,
       name: nickname,
       email,
       photos: [],
     };
-    axios.post(`http://localhost:3000/questionsanswers/questions/${questionID}/answers`, newAnswer)
-      .then(() => {
-        setAnswers([newAnswer, ...answers]);
-        // setRequest(!request);
+    Promise.all(images.map((image) => handleImageUpload(image)))
+      .then((uploadedImageURLs) => {
+        newAnswer.photos = uploadedImageURLs.filter((url) => url !== null);
+
+        axios.post(`http://localhost:3000/questionsanswers/questions/${questionID}/answers`, newAnswer)
+          .then(() => {
+            setAnswers([newAnswer, ...answers]);
+            setRequest(!request);
+          })
+          // eslint-disable-next-line no-console
+          .catch(() => console.log('Error posting new answer'));
       })
       // eslint-disable-next-line no-console
-      .catch(() => console.log('error posting new answer'));
+      .catch((error) => console.log('Error uploading images:', error));
   };
-  console.log('these are ANSWERSSSSS', answers);
+
+  function onImageChange(e) {
+    const { files } = e.target;
+    const newImages = Array.from(files);
+
+    if (newImages.length + images.length > 5) {
+      return;
+    }
+
+    setImages([...images, ...newImages]);
+  }
+
   return (
     <div id="addAnswer-modal">
       <div className="addAnswer-modal-content">
@@ -106,21 +139,12 @@ export default function AddAnswer({
               Upload your photos
               <input
                 type="file"
-                id="images"
                 multiple
-                onChange={(e) => {
-                  const { files } = e.target;
-                  const selectedImages = [];
-                  for (let i = 0; i < files.length && i < 5; i + 1) {
-                    selectedImages.push(files[i]);
-                  }
-                  setImages(selectedImages);
-                }}
+                accept="image/*"
+                onChange={onImageChange}
               />
             </label>
-            {images.map((image, index) => (
-              <img src={URL.createObjectURL(image)} alt={`${index}`} />
-            ))}
+            {/* {imageURLs.map((imageSrc) => <img src={imageSrc} alt="" />)} */}
           </div>
           <button type="submit">Add Answer</button>
           <button

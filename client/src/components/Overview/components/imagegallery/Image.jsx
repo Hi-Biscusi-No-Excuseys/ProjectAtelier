@@ -1,9 +1,16 @@
 import React from 'react';
 
-export default function Image({ style, imgSwitch }) {
+export default function Image({
+  style, imgSwitch, index, currentIndex
+}) {
   return (
-    <div>
-      <img className="productIcon" id="test" src={style.thumbnail_url} alt={style.name} height="75" width="75" onClick={() => { imgSwitch(style); }} />
+    <div className="iconContainer">
+      <img
+        className={`productIcon ${currentIndex === index ? 'highlight' : ''}`}
+        src={style.thumbnail_url}
+        alt={style.name}
+        onClick={() => { imgSwitch(style, index); }}
+      />
     </div>
   );
 }
