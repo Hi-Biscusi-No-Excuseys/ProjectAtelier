@@ -140,6 +140,7 @@ export default function RelatedItems({ product, setProduct }) {
 
                     setItems([...resultData, ...metaInfo]);
                     setAllItems([...allItems, ...metaInfo]);
+                    console.log([...resultData, ...metaInfo]);
 
                     // const updatedProduct = [...allItems, ...metaInfo].find(
                     //   (item) => item.id === product.id,
@@ -204,7 +205,7 @@ export default function RelatedItems({ product, setProduct }) {
   const compareRoot = document.getElementById('related-items');
 
   return (
-    <div id="related-items">
+    <div id="related-items" data-testid='related-items'>
       <div className="ListContainer">
         <RelatedProductsList
           product={product}

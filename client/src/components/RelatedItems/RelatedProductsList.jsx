@@ -23,10 +23,10 @@ export default function RelatedProductsList({
   };
 
   return (
-    <div id="related-items-list">
+    <div id="related-items-list" data-testid='related-items-list'>
       <div className="Title">RELATED PRODUCTS</div>
       <div className="ProductContainer">
-        {transformVal > 0 && <div className="Directional" onClick={handleBackwardClick}>&#60;</div>}
+        {transformVal > 0 && <div className="Directional" onClick={handleBackwardClick} data-testid='backward'>&#60;</div>}
         <div className="CarouselView">
           <div className="InnerList" style={{ transform: `translateX(-${transformVal * 272.22}px)` }}>
             {items.map((item) => product.id !== item.id
@@ -42,7 +42,7 @@ export default function RelatedProductsList({
             ))}
           </div>
         </div>
-        {(transformVal < items.length - 1) && <div className="Directional" onClick={handleForwardClick}>&#62;</div>}
+        {(transformVal < items.length - 2) && <div className="Directional" onClick={handleForwardClick} data-testid='forward'>&#62;</div>}
       </div>
     </div>
   );
