@@ -5,7 +5,7 @@ export default function RelatedProductCard({
   item, setProduct, setCompare, isRelatedCard, removeOutfit, setShowCompare,
 }) {
   // const [avg, setAvg] = useState(0);
-  // console.log('What dis', item);
+  console.log('What dis', item);
   // const [showCompare, setShowCompare] = useState(false);
 
   let avg = 0;
@@ -34,16 +34,16 @@ export default function RelatedProductCard({
   };
 
   return (
-    <div className="Card">
+    <div className="Card" data-testid='product-card'>
       <div className="CardImageContainer">
         <img className="CardImage" src={item.results[0].photos[0].url} onClick={handleImageClick} alt="Product Image" />
         {isRelatedCard && <div className="Star" onClick={handleActionClick}>&#x2605;</div>}
         {!isRelatedCard && <div className="Cancel" onClick={handleActionClick}>&#x2716;</div>}
       </div>
       <div className="CardDetails">
-        <div>{item.category}</div>
-        <div>{item.name}</div>
-        <div>{item.default_price}</div>
+        <div data-testid='card-category'>{item.category}</div>
+        <div data-testid='card-name'>{item.name}</div>
+        <div data-testid='card-price'>{item.default_price}</div>
         <PartialStars avg={avg} />
       </div>
     </div>

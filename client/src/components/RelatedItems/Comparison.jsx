@@ -38,7 +38,7 @@ export default function Comparison({ product, compare, setShowCompare }) {
 
   return (
   // <div id="ModalBackdrop">
-    <div id="ComparisonContainer" onClick={closeModal}>
+    <div id="ComparisonContainer" data-testid='comparison-container' onClick={closeModal}>
       {product && compare && (
         <div>
           <div className="Table Header">

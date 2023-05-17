@@ -16,6 +16,7 @@ export default function AddToOutfitCard({ product, addToOutfit }) {
       onClick={() => {
         addToOutfit(product);
       }}
+      data-testid='add-to-outfit-card'
     >
       <div className="AddToOutfitButton" style={wtfStyle}>&#43;</div>
     </div>

@@ -10,6 +10,7 @@ export default function YourOutfitList({
   const [transformVal, setTransformVal] = useState(0);
 
   const handleForwardClick = () => {
+    console.log('Outfit:', outfit);
     // console.log('Forward clicked!', items.length);
     if (transformVal < outfit.length - 1) {
       setTransformVal(transformVal + 1);
@@ -24,14 +25,14 @@ export default function YourOutfitList({
   };
 
   return (
-    <div id="your-outfit-list">
+    <div id="your-outfit-list" data-testid='your-outfit-list'>
       <div className="Title">YOUR OUTFIT</div>
       <div className="ProductContainer">
         <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
-        {transformVal > 0 && <div className="Directional" onClick={handleBackwardClick}>&#60;</div>}
+        {transformVal > 0 && <div className="Directional" data-testid='backward' onClick={handleBackwardClick}>&#60;</div>}
         <div className="CarouselView">
           <div className="InnerList" style={{ transform: `translateX(-${transformVal * 272.22}px)` }}>
-            {outfit.map((item) => (
+            {outfit && outfit.map((item) => (
               <RelatedProductCard
                 key={item.id}
                 item={item}
@@ -42,7 +43,7 @@ export default function YourOutfitList({
             ))}
           </div>
         </div>
-        {(transformVal < outfit.length - 1) && <div className="Directional" onClick={handleForwardClick}>&#62;</div>}
+        {outfit && (transformVal < outfit.length - 1) && <div className="Directional" data-testid='forward' onClick={handleForwardClick}>&#62;</div>}
       </div>
     </div>
   );
