@@ -5,12 +5,12 @@ export default function Details({
   overview, reviews, currentStyle, avg,
 }) {
   return (
-    <div className="productDetails">
+    <div className="productDetails" data-testid="productdetails">
       <PartialStars avg={avg} />
       <div>
         {reviews}
         {' '}
-        Review
+        Reviews
       </div>
       {/* change this to proper review ID */}
       <button

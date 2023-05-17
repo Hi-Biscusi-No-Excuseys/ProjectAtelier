@@ -37,7 +37,7 @@ export default function ImageGallery({ currentStyle }) {
       setExpanded(false);
       setZoomLevel(1);
     }
-  }
+  };
 
   const zoom = () => {
     if (zoomLevel === 1) {
@@ -45,13 +45,13 @@ export default function ImageGallery({ currentStyle }) {
     } else {
       setZoomLevel(1);
     }
-  }
+  };
 
   const handleMouseMove = (e) => {
     setMouseX(e.clientX);
     setMouseY(e.clientY);
     // console.log(e.clientX, e.clientY);
-  }
+  };
 
   const calculatePan = () => {
     const img = document.getElementById('zoomedImg');
@@ -68,67 +68,68 @@ export default function ImageGallery({ currentStyle }) {
     return { left, top };
   };
 
-
   const panStyle = calculatePan();
   // console.log(panStyle);
 
   return (expanded
     ? (
-      <div className="ImageGallery">
+      <div className="ImageGallery" data-testid="imagegallery">
         <div className="scroll">
           {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} />)}
         </div>
-        { zoomLevel === 2.5 ?
-        <div
-        className="productImage"
-        id="productImage"
-        style={{overflow: 'hidden', position: 'relative'}}
-        >
-          <img
-            className="zoomedImg"
-            id="zoomedImg"
-            src={currentStyle?.photos[currentIndex].url}
-            alt={currentStyle?.name}
-            style={{
-              position: 'absolute',
-              height: 750,
-              width: 1400,
-              transform: `scale(${zoomLevel})`,
-              left: `${-panStyle.left}%`,
-              top: `${-panStyle.top}%`,
-              zIndex: 1000,
-            }}
-            onClick={zoom}
-            onMouseMove={handleMouseMove}
-          />
-          <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
-        </div>
-         :
-         <div className="productImage" id="productImage">
-         {currentIndex !== 0 ? <div className="leftarrow" onClick={left}>&#8678;</div> : <></>}
-         {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: "150%" }} onClick={right}>&#8680;</div> : <></>}
-         <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
-         <img
-           className="expandedImg"
-           id="expandedImg"
-           src={currentStyle?.photos[currentIndex].url}
-           alt={currentStyle?.name}
-           style={{
-             position: 'relative',
-             height: 750,
-             width: 1400,
-             zIndex: 1000,
-           }}
-           onClick={zoom}
-         />
-       </div>
-        }
+        { zoomLevel === 2.5
+          ? (
+            <div
+              className="productImage"
+              id="productImage"
+              style={{ overflow: 'hidden', position: 'relative' }}
+            >
+              <img
+                className="zoomedImg"
+                id="zoomedImg"
+                src={currentStyle?.photos[currentIndex].url}
+                alt={currentStyle?.name}
+                style={{
+                  position: 'absolute',
+                  height: 750,
+                  width: 1400,
+                  transform: `scale(${zoomLevel})`,
+                  left: `${-panStyle.left}%`,
+                  top: `${-panStyle.top}%`,
+                  zIndex: 1000,
+                }}
+                onClick={zoom}
+                onMouseMove={handleMouseMove}
+              />
+              <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
+            </div>
+          )
+          : (
+            <div className="productImage" id="productImage">
+              {currentIndex !== 0 ? <div className="leftarrow" onClick={left}>&#8678;</div> : <></>}
+              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '150%' }} onClick={right}>&#8680;</div> : <></>}
+              <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
+              <img
+                className="expandedImg"
+                id="expandedImg"
+                src={currentStyle?.photos[currentIndex].url}
+                alt={currentStyle?.name}
+                style={{
+                  position: 'relative',
+                  height: 750,
+                  width: 1400,
+                  zIndex: 1000,
+                }}
+                onClick={zoom}
+              />
+            </div>
+          )}
       </div>
     )
     : (
-      <div className="ImageGallery">
+      <div className="ImageGallery" data-testid="imagegallery">
         <div className="scroll">
-          {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex}/>)}
+          {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex} />)}
         </div>
         <div className="productImage" id="productImage">
           {currentIndex !== 0 ? <div className="leftarrow" onClick={left}>&#8678;</div> : <></>}
