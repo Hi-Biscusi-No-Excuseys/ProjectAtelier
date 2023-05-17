@@ -119,14 +119,14 @@ export default function AddReview({
               {' '}
             </h4>
 
-            <label htmlFor="username">
+            <label htmlFor="nickname">
               Nickname
-              <input type="text" name="username" required maxLength="60" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input type="text" id="nickname" required maxLength="60" value={username} onChange={(e) => setUsername(e.target.value)} />
             </label>
 
             <label htmlFor="email">
               Email
-              <input type="email" name="email" required maxLength="60" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" id="email" required maxLength="60" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
 
             <SelectStars activeStar={activeStar} setActiveStar={setActiveStar} />
@@ -151,7 +151,7 @@ export default function AddReview({
 
             <label htmlFor="recommend">
               Do you recommend this product?
-              <input type="checkbox" name="recommend" onChange={() => setRecommend(!recommend)} />
+              <input type="checkbox" id="recommend" onChange={() => setRecommend(!recommend)} />
             </label>
 
             {Object.entries(characteristics).map(([characteristic, { id }]) => (
@@ -182,12 +182,12 @@ export default function AddReview({
 
             <label htmlFor="summary">
               Review Summary
-              <input type="text" name="summary" required value={summary} onChange={(e) => setSummary(e.target.value)} maxLength="60" placeholder="Best shades ever 😎" />
+              <input type="text" id="summary" required value={summary} onChange={(e) => setSummary(e.target.value)} maxLength="60" placeholder="Best shades ever 😎" />
             </label>
 
             <label htmlFor="review-body">
               Review
-              <textarea type="text" name="review-body" required value={reviewBody} onChange={(e) => setReviewBody(e.target.value)} maxLength="1000" placeholder="Why did you like the product or not?" />
+              <textarea type="text" id="review-body" required value={reviewBody} onChange={(e) => setReviewBody(e.target.value)} maxLength="1000" placeholder="Why did you like the product or not?" />
             </label>
             <p>{reviewBody.length < 50 ? `${50 - reviewBody.length} required characters left` : 'Minimum reached'}</p>
 

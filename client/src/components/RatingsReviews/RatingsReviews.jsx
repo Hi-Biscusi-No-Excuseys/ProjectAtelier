@@ -69,7 +69,7 @@ export default function RatingsReviews({ product }) {
         <div id="reviews">
           <h3>Ratings & Reviews</h3>
 
-          <div id="breakdown-list">
+          <div id="breakdown-list" data-testid="breakdown-list">
             <aside>
               <RatingBreakdown
                 amount={amount}

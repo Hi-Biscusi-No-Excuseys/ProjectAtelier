@@ -26,9 +26,9 @@ export default function App() {
     <div>
       {product && (
       <div>
-        {/* <Overview product={product} /> */}
-        {/* <RelatedItems product={product} setProduct={setProduct} /> */}
-        {/* <QuestionsAnswers product={product} /> */}
+        <Overview product={product} />
+        <RelatedItems product={product} setProduct={setProduct} />
+        <QuestionsAnswers product={product} />
         <RatingsReviews product={product} />
       </div>
       ) }
