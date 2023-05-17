@@ -24,7 +24,7 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
     if (!reportClicked) {
       axios.put(`http://localhost:3000/questionsanswers/answers/${answerID}/report`)
         .then(() => {
-          setRequest(!request);
+          // setRequest(!request);
           setReportClicked(!reportClicked);
         })
         // eslint-disable-next-line no-console
@@ -33,7 +33,6 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
   };
 
   function handlePhotoModal(url) {
-    console.log('photomodal CLICKED');
     setPhotoURL(url);
     setShowPhotoModal(true);
   }

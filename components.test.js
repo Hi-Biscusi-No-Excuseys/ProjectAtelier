@@ -1,26 +1,18 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import '@testing-library/jest-dom';
-import App from './client/src/components/App.jsx';
-import Overview from './client/src/components/Overview/Overview.jsx';
-import ImageGallery from './client/src/components/Overview/components/ImageGallery.jsx';
-import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers.jsx';
+import App from './client/src/components/App';
+import Overview from './client/src/components/Overview/Overview';
+import ImageGallery from './client/src/components/Overview/components/ImageGallery';
+import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers';
 
-
-
-// describe('renders all pieces to frontend', () => {
-//   it('should render Overview outer div container', () => {
-//     const { container } = render(<Overview />);
-//     console.log('YNOWORK', container.firstChild)
-//     expect(container.firstChild).toHaveClass('overview');
-//   })
-// })
-
-
-test('QuestionsAnswers renders', () => {
-  const product = { id: 123 };
-  const { container } = render(<QuestionsAnswers product={product} />)
-  expect(container.querySelector('.QuestionsAnswers')).toBeInTheDocument()
+describe('QuestionsAnswers Component', () => {
+  test('QuestionsAnswers renders', () => {
+    const product = { id: 123 };
+    const { container } = render(<QuestionsAnswers product={product} />)
+    expect(container.querySelector('.QuestionsAnswers')).toBeInTheDocument();
+  })
 })
 
 describe('Overview Component', () => {

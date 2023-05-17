@@ -28,12 +28,11 @@ export default function QuestionsListEntry({
   useEffect(() => {
     axios.get(`http://localhost:3000/questionsanswers/questions/${question.question_id}/answers`)
       .then(({ data }) => {
-        console.log('these are answers', data.results);
         setAnswers(data.results);
       })
       // eslint-disable-next-line no-console
       .catch((err) => console.log(`error getting questions: ${err}`));
-  }, []);
+  }, [request]);
 
   const buttonText = showAllAnswers ? 'Collapse answers' : 'See more answers';
   const answersToRender = showAllAnswers ? answers : answers.slice(0, 2);

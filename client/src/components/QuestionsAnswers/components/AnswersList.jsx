@@ -20,7 +20,7 @@ export default function AnswersList({ answers, request, setRequest }) {
             request={request}
             setRequest={setRequest}
           />
-        ))) : <div>No Answers found</div>}
+        ))) : <div className="noAnswer">No Answers found</div>}
     </div>
 
   );
