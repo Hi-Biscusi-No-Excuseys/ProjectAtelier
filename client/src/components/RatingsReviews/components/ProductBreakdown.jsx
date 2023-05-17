@@ -5,9 +5,9 @@ export default function ProductBreakdown({ characteristics }) {
     if (charName === 'Size') {
       return (
         <>
-          <p>Too Small</p>
+          <p>1 Size Small</p>
           <p>Perfect</p>
-          <p>Too Big</p>
+          <p>1 Size Big</p>
         </>
       );
     } if (charName === 'Width') {
@@ -29,6 +29,7 @@ export default function ProductBreakdown({ characteristics }) {
       return (
         <>
           <p>Poor</p>
+          <p>As Expected</p>
           <p>Great</p>
         </>
       );

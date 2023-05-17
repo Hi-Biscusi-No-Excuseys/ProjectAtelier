@@ -1,8 +1,8 @@
 const express = require('express');
+
 const router = express.Router();
 const axios = require('axios');
 require('dotenv').config();
-
 
 router.get('/list', (req, res) => {
   // clients params should look like:
@@ -10,13 +10,13 @@ router.get('/list', (req, res) => {
   //   page: 1,
   //   count: 2,
   //   sort: 'relevant',
-  //   product_id: 40432 
+  //   product_id: 40432
   // }
   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.query.product_id}&page=${req.query.page}&count=${req.query.count}&sort=${req.query.sort}`;
 
   axios.get(url, {
     headers:
-      { Authorization: process.env.AUTH }
+      { Authorization: process.env.AUTH },
   })
     .then((response) => {
       res.json(response.data);
@@ -24,20 +24,19 @@ router.get('/list', (req, res) => {
     .catch((err) => {
       console.error('Failed to get reviews:', err.response.data);
       res.sendStatus(err.response.status);
-    })
+    });
 });
-
 
 router.get('/meta', (req, res) => {
   // clients req.body should look like:
   // {
-  //   product_id: 40432 
+  //   product_id: 40432
   // }
   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.query.product_id}`;
 
   axios.get(url, {
     headers:
-      { Authorization: process.env.AUTH }
+      { Authorization: process.env.AUTH },
   })
     .then((response) => {
       res.json(response.data);
@@ -45,9 +44,8 @@ router.get('/meta', (req, res) => {
     .catch((err) => {
       console.error('Failed to get metadata:', err.response.data);
       res.send(err.response.status);
-    })
+    });
 });
-
 
 router.post('/', (req, res) => {
   // clients req.body should look like:
@@ -63,7 +61,7 @@ router.post('/', (req, res) => {
   //   characteristics: {135400: 4, 135403: 5}
   // }
   const config = {
-    headers: { Authorization: process.env.AUTH }
+    headers: { Authorization: process.env.AUTH },
   };
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', req.body, config)
     .then((response) => {
@@ -72,9 +70,8 @@ router.post('/', (req, res) => {
     .catch((err) => {
       console.error('Failed to post review:', err.response.data);
       res.sendStatus(err.response.status);
-    })
+    });
 });
-
 
 router.put('/helpful', (req, res) => {
   // clients req.body should look like:
@@ -89,9 +86,8 @@ router.put('/helpful', (req, res) => {
     .catch((err) => {
       console.error('Failed to mark helpful:', err.response.data);
       res.sendStatus(err.response.status);
-    })
+    });
 });
-
 
 router.put('/report', (req, res) => {
   // clients req.body should look like:
@@ -106,9 +102,7 @@ router.put('/report', (req, res) => {
     .catch((err) => {
       console.error('Failed to report:', err.response.data);
       res.sendStatus(err.response.status);
-    })
+    });
 });
-
-
 
 module.exports = router;

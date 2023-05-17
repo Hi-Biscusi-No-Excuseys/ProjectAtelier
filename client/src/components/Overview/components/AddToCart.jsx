@@ -44,7 +44,7 @@ export default function AddToCart({ currentStyle }) {
         selectedSizeCount={selectedSizeCount}
         setChosenCount={setChosenCount}
       />
-      <Add handleAdd={handleAdd} />
+      <Add handleAdd={handleAdd} selectedSizeCount={selectedSizeCount} />
       <Favorite />
     </div>
   );

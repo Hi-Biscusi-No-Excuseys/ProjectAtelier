@@ -17,6 +17,7 @@ export default function RatingsReviews({ product }) {
   const [starFilter, setStarFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
   });
+  const [reviewAdded, setReviewAdded] = useState(0);
 
   useEffect(() => {
     axios.get('/reviews/meta', { params: { product_id: product.id } })
@@ -56,10 +57,11 @@ export default function RatingsReviews({ product }) {
         setLoading(false);
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.error('Client failed to get reviews:', err);
         setLoading(false);
       });
-  }, [product, sort]); // TODO: Add new review posted and star filter dependencies
+  }, [product, sort, reviewAdded]);
 
   return (
     !loading
@@ -70,7 +72,6 @@ export default function RatingsReviews({ product }) {
           <div id="breakdown-list">
             <aside>
               <RatingBreakdown
-                product={product.id}
                 amount={amount}
                 metaData={metaData}
                 avg={avg}
@@ -82,14 +83,21 @@ export default function RatingsReviews({ product }) {
 
             <div id="sort-and-list">
               <SortOptions sort={sort} setSort={setSort} amount={amount} />
-              <ReviewsList reviews={reviews} starFilter={starFilter} />
+              <ReviewsList
+                reviews={reviews}
+                starFilter={starFilter}
+                product={product}
+                characteristics={metaData.characteristics}
+                reviewAdded={reviewAdded}
+                setReviewAdded={setReviewAdded}
+              />
             </div>
           </div>
 
         </div>
       )
       : (
-        <div id="loading-container">
+        <div id="reviews">
           <h3>Ratings & Reviews</h3>
           <p id="loading">Loading...</p>
         </div>

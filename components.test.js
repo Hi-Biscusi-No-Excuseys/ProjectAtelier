@@ -5,11 +5,12 @@ import '@testing-library/jest-dom';
 import App from './client/src/components/App';
 import Overview from './client/src/components/Overview/Overview';
 import ImageGallery from './client/src/components/Overview/components/ImageGallery';
+import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers';
 
-describe('Overview Component', () => {
-  test('Overview component renders', () => {
-    let product = {id: 40347}
-    const { container } = render(<Overview product={product} />)
-    expect(container.querySelector('.overview')).toBeInTheDocument();
+describe('QuestionsAnswers Component', () => {
+  test('QuestionsAnswers renders', () => {
+    const product = { id: 123 };
+    const { container } = render(<QuestionsAnswers product={product} />)
+    expect(container.querySelector('.QuestionsAnswers')).toBeInTheDocument();
   })
 })
