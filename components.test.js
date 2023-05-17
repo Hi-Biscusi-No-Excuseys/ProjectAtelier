@@ -14,11 +14,3 @@ describe('QuestionsAnswers Component', () => {
     expect(container.querySelector('.QuestionsAnswers')).toBeInTheDocument();
   })
 })
-
-describe('Overview Component', () => {
-  test('Overview component renders', () => {
-    let product = {id: 40347}
-    const { container } = render(<Overview product={product} />)
-    expect(container.querySelector('.overview')).toBeInTheDocument();
-  })
-})

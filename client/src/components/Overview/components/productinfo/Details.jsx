@@ -22,7 +22,6 @@ export default function Details({
         }}
       >
         Read All Reviews
-
       </button>
       <h3 className="productCategory">{overview.category}</h3>
       <h1 className="productName">{overview.name}</h1>
