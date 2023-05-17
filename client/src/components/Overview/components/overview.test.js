@@ -1,11 +1,9 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from './client/src/components/App.jsx';
-import Overview from './client/src/components/Overview/Overview.jsx';
-import ImageGallery from './client/src/components/Overview/components/ImageGallery.jsx';
-import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers.jsx';
-
+import App from '../../App.jsx';
+import Overview from '../Overview.jsx';
+import ImageGallery from './ImageGallery.jsx';
 
 
 // describe('renders all pieces to frontend', () => {
