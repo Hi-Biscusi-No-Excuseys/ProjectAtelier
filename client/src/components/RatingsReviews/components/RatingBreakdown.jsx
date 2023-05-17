@@ -10,7 +10,7 @@ export default function RatingBreakdown({
   return (
     metaData
     && (
-    <div id="rating-breakdown">
+    <div id="rating-breakdown" data-testid="rating-breakdown">
       <div id="overall-rating">
         {' '}
         {avg}
