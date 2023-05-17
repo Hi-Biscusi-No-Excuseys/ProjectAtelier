@@ -97,6 +97,7 @@ export default function AddAnswer({
               Your Answer *
               <textarea
                 required
+                id="answer"
                 name="answer"
                 maxLength={1000}
                 value={answer}
@@ -109,6 +110,7 @@ export default function AddAnswer({
               What is your nickname? *
               <input
                 required
+                id="nickname"
                 name="nickname"
                 type="text"
                 maxLength={60}
@@ -124,6 +126,7 @@ export default function AddAnswer({
               Your email *
               <input
                 required
+                id="email"
                 name="email"
                 value={email}
                 type="email"

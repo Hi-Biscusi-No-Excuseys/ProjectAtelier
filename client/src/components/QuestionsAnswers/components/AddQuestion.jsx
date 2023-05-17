@@ -55,7 +55,7 @@ export default function AddQuestion({
               <textarea
                 required
                 name="question"
-                id={question}
+                id="question"
                 maxLength={1000}
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
@@ -67,6 +67,7 @@ export default function AddQuestion({
               What is your nickname? *
               <input
                 required
+                id="nickname"
                 name="nickname"
                 type="text"
                 maxLength={60}
@@ -78,11 +79,12 @@ export default function AddQuestion({
             <p className="text-muted">For privacy reasons, do not use your full name or email address</p>
           </div>
           <div className="form-group">
-            <label htmlFor="email">
+            <label htmlFor="email-input">
               Your email *
               <input
                 required
                 name="email"
+                id="email-input"
                 value={email}
                 type="email"
                 maxLength={60}
