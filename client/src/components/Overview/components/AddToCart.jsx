@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import QuantitySelector from './addtocart/QuantitySelector';
 import SizeSelector from './addtocart/SizeSelector';
 import Add from './addtocart/Add';
-import Favorite from './addtocart/Favorite';
 
 const axios = require('axios');
 
@@ -32,7 +31,7 @@ export default function AddToCart({ currentStyle }) {
   };
 
   return (
-    <div className="addtocart">
+    <div className="addtocart" data-testid="addtocart">
       <SizeSelector
         currentStyle={currentStyle}
         handleSelectedSize={handleSelectedSize}
@@ -45,7 +44,6 @@ export default function AddToCart({ currentStyle }) {
         setChosenCount={setChosenCount}
       />
       <Add handleAdd={handleAdd} selectedSizeCount={selectedSizeCount} />
-      <Favorite />
     </div>
   );
 }

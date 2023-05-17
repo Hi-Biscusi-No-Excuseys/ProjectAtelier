@@ -6,6 +6,14 @@ import Overview from '../Overview';
 import ImageGallery from './ImageGallery';
 import ProductInfo from './ProductInfo';
 import Details from './productinfo/Details';
+import PartialStars from '../../RatingsReviews/components/PartialStars';
+import StyleSelector from './StyleSelector';
+import mockStyles from './mockStyles.json';
+import StyleIcon from './styleselector/StyleIcon';
+import AddToCart from './AddToCart';
+import SizeSelector from './addtocart/SizeSelector';
+import QuantitySelector from './addtocart/QuantitySelector';
+import Add from './addtocart/Add';
 
 const axios = require('axios');
 
@@ -97,29 +105,89 @@ describe('Overview Widget', () => {
   beforeEach(() => {
     axios.get.mockResolvedValue({ data: testProduct });
     axios.get.mockResolvedValue({ data: currentStyle });
+    axios.get.mockResolvedValue({ data: mockStyles });
   });
+
   test('Overview component exists', () => {
     render(<Overview product={testProduct} />);
     expect(screen.getByTestId(/overviewtest/i)).toBeTruthy();
   });
+
   test('Image Gallery component renders', () => {
     render(<ImageGallery currentStyle={currentStyle} />);
     expect(screen.getByTestId(/imagegallery/i)).toBeTruthy();
   });
+
   test('Product Info component renders', () => {
     render(<ProductInfo overview={testProduct} reviews={125} currentStyle={currentStyle} avg={3.2} />);
     expect(screen.getByTestId(/productinfo/i)).toBeTruthy();
   });
+
   test('Details from Product Info component renders', () => {
     render(<Details overview={testProduct} reviews={125} currentStyle={currentStyle} avg={3.2} />);
     expect(screen.getByTestId(/productdetails/i)).toBeTruthy();
   });
-  // test('Overview component renders', () => {
-  //   render(<Overview product={product} />);
-  //   expect(screen.getByText('Read All Reviews')).toBeInTheDocument();
-  // });
+
+  test('Details Read All Reviews button scrolls to Ratings and Reviews', () => {
+    const { getByText } = render(<Details
+      overview={testProduct}
+      reviews={125}
+      currentStyle={currentStyle}
+      avg={3.2}
+    />);
+    const button = getByText('Read All Reviews');
+    const scrollIntoViewMock = jest.fn();
+
+    document.getElementById = jest.fn(() => ({
+      scrollIntoView: scrollIntoViewMock,
+    }));
+
+    fireEvent.click(button);
+
+    expect(document.getElementById).toHaveBeenCalledWith('reviews-list');
+    expect(scrollIntoViewMock).toHaveBeenCalledWith({ behavior: 'smooth' });
+  });
+
+  test('Style Selector component renders', () => {
+    render(<StyleSelector styles={mockStyles} currentStyle={currentStyle} />);
+    expect(screen.getByTestId(/styleselector/i)).toBeTruthy();
+  });
+
+  test('Style Icon from Style Selector component renders', () => {
+    render(<StyleIcon style={currentStyle} selected />);
+    expect(screen.getByTestId(/styleicon/i)).toBeTruthy();
+  });
+
+  test('Add to Cart component renders', () => {
+    render(<AddToCart currentStyle={currentStyle} />);
+    expect(screen.getByTestId(/addtocart/i)).toBeTruthy();
+  });
+
+  test('Size Selector from Add to Cart component renders', () => {
+    render(<SizeSelector currentStyle={currentStyle} setSkuID={1394877} />);
+    expect(screen.getByTestId(/sizeselector/i)).toBeTruthy();
+  });
+
+  test('Quantity Selector from Add to Cart component renders', () => {
+    render(<QuantitySelector
+      currentStyle={currentStyle}
+      selectedSize="L"
+      selectedSizeCount={15}
+      setChosenCount={2}
+    />);
+    expect(screen.getByTestId(/quantityselector/i)).toBeTruthy();
+  });
+
+  test('Add Button from Add to Cart component renders', () => {
+    render(<Add selectedSizeCount={15} />);
+    expect(screen.getByTestId(/add/i)).toBeTruthy();
+  });
 });
 
+// test('Overview component renders', () => {
+//   render(<Overview product={product} />);
+//   expect(screen.getByText('Read All Reviews')).toBeInTheDocument();
+// });
 // describe('Product Info Component', () => {
 //   test('Reviews render', () => {
 //     const { container } = render(<ProductInfo />);

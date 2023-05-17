@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 export default function StyleIcon({style, selected, styleSwap, first}) {
 
   return (
-    <div>
+    <div data-testid="styleicon">
       <img
       className="styleIcon"
       src={style.photos[0]?.thumbnail_url}

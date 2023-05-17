@@ -1,22 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import StyleIcon from './styleselector/StyleIcon';
 
-export default function StyleSelector({styles, currentStyle, styleSwap}) {
-
+export default function StyleSelector({ styles, currentStyle, styleSwap }) {
   return (
-    <div className="styleselector">
+    <div className="styleselector" data-testid="styleselector">
       <span>
         <strong>Style &#8594; </strong>
         {currentStyle?.name}
       </span>
       <div className="stylesBox">
-        {styles.map((style, i)=>(
+        {styles.map((style, i) => (
           <StyleIcon
             key={i}
             style={style}
             selected={style === currentStyle}
-            styleSwap={styleSwap}/>)
-        )}
+            styleSwap={styleSwap}
+          />
+        ))}
       </div>
     </div>
   );

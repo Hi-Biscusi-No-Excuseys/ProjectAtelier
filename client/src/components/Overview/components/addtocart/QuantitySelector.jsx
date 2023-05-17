@@ -28,7 +28,7 @@ export default function QuantitySelector({
   };
 
   return (
-    <div className="quantityselector">
+    <div className="quantityselector" data-testid="quantityselector">
       <select disabled={!selectedSize} defaultValue={1} onChange={handleQuantityChange}>
         {quantityCount?.map((option, i) => <option key={i} value={option}>{option}</option>)}
       </select>

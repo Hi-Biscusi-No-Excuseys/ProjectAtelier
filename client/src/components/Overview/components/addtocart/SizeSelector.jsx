@@ -11,7 +11,7 @@ export default function SizeSelector({
   }
 
   return (
-    <div className="sizeselector" id="sizeselector">
+    <div className="sizeselector" id="sizeselector" data-testid="sizeselector">
       {quantity !== 0 ? (
         <select
           id="select"
