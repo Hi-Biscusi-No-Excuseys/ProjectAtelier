@@ -22,7 +22,7 @@ export default function Overview({ product }) {
         setCurrentStyle(response.data.results[0]);
       })
       .catch((err) => {
-        console.err('Unable to fetch data: ', err);
+        console.error('Unable to fetch data: ', err);
       });
     axios.get('/reviews/meta', { params: { product_id: product.id } })
       .then((response) => {
@@ -47,7 +47,7 @@ export default function Overview({ product }) {
   };
 
   return (
-    <div className="overview">
+    <div className="overview" data-testid="overviewtest">
       <ImageGallery currentStyle={currentStyle} />
       <div>
         <ProductInfo overview={overview} reviews={reviews} currentStyle={currentStyle} avg={avg} />
