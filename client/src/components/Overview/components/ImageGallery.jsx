@@ -91,7 +91,7 @@ export default function ImageGallery({ currentStyle }) {
                   height: '100%',
                   width: '100%',
                   transformOrigin: `${mouseX}px ${mouseY}px`,
-                  transform: `scale(${zoomLevel}) translate(-${panStyle.left}px, -${panStyle.top}px)`,
+                  transform: `scale(${zoomLevel})`,
                   zIndex: 1000,
                 }}
                 onClick={zoom}
