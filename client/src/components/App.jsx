@@ -23,7 +23,7 @@ export default function App() {
   }, [defaultProductID]);
 
   return (
-    <div>
+    
       {product && (
       <div>
         <Overview product={product} />
@@ -32,6 +32,6 @@ export default function App() {
         <RatingsReviews product={product} />
       </div>
       ) }
-    </div>
+
   );
 }

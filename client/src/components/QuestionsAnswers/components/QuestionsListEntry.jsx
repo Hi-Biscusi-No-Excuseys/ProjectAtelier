@@ -40,9 +40,9 @@ export default function QuestionsListEntry({
   return (
     <div className="questionsBody">
 
+      <div className="bold">Q:</div>
       <div className="singleQuestion_Helpful_AddAnswer">
         <div className="singleQuestion">
-          Q:
           {' '}
           {question.question_body}
         </div>
