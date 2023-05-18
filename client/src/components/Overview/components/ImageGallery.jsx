@@ -20,7 +20,7 @@ export default function ImageGallery({ currentStyle }) {
     main.src = currentStyle?.photos[currentIndex].url;
   };
 
-  const left = () => {
+  const leftarrow = () => {
     setCurrentIndex(currentIndex - 1);
     const main = document.getElementById('mainImg');
     main.src = currentStyle?.photos[currentIndex].url;
@@ -50,26 +50,23 @@ export default function ImageGallery({ currentStyle }) {
   const handleMouseMove = (e) => {
     setMouseX(e.clientX);
     setMouseY(e.clientY);
-    // console.log(e.clientX, e.clientY);
   };
 
   const calculatePan = () => {
     const img = document.getElementById('zoomedImg');
     const imgRect = img?.getBoundingClientRect();
+    console.log('img: ', imgRect);
     const scaledWidth = imgRect?.width / zoomLevel;
     const scaledHeight = imgRect?.height / zoomLevel;
     const offsetX = ((mouseX - imgRect?.left) / scaledWidth) * zoomLevel;
     const offsetY = ((mouseY - imgRect?.top) / scaledHeight) * zoomLevel;
-    const maxOffsetX = img?.naturalWidth / scaledWidth - 1;
-    const maxOffsetY = img?.naturalHeight / scaledHeight - 1;
-    const scaledValue = 0.1;
-    const left = Math.min(offsetX * scaledValue, maxOffsetX) * 100;
-    const top = Math.min(offsetY * scaledValue, maxOffsetY) * 100;
+    const left = (offsetX) * 20;
+    const top = (offsetY) * 20;
     return { left, top };
   };
 
   const panStyle = calculatePan();
-  // console.log(panStyle);
+  console.log('left, top: ', panStyle);
 
   return (expanded
     ? (
@@ -91,11 +88,10 @@ export default function ImageGallery({ currentStyle }) {
                 alt={currentStyle?.name}
                 style={{
                   position: 'absolute',
-                  height: 750,
-                  width: 1400,
-                  transform: `scale(${zoomLevel})`,
-                  left: `${-panStyle.left}%`,
-                  top: `${-panStyle.top}%`,
+                  height: '100%',
+                  width: '100%',
+                  transformOrigin: `${mouseX}px ${mouseY}px`,
+                  transform: `scale(${zoomLevel}) translate(-${panStyle.left}px, -${panStyle.top}px)`,
                   zIndex: 1000,
                 }}
                 onClick={zoom}
@@ -106,8 +102,8 @@ export default function ImageGallery({ currentStyle }) {
           )
           : (
             <div className="productImage" id="productImage">
-              {currentIndex !== 0 ? <div className="leftarrow" onClick={left}>&#8678;</div> : <></>}
-              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '150%' }} onClick={right}>&#8680;</div> : <></>}
+              {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <></>}
+              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '140%' }} onClick={right}>&#8680;</div> : <></>}
               <div className="reduceImage" onClick={() => { expand(); }}>Reduce</div>
               <img
                 className="expandedImg"
@@ -116,8 +112,8 @@ export default function ImageGallery({ currentStyle }) {
                 alt={currentStyle?.name}
                 style={{
                   position: 'relative',
-                  height: 750,
-                  width: 1400,
+                  height: '150%',
+                  width: '150%',
                   zIndex: 1000,
                 }}
                 onClick={zoom}
@@ -132,15 +128,15 @@ export default function ImageGallery({ currentStyle }) {
           {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex} />)}
         </div>
         <div className="productImage" id="productImage">
-          {currentIndex !== 0 ? <div className="leftarrow" onClick={left}>&#8678;</div> : <></>}
+          {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <></>}
           {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" onClick={right}>&#8680;</div> : <></>}
           <img
             className="mainImg"
             id="mainImg"
             src={currentStyle?.photos[currentIndex].url}
             alt={currentStyle?.name}
-            height="700"
-            width="850"
+            height="100%"
+            width="100%"
             onClick={() => { expand(); }}
           />
         </div>
@@ -149,3 +145,22 @@ export default function ImageGallery({ currentStyle }) {
 }
 
 // currentStyle?.photos.length > 0 ? currentStyle?.photos[0].url : '';
+
+{ /* <img
+className="zoomedImg"
+id="zoomedImg"
+src={currentStyle?.photos[currentIndex].url}
+alt={currentStyle?.name}
+style={{
+  position: 'absolute',
+  height: 750,
+  width: 1400,
+  transformOrigin: `50%, 50%`,
+  transform: `scale(${zoomLevel})`,
+  left: `${-panStyle.left}%`,
+  top: `${-panStyle.top}%`,
+  zIndex: 1000,
+}}
+onClick={zoom}
+onMouseMove={handleMouseMove}
+/> */ }
