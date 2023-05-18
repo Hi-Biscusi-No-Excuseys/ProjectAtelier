@@ -113,7 +113,7 @@ export default function ImageGallery({ currentStyle }) {
                 style={{
                   position: 'relative',
                   height: '150%',
-                  width: '150%',
+                  width: '170%',
                   zIndex: 1000,
                 }}
                 onClick={zoom}
