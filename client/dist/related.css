@@ -1,11 +1,11 @@
 #related-items {
-  width: 70%;
+  width: 80%;
   margin: auto;
 }
 
 .Container {
-border-style: solid;
-border-width: 1px;
+/* border-style: solid;
+border-width: 1px; */
 }
 
 #ModalBackdrop {
@@ -23,28 +23,89 @@ width: 100%;
 height: 100%;
 padding: 5px;
 z-index: 9999;
-border-style: solid;
-border-width: 1px;
+/* border-style: solid;
+border-width: 1px; */
 }
 
 .ListContainer {
 display: flex;
 flex-direction: column;
-border-style: solid;
-border-width: 2px;
+/* border-style: solid;
+border-width: 2px; */
+}
+
+#related-items-list,
+#your-outfit-list {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+}
+
+#related-items-list {
+  /* padding-top: 40px; */
+}
+
+#your-outfit-list {
+  padding-bottom: 40px;
+}
+
+.list-wrapper {
+  position: relative;
 }
 
 .ProductContainer {
-display: flex;
-flex-direction: row;
-border-style: solid;
-border-width: 2px;
+  display: flex;
+  flex-direction: row;
+  /* border-style: solid;
+  border-width: 2px; */
+  /* position: absolute; */
+  /* width: 100%; */
+  width: 100%;
+  /* height: 100%; */
+  z-index: 10;
+}
+
+.DirectionalContainer {
+  display: flex;
+  flex-direction: row;
+  /* border-style: solid;
+  border-width: 2px; */
+  justify-content: flex-end;
+  /* justify-content: space-between; */
+  width: 100%;
+  /* height: 100%; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: 100%; */
+  z-index: 11;
+  pointer-events: none;
+  }
+
+#backward {
+  /* justify-self: flex-start; */
+  pointer-events: all;
+  background-image: linear-gradient(to left, transparent, white);
+}
+
+#forward {
+  /* justify-self: flex-end; */
+  pointer-events: all;
+  background-image: linear-gradient(to right, transparent, white);
+}
+
+.empty {
+  flex-grow: 1;
 }
 
 .Title {
 display: block;
-border-style: solid;
-border-width: 1px;
+/* border-style: solid;
+border-width: 1px; */
+position: relative;
+padding: 20px;
+font-size: 30px;
+font-weight: bold;
 }
 
 .Card {
@@ -52,12 +113,14 @@ display: flex;
 height: 400px;
 width: 225px;
 border-style: solid;
-border-width: 2px;
+border-width: 1px;
+border-color: gray;
 flex-direction: column;
 position: relative;
 align-content: center;
 justify-content: center;
-padding: 5px;
+/* padding: 5px; */
+margin: 5px;
 }
 
 .CardImageContainer {
@@ -69,7 +132,7 @@ z-index: 1;
 }
 
 .CardImage {
-position: relative;
+/* position: relative; */
 position: absolute;
 height: 280px;
 width: 225px;
@@ -77,14 +140,25 @@ z-index: 1;
 }
 
 .CardDetails {
-height: 120px;
-width: 225px;
+height: 90px;
+width: 220px;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+border-top: 1px;
+border-style: solid;
+border-color: gray;
+padding-top: 5px;
+padding-left: 5px;
+justify-content: space-around;
 }
 
 .AddToOutFitButton  {
-align-self: center;
+display: flex;
+align-items: flex-start;
+justify-items: flex-start;
+font: unset;
 font-size: 100px;
-width: 100px;
 }
 
 .Star, .Cancel {
@@ -96,7 +170,7 @@ z-index: 10;
 }
 
 .Cancel {
-color: black;
+color: rgb(255, 255, 255);
 font-size: 50px;
 }
 
@@ -104,18 +178,18 @@ font-size: 50px;
 display: flex;
 flex-direction: column;
 border-style: solid;
-border-width: 1px;
+border-width: 2px;
 
 position: absolute;
 left: 30%;
 right: 0;
-top: 25%;
+top: 50%;
 bottom: 0;
 width: 500px;
-height: 200px;
+height: 250px;
 overflow-y: scroll;
 opacity: 1;
-background-color: rgb(250, 244, 235);
+background-color: rgb(255, 255, 255);
 z-index: 9999;
 }
 
@@ -124,8 +198,8 @@ display: flex;
 position: relative;
 justify-content: space-between;
 align-items: center;
-border-style: solid;
-border-width: 1px;
+/* border-style: solid;
+border-width: 1px; */
 padding: 10px;
 }
 
@@ -160,10 +234,12 @@ align-items: center;
   height: 410px;
   width: 80px;
   min-width: 50px;
-  border-style: solid;
+  font-weight: bold;
+  font-size: larger;
+  /* border-style: solid;
   border-width: 1px;
   background-color: transparent;
-  background: transparent;
+  background: transparent; */
 }
 
 .CarouselView {
@@ -180,10 +256,12 @@ align-items: center;
 
 .Header {
   transform: translateY(-90px);
+  border-bottom: 0;
+  font-weight: bold;
 }
 
 .TableBody {
-
+  border-top: 0;
 }
 
 @media only screen and (max-width: 480px) {
