@@ -22,13 +22,17 @@ export default function RelatedProductsList({
     }
   };
 
+  // const forceStyle = {
+  //   background: 'linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)',
+  // };
+
   return (
     <div id="related-items-list" data-testid='related-items-list'>
       <div className="Title">RELATED PRODUCTS</div>
       <div className="ProductContainer">
         {transformVal > 0 && <div className="Directional" onClick={handleBackwardClick} data-testid='backward'>&#60;</div>}
         <div className="CarouselView">
-          <div className="InnerList" style={{ transform: `translateX(-${transformVal * 272.22}px)` }}>
+          <div className="InnerList" style={{ transform: `translateX(-${transformVal * 237.22}px)` }}>
             {items.map((item) => product.id !== item.id
             && (
             <RelatedProductCard

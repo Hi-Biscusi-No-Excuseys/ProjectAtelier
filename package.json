@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --env=jsdom --coverage",
+    "test:coverage": "jest --env=jsdom --coverage",
+    "test": "jest --env=jsdom",
     "dev": "npx webpack --watch --mode development & npx nodemon --watch ./server ./server/index.js",
     "build": "npx webpack --mode production",
     "start": "node ./server/index.js",

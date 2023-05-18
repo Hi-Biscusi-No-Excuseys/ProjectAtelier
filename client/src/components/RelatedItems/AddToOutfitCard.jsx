@@ -5,20 +5,22 @@ export default function AddToOutfitCard({ product, addToOutfit }) {
   //   addToOutfit(product);
   // };
 
-  const wtfStyle = {
+  const forceStyle = {
     alignSelf: 'center',
-    fontSize: '200px',
+    fontSize: '100px',
+    width: '100px',
+    margin: 'auto',
   };
 
   return (
     <div
-      className="Card"
+      className="Card AddToOutfitButton"
       onClick={() => {
         addToOutfit(product);
       }}
       data-testid='add-to-outfit-card'
     >
-      <div className="AddToOutfitButton" style={wtfStyle}>&#43;</div>
+      <div style={forceStyle}>&#43;</div>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function YourOutfitList({
         <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
         {transformVal > 0 && <div className="Directional" data-testid='backward' onClick={handleBackwardClick}>&#60;</div>}
         <div className="CarouselView">
-          <div className="InnerList" style={{ transform: `translateX(-${transformVal * 272.22}px)` }}>
+          <div className="InnerList" style={{ transform: `translateX(-${transformVal * 237.22}px)` }}>
             {outfit && outfit.map((item) => (
               <RelatedProductCard
                 key={item.id}
