@@ -25,9 +25,9 @@ export default function App() {
   return (
     product && (
     <>
-      {/* <Overview product={product} />
+      <Overview product={product} />
       <RelatedItems product={product} setProduct={setProduct} />
-      <QuestionsAnswers product={product} /> */}
+      <QuestionsAnswers product={product} />
       <RatingsReviews product={product} />
     </>
     )
