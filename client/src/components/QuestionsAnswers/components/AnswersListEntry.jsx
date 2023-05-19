@@ -93,32 +93,29 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
       )}
 
       <div className="singleAnswerUserInfo_HelpfulYes_Report" style={{ display: 'flex' }}>
-        <div>
-          {answer.answerer_name === 'Seller'
-            ? (
-              <div>
-                by
-                <span className="seller">
-                  {answer.answerer_name}
-                  ,
-                </span>
-                {formattedDate}
-                  &nbsp; | &nbsp;
-              </div>
-            )
-            : (
-              <div>
-                by &nbsp;
+
+        {answer.answerer_name === 'Seller'
+          ? (
+            <div>
+              by
+              <span className="seller">
                 {answer.answerer_name}
-                , &nbsp;
-                {formattedDate}
-                &nbsp; | &nbsp;
-              </div>
-            )}
-        </div>
+                ,
+              </span>
+              {formattedDate}
+            </div>
+          )
+          : (
+            <div>
+              by &nbsp;
+              {answer.answerer_name}
+              , &nbsp;
+              {formattedDate}
+            </div>
+          )}
 
         <div>
-          Helpful? &nbsp;
+          &nbsp; | &nbsp; Helpful? &nbsp;
           <span
             className="helpfulYesButton"
             role="button"
