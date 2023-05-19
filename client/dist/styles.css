@@ -18,8 +18,8 @@
 .QA-Header {
   font-size: 20px;
   font-weight: bold;
-  text-align: left; /* Add this line */
-  align-self: flex-start; /* Add this line */
+  text-align: left;
+  align-self: flex-start;
 }
 .search-container {
   margin-top: 15px;
@@ -50,14 +50,16 @@
   overflow-y: auto;
   overflow-x:hidden;
 }
-.questionsBody {
-  /* max-height: 200px; */
+.singleQuestionAnswerContainer {
   display: flex;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   flex-direction: column;
   padding: 1rem 1rem;
 }
-
+.singleQuestionContainer {
+  display: flex;
+  flex-direction: row;
+}
 .seller {
   margin-left: 5px;
 }
@@ -67,12 +69,18 @@
   justify-content: space-between;
   margin-bottom: 15px;
   padding-right: 5px;
+  width: 100%;
 }
 
-.singleQuestion, .bold {
+.singleQuestion {
+  /* font-weight: bold; */
+  color:#007185;
+}
+
+.bold_space {
   font-weight: bold;
+  margin-right: 10px;
 }
-
 .helpful_addAnswer{
   display: flex;
   font-size: 12px;
@@ -127,7 +135,7 @@
 }
 
 .answersAndButton {
-  overflow-y: auto;
+  /* overflow-y: auto; */
   width: 100%;
   /* max-height: 140px; */
 }
@@ -202,13 +210,22 @@
   text-decoration: underline;
 }
 
-.seeMoreAnwersButton {
-  font: bold;
-  background: white;
-  width: 20px;
-  margin-bottom: 2px;
+.seeMoreAnswersButton {
+  text-decoration: underline;
+ margin-right: 2px;
+ background: none;
+ border: none;
+ padding: 0;
+ font: inherit;
+ outline: inherit;
+ color:#007185;
+ font-size: 12px;
 }
 
+.seeMoreAnswersButton:hover {
+ cursor: pointer;
+ color: #FA9138;
+}
 
 /* moreAnsweredQuestions & Add A Question Button*/
 
@@ -225,10 +242,22 @@
   margin-right: 15px;
 }
 
+.moreAnsweredQuestionsButton:hover {
+  cursor: pointer;
+  color: #FA9138;
+  background-color: #f5f5f5;
+}
+
 .addAQuestionButton {
   width: 180px;
   height: 50px;
   background: white;
+}
+
+.addAQuestionButton:hover {
+  cursor: pointer;
+  color: #FA9138;
+  background-color: #f5f5f5;
 }
 
 #addQuestion-modal {
@@ -246,7 +275,103 @@
 }
 
 .addQuestion-modal-content {
-  background-color: white;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* AddAnswer Modal Styles */
+#addAnswer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addAnswer-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.addAnswer-modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-top: 10px;
+}
+
+.addAnswer-modal-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.form-group .text-muted {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 5px;
+}
+
+.form-group input[type="file"] {
+  margin-top: 10px;
+}
+
+.form-group button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.form-group button:last-child {
+  background-color: #dc3545;
+}
+
+.form-group button:hover {
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 480px) {

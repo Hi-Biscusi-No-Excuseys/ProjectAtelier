@@ -27,13 +27,11 @@ export default function AddAnswer({
   };
 
   const handleAddAnswer = (questionID) => {
-    // check if mandatory fields are filled
     if (!answer || !nickname || !email) {
       setErrorMessage('You must enter the following: Answer, Nickname, Email');
       return;
     }
 
-    // check if email is in correct format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setErrorMessage('Please enter a valid email address');
@@ -76,12 +74,10 @@ export default function AddAnswer({
   return (
     <div id="addAnswer-modal">
       <div className="addAnswer-modal-content">
-        <h2>Submit your Answer</h2>
+        <h2>Submit your Answer:</h2>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <h3>
           {productName}
-          :
-          {' '}
           {question.question_body}
         </h3>
         <form
