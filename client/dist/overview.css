@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 60%;
+  max-width: 60%;
 }
 
 .productContainer {
@@ -15,9 +15,10 @@
 
 }
 
-/* .product {
+.product {
   width: 350px;
-} */
+  height: 733px;
+}
 
 .ImageGallery {
   display: flex;
@@ -160,10 +161,10 @@
 .addtocart {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 150px;
-  height: 250px;
+  width: 200px;
+  height: 150px;
 }
 
 #addCart {
@@ -193,15 +194,25 @@
 
 .sizeselector {
   position: relative;
-  width: 200px;
+  width: 120px;
   height: 30px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: rgb(252, 231, 204);
   overflow: hidden;
 }
 
-.sizeselector::after {
+.quantityselector {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: rgb(252, 231, 204);
+  overflow: hidden;
+}
+
+.sizeselector::after, .quantityselector::after {
   content: "▼";
   position: absolute;
   top: 50%;
@@ -210,7 +221,7 @@
   pointer-events: none;
 }
 
-.sizeselector select {
+.sizeselector select , .quantityselector select {
   width: 100%;
   height: 100%;
   padding: 5px;
@@ -220,7 +231,7 @@
   appearance: none;
 }
 
-.sizeselector select:focus {
+.sizeselector select:focus , .quantityselector select:focus{
   outline: none;
   border-color: #2196F3;
 }
