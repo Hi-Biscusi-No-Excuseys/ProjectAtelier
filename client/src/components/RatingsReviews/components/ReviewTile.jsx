@@ -79,8 +79,10 @@ export default function ReviewTile({ review }) {
 
       {showPhotoModal && createPortal(
         <div id="review-photo-modal" data-testid="review-photo-modal">
-          <img alt="" id="review-photo" src={photoURL} />
-          <button type="button" onClick={() => setShowPhotoModal(false)}>Close</button>
+          <div id="review-photo-container">
+            <img alt="" id="review-photo" src={photoURL} />
+            <button type="button" onClick={() => setShowPhotoModal(false)}>X</button>
+          </div>
         </div>,
         document.body,
       )}

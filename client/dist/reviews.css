@@ -55,6 +55,17 @@ html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
 
 
 /*^ ------------------------- REVIEWS -------------------------- */
@@ -63,10 +74,10 @@ html {
 #reviews {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 80%;
+  height: 650px;
+  width: 55%;
   align-items: center;
-  padding: 5rem;
+  padding-top: 5rem;
   margin: auto;
 }
 
@@ -75,12 +86,15 @@ html {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+
 }
 
 #reviews-buttons {
   display: flex;
   flex-direction: row;
-  margin: 2rem 2rem;
+  margin: 1rem 1rem;
 }
 
 #reviews aside {
@@ -88,8 +102,8 @@ html {
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 1;
-  width: 200px;
-  margin-right: 3rem;
+  margin-right: 1.5rem;
+  height: 80%;
 }
 
 #reviews h3 {
@@ -103,19 +117,22 @@ html {
   flex-direction: column;
   flex-grow: 2;
   flex-shrink: 2;
-  width: 600px;
+  max-width: 600px;
+  min-width: 400px;
+  height: 650px;
 }
 
 #reviews-container {
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 100%;
 }
 
 #reviews-list {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  /* height: 100%; */
 }
 
 .review-tile {
@@ -137,15 +154,30 @@ html {
   right: 0;
   position: fixed;
   z-index: 9999;
-  justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 2%;
 }
 
+#review-photo-modal img {
+  border-radius: 8px;
+}
+
+#review-photo-container {
+  position: relative;
+  display: inline-block;
+}
+
 #review-photo-modal button {
-  width: fit-content;
-  margin-bottom: 1rem;
+  position: absolute;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: bold;
+  font-size: 2rem;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .review-photos button {
@@ -162,14 +194,34 @@ html {
   width: auto;
   max-width: 80%;
   max-height: 80%;
-  margin: 1rem auto;
 }
 
 #rating-breakdown {
-  margin-bottom: 3rem;
+  width: 100%;
+  height: 50%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#product-breakdown {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#reviews-recommend {
+  font-size: 0.7rem;
+  color: gray;
 }
 
 #rating-breakdown button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: none;
   color: inherit;
   border: none;
@@ -184,9 +236,10 @@ html {
   align-items: center;
 }
 
-.star-filter {
-  display: flex;
-  align-items: center;
+#overall-rating span {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 #rating-breakdown button.star-filtered {
@@ -240,4 +293,47 @@ html {
 
 #image-upload-thumbs img {
   width: 75px;
+}
+
+#rating-breakdown {
+  width: 200px;
+}
+
+
+@media screen and (max-width: 600px) {
+  #related-items {
+    width: 95%;
+  }
+
+  #QuestionsAnswers {
+    width: 95%;
+  }
+
+  #reviews {
+    width: 95%;
+  }
+
+  #breakdown-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #reviews aside {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: unset;
+    width: 100%;
+  }
+
+  #rating-breakdown {
+    width: 50%;
+  }
+
+  #product-breakdown {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
