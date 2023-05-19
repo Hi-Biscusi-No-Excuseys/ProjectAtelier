@@ -1,6 +1,8 @@
 #related-items {
-  width: 80%;
+  /* width: 80%; */
   margin: auto;
+  /* max-width: 900px; */
+  max-width: 55%;
 }
 
 .Container {
