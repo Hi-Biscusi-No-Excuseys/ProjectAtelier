@@ -33,7 +33,7 @@ export default function ReviewTile({ review }) {
     <div className="review-tile">
       <div className="review-tile-top">
         <SolidStars rating={review.rating} />
-        <span>
+        <span className="reviewer-name">
           {review.reviewer_name}
           ,
           {' '}
@@ -97,7 +97,7 @@ export default function ReviewTile({ review }) {
           </div>
         ) : null}
 
-      <div id="review-tile-buttons">
+      <div className="review-tile-buttons">
         <label htmlFor="helpful">
           Helpful?
           <button type="button" name="helpful" onClick={handleHelpful} disabled={helpfulClicked}>

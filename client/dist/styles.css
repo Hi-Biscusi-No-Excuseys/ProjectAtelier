@@ -8,7 +8,7 @@
   flex-direction: column;
   max-height: 800px;
   /* max-width: 720px; */
-  width: 45%;
+  width: 55%;
   margin: auto;
   margin-top: 10px;
   /* justify-content: center;
@@ -333,7 +333,7 @@
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
-  width: 100%;
+  width: 96.5%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 3px;

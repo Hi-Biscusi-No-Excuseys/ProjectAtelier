@@ -1,11 +1,11 @@
 /* ------------------------- OVERVIEW -------------------------- */
 
 .overview {
-  margin: 5% auto 0 auto;
+  margin: 2.5% auto 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  max-width: 60%;
+  max-width: 75%;
 }
 
 .productContainer {
@@ -15,9 +15,11 @@
 
 }
 
-/* .product {
+.product {
+  margin-left: 10px;
   width: 350px;
-} */
+  height: 733px;
+}
 
 .ImageGallery {
   display: flex;
@@ -114,7 +116,7 @@
   margin-inline-end: 50px;
 }
 
-.slogan {
+.slogan, .style{
   font-weight: bold;
 }
 
@@ -152,13 +154,18 @@
   border-radius: 50%;
 }
 
+.styleName {
+  display: flex;
+  flex-direction: row;
+}
+
 .addtocart {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 150px;
-  height: 250px;
+  width: 200px;
+  height: 150px;
 }
 
 #addCart {
@@ -185,17 +192,28 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-/* .sizeselector {
+
+.sizeselector {
   position: relative;
-  display: inline-block;
-  font-family: Arial, sans-serif;
+  width: 120px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: rgb(252, 231, 204);
+  overflow: hidden;
 }
 
-.sizeselector select {
-  display: none;
+.quantityselector {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: rgb(252, 231, 204);
+  overflow: hidden;
 }
 
-.sizeselector::before {
+.sizeselector::after, .quantityselector::after {
   content: "▼";
   position: absolute;
   top: 50%;
@@ -204,25 +222,20 @@
   pointer-events: none;
 }
 
-.sizeselector select,
-.sizeselector::before {
-  width: 200px;
-  height: 30px;
+.sizeselector select , .quantityselector select {
+  width: 100%;
+  height: 100%;
   padding: 5px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
+  border: none;
+  background: transparent;
+  appearance: none;
 }
 
-.sizeselector select:focus {
+.sizeselector select:focus , .quantityselector select:focus{
   outline: none;
   border-color: #2196F3;
 }
-
-.sizeselector select option {
-  padding: 5px;
-} */
 
 .productName {
   display: block;
