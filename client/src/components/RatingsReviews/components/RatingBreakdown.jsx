@@ -13,12 +13,12 @@ export default function RatingBreakdown({
     <div id="rating-breakdown" data-testid="rating-breakdown">
       <div id="overall-rating">
         {' '}
-        {avg}
+        <span>{avg}</span>
         {' '}
         <PartialStars avg={avg} />
         {' '}
       </div>
-      <p>
+      <p id="reviews-recommend">
         { Math.round((parseInt(metaData.recommended.true, 10)
         / (parseInt(metaData.recommended.true, 10)
         + parseInt(metaData.recommended.false, 10))) * 100) }
@@ -35,9 +35,11 @@ export default function RatingBreakdown({
           <StarBar percentage={Math.floor((parseInt(metaData.ratings[star.toString()], 10)
             / amount) * 100)}
           />
-          (
-          {metaData.ratings[star.toString()] ? metaData.ratings[star.toString()] : '0'}
-          )
+          <span>
+            (
+            {metaData.ratings[star.toString()] ? metaData.ratings[star.toString()] : '0'}
+            )
+          </span>
         </button>
       ))}
     </div>
