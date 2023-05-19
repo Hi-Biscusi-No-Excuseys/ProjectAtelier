@@ -124,7 +124,6 @@
   padding-bottom: 10px;
 }
 
-
 .descBox {
   display: flex;
   width: 900px
@@ -188,6 +187,12 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   width: 500px;
+}
+
+.socialMediaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 480px) {
