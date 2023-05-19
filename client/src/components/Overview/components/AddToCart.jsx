@@ -9,7 +9,7 @@ export default function AddToCart({ currentStyle }) {
   const [skuID, setSkuID] = useState(null);
   const [selectedSizeCount, setSelectedSizeCount] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
-  const [chosenCount, setChosenCount] = useState(null);
+  const [chosenCount, setChosenCount] = useState(1);
   const [params, setParams] = useState({});
 
   const handleSelectedSize = (size, skuId, count) => {
@@ -27,7 +27,10 @@ export default function AddToCart({ currentStyle }) {
       alert('Please select a size');
       return;
     }
-    axios.post('overview/cart', params);
+    axios.post('overview/cart', params)
+      .then(() => {
+        alert('Added to cart!');
+      });
   };
 
   return (

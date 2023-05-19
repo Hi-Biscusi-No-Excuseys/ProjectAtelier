@@ -5,9 +5,9 @@ export default function Description({ overview }) {
 
   return (
     <div className="productDescription">
-      <span><strong>{overview.slogan}</strong></span>
+      <div className="slogan">{overview.slogan}</div>
       <div className="descBox">
-        <div className="productDescription">
+        <div className="overviewDescription">
           <p>{overview.description}</p>
         </div>
         <div id="featureList">
