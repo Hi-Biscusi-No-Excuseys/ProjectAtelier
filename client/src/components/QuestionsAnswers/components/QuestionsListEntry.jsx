@@ -38,70 +38,72 @@ export default function QuestionsListEntry({
   const answersToRender = showAllAnswers ? answers : answers.slice(0, 2);
 
   return (
-    <div className="questionsBody">
+    <div className="singleQuestionAnswerContainer">
+      <div className="singleQuestionContainer">
 
-      <div className="singleQuestion_Helpful_AddAnswer">
-        <div className="singleQuestion">
-          Q:
-          {' '}
-          {question.question_body}
-        </div>
-
-        <div className="helpful_addAnswer">
-          <div>
-            Helpful? &nbsp;
-            <button
-              type="button"
-              className="helpfulYesButton"
-              onClick={() => handleQHelpfulClick(question.question_id)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleQHelpfulClick(question.question_id);
-                }
-              }}
-            >
-              Yes
-
-            </button>
-            (
-            {question.question_helpfulness}
-            ) &nbsp;
+        <span className="bold_space">Q:</span>
+        <div className="singleQuestion_Helpful_AddAnswer">
+          <div className="singleQuestion">
+            {' '}
+            {question.question_body}
           </div>
-          | &nbsp;
-          {!addAnswerForm
-            ? (
-              <div>
-                <button
-                  type="button"
-                  className="addAnswerButton"
-                  onClick={() => setAddAnswerForm(!addAnswerForm)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      handleQHelpfulClick(question.question_id);
-                    }
-                  }}
-                >
-                  Add Answer
-                </button>
-              </div>
-            )
-            : createPortal(
-              <AddAnswer
-                onClose={() => setAddAnswerForm(!addAnswerForm)}
-                question={question}
-                answers={answers}
-                setAnswers={setAnswers}
-                request={request}
-                productName={productName}
-                setRequest={setRequest}
-              />,
-              document.body,
-            )}
+
+          <div className="helpful_addAnswer">
+            <div>
+              Helpful? &nbsp;
+              <button
+                type="button"
+                className="helpfulYesButton"
+                onClick={() => handleQHelpfulClick(question.question_id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleQHelpfulClick(question.question_id);
+                  }
+                }}
+              >
+                Yes
+
+              </button>
+              (
+              {question.question_helpfulness}
+              ) &nbsp;
+            </div>
+            | &nbsp;
+            {!addAnswerForm
+              ? (
+                <div>
+                  <button
+                    type="button"
+                    className="addAnswerButton"
+                    onClick={() => setAddAnswerForm(!addAnswerForm)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleQHelpfulClick(question.question_id);
+                      }
+                    }}
+                  >
+                    Add Answer
+                  </button>
+                </div>
+              )
+              : createPortal(
+                <AddAnswer
+                  onClose={() => setAddAnswerForm(!addAnswerForm)}
+                  question={question}
+                  answers={answers}
+                  setAnswers={setAnswers}
+                  request={request}
+                  productName={productName}
+                  setRequest={setRequest}
+                />,
+                document.body,
+              )}
+          </div>
         </div>
       </div>
 
       <div className="answerBodyContainer">
-        <span className="bold">A:</span>
+        <span className="bold_space">A:</span>
         <div className="answersAndButton">
           <AnswersList
             answers={answersToRender}

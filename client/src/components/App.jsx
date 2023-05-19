@@ -32,6 +32,8 @@ export default function App() {
         <RatingsReviews product={product} />
       </div>
       ) }
+
     </div>
+
   );
 }
