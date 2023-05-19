@@ -58,6 +58,7 @@ html {
 #root {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
@@ -143,7 +144,9 @@ header div i {
 #reviews-buttons {
   display: flex;
   flex-direction: row;
-  margin: 1rem 1rem;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 1rem;
 }
 
 #reviews aside {
@@ -156,7 +159,7 @@ header div i {
 #reviews h3 {
   margin-bottom: 2rem;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #sort-and-list {
@@ -181,13 +184,62 @@ header div i {
 }
 
 .review-tile {
-  padding: 1rem 1rem;
+  padding: 1.2rem 1rem;
+}
+
+.review-tile-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.reviewer-name {
+  font-size: 0.75rem;
 }
 
 .review-photo-thumb {
   max-width: 75px;
   max-height: 75px;
   border-radius: 8px;
+  margin-bottom: 0.7rem;
+
+}
+
+.review-summary {
+  padding-bottom: 0.7rem;
+  font-weight: bold;
+}
+
+.review-body {
+  padding-bottom: 0.7rem;
+}
+
+.recommend {
+  padding-bottom: 0.7rem;
+
+}
+
+.review-tile-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.7rem;
+  font-size: 0.7rem;
+}
+
+.review-tile-buttons button {
+  font-size: 0.7rem;
+}
+
+.review-tile-buttons label button {
+  margin-left: 0.5rem;
+  text-decoration: underline;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 #review-photo-modal {
