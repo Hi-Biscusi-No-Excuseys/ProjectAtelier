@@ -1,11 +1,11 @@
 /* ------------------------- OVERVIEW -------------------------- */
 
 .overview {
-  margin: 5% auto 0 auto;
+  margin: 2.5% auto 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  max-width: 60%;
+  max-width: 75%;
 }
 
 .productContainer {
