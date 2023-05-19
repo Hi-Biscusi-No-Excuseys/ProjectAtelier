@@ -66,13 +66,13 @@ export default function ProductBreakdown({ characteristics }) {
               }}
               >
                 <span style={{
-                  zIndex: 999, position: 'absolute', top: 0, left,
+                  zIndex: 999, position: 'absolute', bottom: 0, left,
                 }}
                 >
-                  |
+                  ▽
                 </span>
                 <span style={{
-                  height: '0.6rem', width: '100%', backgroundColor: '#d4d4d4', borderRadius: '6px',
+                  height: '0.6rem', width: '100%', backgroundColor: '#007185af', borderRadius: '6px',
                 }}
                 />
               </span>
