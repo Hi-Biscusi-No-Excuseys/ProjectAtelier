@@ -4,10 +4,10 @@ import StyleIcon from './styleselector/StyleIcon';
 export default function StyleSelector({ styles, currentStyle, styleSwap }) {
   return (
     <div className="styleselector" data-testid="styleselector">
-      <span>
-        <strong>Style &#8594; </strong>
-        {currentStyle?.name}
-      </span>
+      <div className="styleName">
+        <p className="style">Style &#8594; </p>
+        <p>{currentStyle?.name}</p>
+      </div>
       <div className="stylesBox">
         {styles.map((style, i) => (
           <StyleIcon
