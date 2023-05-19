@@ -28,12 +28,12 @@ export default function ImageGallery({ currentStyle }) {
 
   const expand = () => {
     if (!expanded) {
-      document.getElementById('productImage').style.width = '850px';
-      document.getElementById('productImage').style.height = '700px';
+      document.getElementById('productImage').style.width = '1100px';
+      document.getElementById('productImage').style.height = '733px';
       setExpanded(true);
     } else {
-      document.getElementById('productImage').style.width = '850px';
-      document.getElementById('productImage').style.height = '700px';
+      document.getElementById('productImage').style.width = '1100px';
+      document.getElementById('productImage').style.height = '733px';
       setExpanded(false);
       setZoomLevel(1);
     }
@@ -86,7 +86,7 @@ export default function ImageGallery({ currentStyle }) {
           : (
             <div className="productImage" id="productImage">
               {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <></>}
-              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '150%' }} onClick={right}>&#8680;</div> : <></>}
+              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '140%' }} onClick={right}>&#8680;</div> : <></>}
               <div className="reduceImage" onClick={() => { expand(); }}>&#10006;</div>
               <img
                 className="expandedImg"
@@ -95,8 +95,8 @@ export default function ImageGallery({ currentStyle }) {
                 alt={currentStyle?.name}
                 style={{
                   position: 'relative',
-                  height: '150%',
-                  width: '170%',
+                  height: '130%',
+                  width: '150%',
                   zIndex: 1000,
                 }}
                 onClick={zoom}

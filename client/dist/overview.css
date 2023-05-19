@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 90%;
+  width: 75%;
 }
 
 .productContainer {
@@ -61,6 +61,8 @@
   margin-top: auto;
   margin-bottom: auto;
   position: relative;
+  width: 1100px;
+  height: 733px;
 }
 
 #mainImage {
@@ -79,7 +81,7 @@
 .leftarrow, .rightarrow {
   position: absolute;
   font-size: 50px;
-  margin-top: 40%;
+  margin-top: 30%;
   margin-bottom: auto;
   z-index: 9999;
 }
@@ -95,7 +97,7 @@
 .reduceImage {
   position: absolute;
   font-size: 50px;
-  margin-left: 165%;
+  margin-left: 145%;
   z-index: 9999;
 }
 
@@ -147,8 +149,59 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 150px;
-  height: 300px
+  height: 300px;
 }
+
+#addCart {
+  background-color: rgb(252, 231, 204);
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+/* .sizeselector {
+  position: relative;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+}
+
+.sizeselector select {
+  display: none;
+}
+
+.sizeselector::before {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.sizeselector select,
+.sizeselector::before {
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.sizeselector select:focus {
+  outline: none;
+  border-color: #2196F3;
+}
+
+.sizeselector select option {
+  padding: 5px;
+} */
 
 .productName {
   display: block;
