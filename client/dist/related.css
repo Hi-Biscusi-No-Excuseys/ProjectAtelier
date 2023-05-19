@@ -2,7 +2,7 @@
   /* width: 80%; */
   margin: auto;
   /* max-width: 900px; */
-  max-width: 55%;
+  max-width: 45%;
 }
 
 .Container {
@@ -105,9 +105,10 @@ display: block;
 /* border-style: solid;
 border-width: 1px; */
 position: relative;
-padding: 20px;
-font-size: 30px;
+font-size: 1.5rem;
 font-weight: bold;
+padding-bottom: 16px;
+padding-top: 16px;
 }
 
 .Card {

@@ -75,8 +75,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 650px;
-  width: 55%;
-  align-items: center;
+  max-width: 45%;
+  align-items: start;
   padding-top: 5rem;
   margin: auto;
 }
