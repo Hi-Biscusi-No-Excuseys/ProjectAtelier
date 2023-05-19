@@ -27,23 +27,28 @@ export default function YourOutfitList({
   return (
     <div id="your-outfit-list" data-testid='your-outfit-list'>
       <div className="Title">YOUR OUTFIT</div>
-      <div className="ProductContainer">
+      <div className="list-wrapper">
+        <div className="DirectionalContainer">
+          {transformVal > 0 && <div className="Directional" data-testid='backward' onClick={handleBackwardClick} id='backward'>&#60;</div>}
+          <div className="empty"></div>
+          {outfit && (transformVal < outfit.length - 1) && <div className="Directional" data-testid='forward' onClick={handleForwardClick} id='forward'>&#62;</div>}
+        </div>
+        <div className="ProductContainer">
         <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
-        {transformVal > 0 && <div className="Directional" data-testid='backward' onClick={handleBackwardClick}>&#60;</div>}
-        <div className="CarouselView">
-          <div className="InnerList" style={{ transform: `translateX(-${transformVal * 272.22}px)` }}>
-            {outfit && outfit.map((item) => (
-              <RelatedProductCard
-                key={item.id}
-                item={item}
-                isRelatedCard={isRelatedCard}
-                removeOutfit={removeOutfit}
-                setProduct={setProduct}
-              />
-            ))}
+          <div className="CarouselView">
+            <div className="InnerList" style={{ transform: `translateX(-${transformVal * 235}px)` }}>
+              {outfit && outfit.map((item) => (
+                <RelatedProductCard
+                  key={item.id}
+                  item={item}
+                  isRelatedCard={isRelatedCard}
+                  removeOutfit={removeOutfit}
+                  setProduct={setProduct}
+                />
+              ))}
+            </div>
           </div>
         </div>
-        {outfit && (transformVal < outfit.length - 1) && <div className="Directional" data-testid='forward' onClick={handleForwardClick}>&#62;</div>}
       </div>
     </div>
   );

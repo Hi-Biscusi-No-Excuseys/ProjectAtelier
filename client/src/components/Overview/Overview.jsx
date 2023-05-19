@@ -48,11 +48,13 @@ export default function Overview({ product }) {
 
   return (
     <div className="overview" data-testid="overviewtest">
+      <div className="productContainer">
       <ImageGallery currentStyle={currentStyle} />
-      <div>
+      <div className="product">
         <ProductInfo overview={overview} reviews={reviews} currentStyle={currentStyle} avg={avg} />
         <StyleSelector styles={styles} currentStyle={currentStyle} styleSwap={styleSwap} />
         <AddToCart currentStyle={currentStyle} />
+      </div>
       </div>
       <Description overview={overview} />
     </div>

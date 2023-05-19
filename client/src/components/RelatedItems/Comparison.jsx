@@ -50,7 +50,7 @@ export default function Comparison({ product, compare, setShowCompare }) {
               <div className="Right">{compare.name}</div>
             </div>
           </div>
-          <div className="Table">
+          <div className="Table TableBody">
             {rows.map((item) => (
               <div className="TableRow" key={item[0]}>
                 <div className="Left">{item[1][0]}</div>

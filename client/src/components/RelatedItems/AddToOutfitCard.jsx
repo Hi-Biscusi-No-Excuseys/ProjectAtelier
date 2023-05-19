@@ -1,24 +1,33 @@
 import React from 'react';
 
 export default function AddToOutfitCard({ product, addToOutfit }) {
-  // const handleAddClick = (e) => {
-  //   addToOutfit(product);
-  // };
-
-  const wtfStyle = {
-    alignSelf: 'center',
-    fontSize: '200px',
-  };
-
   return (
     <div
-      className="Card"
+      className="Card AddToOutfitButton"
       onClick={() => {
         addToOutfit(product);
       }}
-      data-testid='add-to-outfit-card'
+      data-testid="add-to-outfit-card"
     >
-      <div className="AddToOutfitButton" style={wtfStyle}>&#43;</div>
+      {/* <h1 style={forceStyle}></h1> */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        fontSize: '20px',
+        height: '100%',
+        flexDirection: 'column',
+        width: '225px',
+      }}
+      >
+        Add To Outfit
+        <div style={{
+          fontSize: '100px',
+          justifySelf: 'center',
+        }}
+        >
+          &#43;
+        </div>
+      </div>
     </div>
   );
 }

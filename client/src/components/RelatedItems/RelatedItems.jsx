@@ -140,7 +140,7 @@ export default function RelatedItems({ product, setProduct }) {
 
                     setItems([...resultData, ...metaInfo]);
                     setAllItems([...allItems, ...metaInfo]);
-                    console.log([...resultData, ...metaInfo]);
+                    // console.log([...resultData, ...metaInfo]);
 
                     // const updatedProduct = [...allItems, ...metaInfo].find(
                     //   (item) => item.id === product.id,
