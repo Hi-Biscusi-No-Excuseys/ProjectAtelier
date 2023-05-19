@@ -28,12 +28,12 @@ export default function ImageGallery({ currentStyle }) {
 
   const expand = () => {
     if (!expanded) {
-      document.getElementById('productImage').style.width = '850px';
-      document.getElementById('productImage').style.height = '700px';
+      document.getElementById('productImage').style.width = '1100px';
+      document.getElementById('productImage').style.height = '733px';
       setExpanded(true);
     } else {
-      document.getElementById('productImage').style.width = '850px';
-      document.getElementById('productImage').style.height = '700px';
+      document.getElementById('productImage').style.width = '1100px';
+      document.getElementById('productImage').style.height = '733px';
       setExpanded(false);
       setZoomLevel(1);
     }
