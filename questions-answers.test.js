@@ -18,6 +18,7 @@ jest.mock('axios', () => ({
   post: jest.fn(() => Promise.resolve()),
   put: jest.fn(() => Promise.resolve()),
 }));
+
 describe('QuestionsAnswers Component', () => {
   test('renders QuestionsAnswers component', async () => {
     const product = { id: 123 };
