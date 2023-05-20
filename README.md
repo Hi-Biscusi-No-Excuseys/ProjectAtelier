@@ -57,23 +57,11 @@ npm run dev
 ## Authors and Contributors
 
 Project Atelier was created by team [Hi-Biscusi-No-Excuseys](https://github.com/Hi-Biscusi-No-Excuseys).
-[Keith Foreman](https://github.com/keithforeman)
-[Kodi Walker](https://github.com/kodiwalker)
-[Philip Wang](https://github.com/pwang0407)
-[Raymond Tran](https://github.com/1998rtran)
+- [Keith Foreman](https://github.com/keithforeman)
+- [Kodi Walker](https://github.com/kodiwalker)
+- [Philip Wang](https://github.com/pwang0407)
+- [Raymond Tran](https://github.com/1998rtran)
 
 ## Wins and Improvements
 
 Project Atelier has successfully enabled developers to quickly and easily create a modern web application. The project has achieved its goal of providing a comprehensive set of tools to create a web application with minimal effort. However, the project could be improved upon by introducing support for additional technologies and better documentation.
-
-## Tips for a Better Readme
-
-- Use descriptive headings and subheadings
-- Include a table of contents to link to each section
-- Use proper markdown syntax
-- Embed badges for the technologies used in the project
-- Provide a link to the repository
-- Include installation and running instructions
-- List the authors and contributors
-- Summarize wins and improvements
-- Provide tips on how to make this readme look even better
