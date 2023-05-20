@@ -2,6 +2,7 @@ require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
 
+const compression = require('compression');
 const express = require('express');
 const morgan = require('morgan');
 
@@ -18,6 +19,7 @@ app.use(morgan('dev'));
 app.use(cors({ origin: 'http://13.57.236.58:3000' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(compression());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 

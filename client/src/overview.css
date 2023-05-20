@@ -33,7 +33,6 @@
   position: absolute;
   overflow-y: auto;
   z-index: 2;
-  background-color: #807d7d;
 }
 
 .expandedScroll {
@@ -48,6 +47,7 @@
   border-radius: 15%;
   height: 75px;
   width: 75px;
+  opacity: 0.6;
 }
 
 .expandedIcon {
@@ -57,7 +57,8 @@
 }
 
 .highlight {
-  border: 5px solid skyblue
+  border: 5px solid skyblue;
+  opacity: 1;
 }
 
 .productImage {
@@ -67,11 +68,6 @@
   width: 1100px;
   height: 733px;
 }
-
-/* #mainImage {
-  width: 100%;
-  height: auto;
-} */
 
 .mainImg {
   height: 100%;
@@ -127,17 +123,18 @@
 
 .reviewScrollButton {
   margin-left: 10px;
-  box-shadow: 0 4px #999;
+  box-shadow: 2px 4px 4px #999;
   border-radius: 5px;
 }
 
 .reviewScrollButton:hover {
   background-color: #666;
   color: #FFF;
+  transform: translateY(-2px);
 }
 
 .reviewScrollButton:active {
-  box-shadow: 0 5px #414141;
+  box-shadow: 2px 4px 4px #414141;
   transform: translateY(2px);
 }
 
@@ -208,7 +205,7 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 200px;
+  width: 250px;
   height: 150px;
 }
 
@@ -224,16 +221,17 @@
   border-radius: 12px;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 8px #999;
+  box-shadow: 4px 8px 8px #414141;
 }
 
 #addCart:hover {
-  background-color: rgb(248, 213, 169)
+  background-color: rgb(248, 213, 169);
+  transform: translateY(-4px);
 }
 
 #addCart:active {
   background-color: rgb(248, 215, 172);
-  box-shadow: 0 5px #666;
+  box-shadow: 2px 4px 4px #414141;
   transform: translateY(4px);
 }
 
@@ -246,6 +244,7 @@
   background-color: rgb(252, 231, 204);
   overflow: hidden;
   border-radius: 10px;
+  box-shadow: 4px 8px 8px #414141;
 }
 
 .quantityselector {
@@ -257,6 +256,7 @@
   background-color: rgb(252, 231, 204);
   overflow: hidden;
   border-radius: 10px;
+  box-shadow: 4px 8px 8px #414141;
 }
 
 .sizeselector::after, .quantityselector::after {
