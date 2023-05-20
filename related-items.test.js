@@ -1,15 +1,14 @@
-// import React, { useState } from 'react';
-// import {
-//   render, fireEvent, screen, waitFor,
-// } from '@testing-library/react';
-// import '@testing-library/jest-dom';
-// import userEvent from '@testing-library/user-event'
-// // import preview from 'jest-preview';
-// import App from './client/src/components/App.jsx';
-// import RelatedItems from './client/src/components/RelatedItems/RelatedItems';
-// import RelatedProductsList from './client/src/components/RelatedItems/RelatedProductsList';
-// import YourOutfitList from './client/src/components/RelatedItems/YourOutfitList';
-// import Comparison from './client/src/components/RelatedItems/Comparison';
+import React, { useState } from 'react';
+import {
+  render, fireEvent, screen, waitFor,
+} from '@testing-library/react';
+import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event'
+import RelatedItems from './client/src/components/RelatedItems/RelatedItems';
+import RelatedProductsList from './client/src/components/RelatedItems/RelatedProductsList';
+import YourOutfitList from './client/src/components/RelatedItems/YourOutfitList';
+import Comparison from './client/src/components/RelatedItems/Comparison';
+
 
 // describe('RelatedItems tests', () => {
 //   const relatedMock = {

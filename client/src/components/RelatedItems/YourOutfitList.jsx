@@ -5,36 +5,31 @@ import AddToOutfitCard from './AddToOutfitCard';
 export default function YourOutfitList({
   product, outfit, addToOutfit, isRelatedCard, removeOutfit, setProduct,
 }) {
-  // need to make sure we can remove an Outfit item.
-
   const [transformVal, setTransformVal] = useState(0);
 
   const handleForwardClick = () => {
-    console.log('Outfit:', outfit);
-    // console.log('Forward clicked!', items.length);
     if (transformVal < outfit.length - 1) {
       setTransformVal(transformVal + 1);
     }
   };
 
   const handleBackwardClick = () => {
-    // console.log('Backwards clicked!');
     if (transformVal > 0) {
       setTransformVal(transformVal - 1);
     }
   };
 
   return (
-    <div id="your-outfit-list" data-testid='your-outfit-list'>
+    <div id="your-outfit-list" data-testid="your-outfit-list">
       <div className="Title">YOUR OUTFIT</div>
       <div className="list-wrapper">
         <div className="DirectionalContainer">
-          {transformVal > 0 && <div className="Directional" data-testid='backward' onClick={handleBackwardClick} id='backward'>&#60;</div>}
-          <div className="empty"></div>
-          {outfit && (transformVal < outfit.length - 1) && <div className="Directional" data-testid='forward' onClick={handleForwardClick} id='forward'>&#62;</div>}
+          {transformVal > 0 && <div className="Directional" data-testid="backward" onClick={handleBackwardClick} id="backward">&#60;</div>}
+          <div className="empty" />
+          {outfit && (transformVal < outfit.length - 1) && <div className="Directional" data-testid="forward" onClick={handleForwardClick} id="forward">&#62;</div>}
         </div>
         <div className="ProductContainer">
-        <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
+          <AddToOutfitCard product={product} addToOutfit={addToOutfit} />
           <div className="CarouselView">
             <div className="InnerList" style={{ transform: `translateX(-${transformVal * 235}px)` }}>
               {outfit && outfit.map((item) => (

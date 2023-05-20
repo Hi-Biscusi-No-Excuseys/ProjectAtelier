@@ -3,21 +3,9 @@ import React from 'react';
 export default function Comparison({ product, compare, setShowCompare }) {
   const combined = {};
 
-  // console.log('COMPARING: ', product.features.length, compare.features.length, combined);
-
   const closeModal = () => {
     setShowCompare(false);
   };
-
-  // for (let i = 0; i < product.features.length; i += 1) {
-  //   combined[product.features[i].value] = [<>&#10003;</>, undefined];
-  // }
-
-  // for (let i = 0; i < compare.features.length; i += 1) {
-  //   combined[compare.features[i].value] = combined[compare.features[i].value]
-  //     ? [combined[compare.features[i].value][0], <>&#10003;</>]
-  //     : [undefined, <>&#10003;</>];
-  // }
 
   for (let i = 0; i < product.features.length; i += 1) {
     const value = product.features[i].value === null ? <>&#10003;</> : product.features[i].value;
@@ -31,13 +19,9 @@ export default function Comparison({ product, compare, setShowCompare }) {
       : [undefined, value];
   }
 
-  // console.log(Object.entries(combined));
-
   const rows = Object.entries(combined);
-  // console.log('Items:', rows);
 
   return (
-  // <div id="ModalBackdrop">
     <div id="ComparisonContainer" data-testid='comparison-container' onClick={closeModal}>
       {product && compare && (
         <div>
@@ -62,6 +46,5 @@ export default function Comparison({ product, compare, setShowCompare }) {
         </div>
       )}
     </div>
-  // </div>
   );
 }
