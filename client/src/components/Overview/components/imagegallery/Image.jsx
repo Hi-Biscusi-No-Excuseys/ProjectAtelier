@@ -3,8 +3,6 @@ import React from 'react';
 export default function Image({
   style, imgSwitch, index, currentIndex, expanded, zoomLevel,
 }) {
-  console.log(style);
-
   if (zoomLevel === 2.5) {
     return (
       <> </>
@@ -17,7 +15,7 @@ export default function Image({
           <img
             className={`expandedIcon ${currentIndex === index ? 'highlight' : ''}`}
             src={style.thumbnail_url}
-            alt={style.name}
+            alt={index}
             onClick={() => { imgSwitch(style, index); }}
           />
         )
@@ -25,7 +23,7 @@ export default function Image({
           <img
             className={`productIcon ${currentIndex === index ? 'highlight' : ''}`}
             src={style.thumbnail_url}
-            alt={style.name}
+            alt={index}
             onClick={() => { imgSwitch(style, index); }}
           />
         )}

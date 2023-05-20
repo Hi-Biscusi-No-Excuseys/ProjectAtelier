@@ -13,7 +13,7 @@ export default function QuestionsAnswers({ product }) {
   const [addQuestionForm, setAddQuestionForm] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://questionsanswers/questions/?product_id=${product.id}`)
+    axios.get(`/questionsanswers/questions/?product_id=${product.id}`)
       .then(({ data }) => {
         setQuestions(data.results);
       })

@@ -33,6 +33,7 @@
   position: absolute;
   overflow-y: auto;
   z-index: 2;
+  background-color: #807d7d;
 }
 
 .expandedScroll {
@@ -67,9 +68,14 @@
   height: 733px;
 }
 
-#mainImage {
+/* #mainImage {
   width: 100%;
   height: auto;
+} */
+
+.mainImg {
+  height: 100%;
+  width: 100%;
 }
 
 .mainImg:hover {
@@ -78,6 +84,10 @@
 
 .expandedImg:hover {
   cursor: crosshair;
+}
+
+.mainImg, .expandedImg {
+  border-radius: 5%;
 }
 
 .leftarrow, .rightarrow {
@@ -99,12 +109,36 @@
 .reduceImage {
   position: absolute;
   font-size: 50px;
-  margin-left: 145%;
+  margin-top: 2%;
+  margin-left: 142%;
   z-index: 9999;
 }
 
 .zoomedImg:hover {
   cursor: zoom-out;
+}
+
+.productReviews {
+  display: flex;
+  flex-direction: row;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #807d7d;
+}
+
+.reviewScrollButton {
+  margin-left: 10px;
+  box-shadow: 0 4px #999;
+  border-radius: 5px;
+}
+
+.reviewScrollButton:hover {
+  background-color: #666;
+  color: #FFF;
+}
+
+.reviewScrollButton:active {
+  box-shadow: 0 5px #414141;
+  transform: translateY(2px);
 }
 
 .productDescription {
@@ -118,6 +152,11 @@
 
 .slogan, .style{
   font-weight: bold;
+}
+
+.productDetailsContainer {
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #807d7d;
 }
 
 #featurelist {
@@ -148,6 +187,9 @@
   justify-content: space-evenly;
   width: 350px;
   height: 270px;
+  padding: 10px 0 5px 0;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #807d7d;
 }
 
 .styleIcon {
@@ -157,6 +199,8 @@
 .styleName {
   display: flex;
   flex-direction: row;
+  padding: 10px 0 5px 0;
+  border-top: 1px solid #807d7d;
 }
 
 .addtocart {
@@ -195,12 +239,13 @@
 
 .sizeselector {
   position: relative;
-  width: 120px;
+  width: 140px;
   height: 30px;
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: rgb(252, 231, 204);
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .quantityselector {
@@ -211,6 +256,7 @@
   border-radius: 3px;
   background-color: rgb(252, 231, 204);
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .sizeselector::after, .quantityselector::after {
@@ -251,9 +297,6 @@
   display: block;
   font-size: 1.17em;
   margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
   font-weight: bold;
 }
 
@@ -274,12 +317,14 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   width: 500px;
+  border-left: 1px solid #807d7d;
 }
 
 .socialMediaContainer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  padding: 10px 0 10px 0;
 }
 
 @media only screen and (max-width: 480px) {

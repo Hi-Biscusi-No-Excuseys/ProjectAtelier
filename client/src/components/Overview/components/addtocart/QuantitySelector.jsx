@@ -11,7 +11,7 @@ export default function QuantitySelector({
       const count = Math.min(selectedSizeCount, 15);
       setMaxCount(count);
       const options = [];
-      for (let i = 1; i <= count; i++) {
+      for (let i = 1; i <= count; i += 1) {
         options.push(i);
       }
       setQuantityCount(options);

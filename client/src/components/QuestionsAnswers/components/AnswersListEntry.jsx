@@ -10,7 +10,7 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
 
   const handleAHelpfulClick = (answerID) => {
     if (!helpfulClicked) {
-      axios.put(`http://questionsanswers/answers/${answerID}/helpful`)
+      axios.put(`/questionsanswers/answers/${answerID}/helpful`)
         .then(() => {
           setRequest(!request);
           setHelpfulClicked(!helpfulClicked);
@@ -22,7 +22,7 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
 
   const handleReportClick = (answerID) => {
     if (!reportClicked) {
-      axios.put(`http://questionsanswers/answers/${answerID}/report`)
+      axios.put(`/questionsanswers/answers/${answerID}/report`)
         .then(() => {
           // setRequest(!request);
           setReportClicked(!reportClicked);
@@ -56,6 +56,8 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
             {answer.photos.map((photo) => (
               <button
                 type="button"
+                aria-label="View Photo"
+                id="answer_thumbnails"
                 key={photo.id}
                 onClick={() => handlePhotoModal(photo.url)}
                 onKeyDown={(e) => {
