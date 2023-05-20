@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function SizeSelector({
-  currentStyle, handleSelectedSize, setSkuID,
+  currentStyle, handleSelectedSize,
 }) {
   const sizes = [];
   let quantity = 0;

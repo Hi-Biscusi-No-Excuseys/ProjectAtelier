@@ -38,7 +38,6 @@ export default function AddToCart({ currentStyle }) {
       <SizeSelector
         currentStyle={currentStyle}
         handleSelectedSize={handleSelectedSize}
-        setSkuID={setSkuID}
       />
       <QuantitySelector
         currentStyle={currentStyle}

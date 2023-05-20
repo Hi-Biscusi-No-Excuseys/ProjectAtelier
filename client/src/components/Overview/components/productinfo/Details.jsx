@@ -7,40 +7,43 @@ export default function Details({
   return (
     <div className="productDetails" data-testid="productdetails">
       <PartialStars avg={avg} />
-      <div>
-        {reviews}
-        {' '}
-        Reviews
-      </div>
-      {/* change this to proper review ID */}
-      <button
-        type="button"
-        className="reviewScrollButton"
-        onClick={() => {
-          const element = document.getElementById('reviews-list');
-          element.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        Read All Reviews
-      </button>
-      <h3 className="productCategory">{overview.category}</h3>
-      <h1 className="productName">{overview.name}</h1>
-      {currentStyle?.sale_price === null ? (
-        <p>
-          $
-          {overview.default_price}
-        </p>
-      ) : (
-        <p className="sale">
-          $
-          {currentStyle?.sale_price}
+      <div className="productReviews">
+        <div>
+          {reviews}
           {' '}
-          <strike id="strikethrough">
+          Reviews
+        </div>
+        <button
+          type="button"
+          className="reviewScrollButton"
+          onClick={() => {
+            const element = document.getElementById('reviews-list');
+            element.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          Read All Reviews
+        </button>
+      </div>
+      <div className="productDetailsContainer">
+        <span className="productCategory">{overview.category}</span>
+        <span className="productName">{overview.name}</span>
+        {currentStyle?.sale_price === null ? (
+          <p>
             $
             {overview.default_price}
-          </strike>
-        </p>
-      )}
+          </p>
+        ) : (
+          <p className="sale">
+            $
+            {currentStyle?.sale_price}
+            {' '}
+            <strike id="strikethrough">
+              $
+              {overview.default_price}
+            </strike>
+          </p>
+        )}
+      </div>
       <div className="socialMediaContainer">
         <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/">Save</a>
         <div className="fb-share-button" data-href="http://13.57.236.58:3000/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F13.57.236.58%3A3000%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
