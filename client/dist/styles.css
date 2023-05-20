@@ -154,7 +154,8 @@
 .noAnswer {
   line-height: 18px;
 }
-.answer_photos button {
+
+#answer_thumbnails {
   background: none;
   color: inherit;
   border: none;
