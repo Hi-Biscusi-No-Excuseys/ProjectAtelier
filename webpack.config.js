@@ -1,16 +1,41 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, './client/src/index.jsx'),
+  entry: {
+    main: path.join(__dirname, './client/src/index.jsx'),
+    styles: [
+      path.resolve(__dirname, './client/dist/styles.css'),
+      path.resolve(__dirname, './client/dist/overview.css'),
+      path.resolve(__dirname, './client/dist/related.css'),
+      path.resolve(__dirname, './client/dist/reviews.css'),
+    ],
+  },
   output: {
     path: path.join(__dirname, './client/dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
-  plugins: [],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+  ],
   module: {
     rules: [
       {
@@ -25,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /.(jpe?g|png|gif|svg)$/i,
