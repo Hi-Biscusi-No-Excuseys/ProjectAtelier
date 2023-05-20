@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/overview', overview);
-app.use('/questionsanswers', questionsanswers);
+app.use('/questionsanswers', cors(), questionsanswers);
 app.use('/reviews', ratingsreviews);
 app.use('/relateditems', relateditems);
 
