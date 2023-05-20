@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import PartialStars from '../RatingsReviews/components/PartialStars';
 
 export default function RelatedProductCard({
@@ -31,8 +33,10 @@ export default function RelatedProductCard({
     <div className="Card" data-testid="product-card">
       <div className="CardImageContainer">
         <img className="CardImage" data-testid="card-image" src={item.results[0].photos[0].url} onClick={handleImageClick} alt="Product Image" />
-        {isRelatedCard && <div className="Star" onClick={handleActionClick}>&#x2605;</div>}
-        {!isRelatedCard && <div className="Cancel" onClick={handleActionClick}>&#x2716;</div>}
+        <div className="IconContainer">
+          {isRelatedCard && <div className="Star" onClick={handleActionClick}><FontAwesomeIcon icon={faStar} beat /></div>}
+          {!isRelatedCard && <div className="Cancel" onClick={handleActionClick}><FontAwesomeIcon icon={faCircleXmark}/></div>}
+        </div>
       </div>
       <div className="CardDetails">
         <div data-testid="card-category">{item.category}</div>

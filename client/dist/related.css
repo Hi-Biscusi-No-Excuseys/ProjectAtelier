@@ -1,6 +1,8 @@
 #related-items {
+  display: flex;
+  flex-direction: column;
   margin: auto;
-  max-width: 55%;
+  width: 55%;
 }
 
 #ModalBackdrop {
@@ -23,6 +25,7 @@
 .ListContainer {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 
 #related-items-list,
@@ -94,9 +97,13 @@
   border-color: gray;
   flex-direction: column;
   position: relative;
-  align-content: center;
-  justify-content: center;
   margin: 5px;
+  box-shadow: 3px 3px;
+  transition: transform .05s ease-in-out;
+}
+
+.Card:hover {
+  transform: translate(-3px, -5px);
 }
 
 .CardImageContainer {
@@ -137,17 +144,27 @@
 }
 
 .Star, .Cancel {
-  color: white;
-  font-size: 40px;
-  align-self: flex-start;
-  padding-right: 10px;
+  display: contents;
+  font-size: 30px;
+  align-content: center;
+  justify-content: center;
   z-index: 10;
 }
 
 .Cancel {
   color: rgb(255, 255, 255);
-  font-size: 50px;
 }
+
+.IconContainer {
+  display: grid;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
 
 .Table {
   display: flex;
@@ -165,6 +182,7 @@
   opacity: 1;
   background-color: rgb(255, 255, 255);
   z-index: 9999;
+  box-shadow: 5px 5px;
 }
 
 .TableRow {
@@ -223,3 +241,23 @@
     width: 90%;
   }
 } */
+
+.fa-star {
+  color: #fff;
+  stroke: black;
+  stroke-width: 20;
+}
+
+.fa-circle-xmark {
+  color: #fff;
+  stroke: black;
+  stroke-width: 15;
+}
+
+.fa-star:hover {
+  color: #f0cc00;
+}
+
+.fa-circle-xmark:hover {
+  color: #d50101;
+}
