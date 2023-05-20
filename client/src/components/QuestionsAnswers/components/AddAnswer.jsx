@@ -48,7 +48,7 @@ export default function AddAnswer({
       .then((uploadedImageURLs) => {
         newAnswer.photos = uploadedImageURLs.filter((url) => url !== null);
 
-        axios.post(`http://questionsanswers/questions/${questionID}/answers`, newAnswer)
+        axios.post(`/questionsanswers/questions/${questionID}/answers`, newAnswer)
           .then(() => {
             setAnswers([newAnswer, ...answers]);
             setRequest(!request);
