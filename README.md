@@ -13,13 +13,13 @@ Project Atelier is a front-end web application project to help redesign a retail
 - [Tips for a Better Readme](#tips-for-a-better-readme)
 
 ## What does Project Atelier do?
-Project Atelier is a full-stack web application framework that enables developers to quickly and easily create a fully functional web application. It is powered by React, Amazon AWS, Express.js, Jest, Node.js and other popular technologies. It provides developers with a comprehensive set of tools to create a modern web application with minimal effort.
+Project Atelier is a full-stack web application framework that enables developers to quickly and easily create a fully functional web application. It is powered by React, Amazon AWS, Express.js, Jest, and Node.js. It provides developers with a comprehensive set of tools to create a modern front-end web application.
 
 ## When to use Project Atelier?
-Project Atelier is ideal for developers who need to quickly create a modern web application. It is perfect for projects that require a full-stack web application with minimal effort.
+Project Atelier is ideal for developers who need to quickly create a modern e-commerce page. It is perfect for projects that require a front-end web application with minimal effort.
 
 ## Challenges
-Some of the challenges faced while developing Project Atelier were ensuring cross-browser compatibility, debugging and testing, and managing backend services.
+Some of the challenges faced while developing Project Atelier were understanding Git Workflow, utilizing various API endpoints and calls, debugging and testing, and managing style separation for CSS.
 
 ## Technologies Used
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -64,4 +64,4 @@ Project Atelier was created by team [Hi-Biscusi-No-Excuseys](https://github.com/
 
 ## Wins and Improvements
 
-Project Atelier has successfully enabled developers to quickly and easily create a modern web application. The project has achieved its goal of providing a comprehensive set of tools to create a web application with minimal effort. However, the project could be improved upon by introducing support for additional technologies and better documentation.
+Project Atelier has successfully enabled developers to quickly and easily create a modern front-end web application. The project has achieved its goal of providing a comprehensive set of tools to create a web application with minimal effort. However, the project could be improved upon implementing more styles for the widgets, a color theme, and by introducing support for additional technologies and better documentation.
