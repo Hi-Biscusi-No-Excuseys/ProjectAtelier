@@ -56,7 +56,7 @@ export default function ImageGallery({ currentStyle }) {
     ? (
       <div className="ImageGallery" data-testid="imagegallery">
         <div className="expandedScroll">
-          {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex} expanded={expanded} zoomLevel={zoomLevel}/>)}
+          {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex} expanded={expanded} zoomLevel={zoomLevel} />) }
         </div>
         { zoomLevel === 2.5
           ? (

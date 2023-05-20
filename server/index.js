@@ -15,7 +15,7 @@ const relateditems = require('./relateditems');
 
 const app = express();
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({ origin: 'http://13.57.236.58:3000' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
