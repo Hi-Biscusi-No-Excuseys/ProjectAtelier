@@ -5,10 +5,10 @@ module.exports = {
   entry: {
     main: path.join(__dirname, './client/src/index.jsx'),
     styles: [
-      path.resolve(__dirname, './client/dist/styles.css'),
-      path.resolve(__dirname, './client/dist/overview.css'),
-      path.resolve(__dirname, './client/dist/related.css'),
-      path.resolve(__dirname, './client/dist/reviews.css'),
+      path.resolve(__dirname, './client/src/styles.css'),
+      path.resolve(__dirname, './client/src/overview.css'),
+      path.resolve(__dirname, './client/src/related.css'),
+      path.resolve(__dirname, './client/src/reviews.css'),
     ],
   },
   output: {
