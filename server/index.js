@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const path = require('path');
 
 const express = require('express');
@@ -6,7 +7,7 @@ const morgan = require('morgan');
 
 const overview = require('./overview');
 
-const questionsanswers = require('./questionsanswers.js');
+const questionsanswers = require('./questionsanswers');
 
 const ratingsreviews = require('./ratingsreviews');
 
@@ -14,7 +15,7 @@ const relateditems = require('./relateditems');
 
 const app = express();
 app.use(morgan('dev'));
-
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
