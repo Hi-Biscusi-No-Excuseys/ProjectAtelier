@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import './questions.css';
 import './overview.css';
 import './related.css';
 import './reviews.css';
