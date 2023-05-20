@@ -67,7 +67,7 @@ export default function RatingsReviews({ product }) {
     !loading
       ? (
         <div id="reviews">
-          <h3>RATINGS & REVIEWS</h3>
+          <h3>Reviews</h3>
 
           <div id="breakdown-list" data-testid="breakdown-list">
             <aside>
