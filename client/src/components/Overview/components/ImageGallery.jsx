@@ -8,15 +8,13 @@ export default function ImageGallery({ currentStyle }) {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
 
-  console.log(currentStyle);
-
   const imgSwitch = (smallImg, index) => {
     const main = document.getElementById('mainImg');
     main.src = smallImg.url;
     setCurrentIndex(index);
   };
 
-  const right = () => {
+  const rightarrow = () => {
     setCurrentIndex(currentIndex + 1);
     const main = document.getElementById('mainImg');
     main.src = currentStyle?.photos[currentIndex].url;
@@ -58,7 +56,17 @@ export default function ImageGallery({ currentStyle }) {
     ? (
       <div className="ImageGallery" data-testid="imagegallery">
         <div className="expandedScroll">
-          {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex} expanded={expanded} zoomLevel={zoomLevel} />) }
+          {currentStyle?.photos.map((style, i) => (
+            <Image
+              key={i}
+              index={i}
+              style={style}
+              imgSwitch={imgSwitch}
+              currentIndex={currentIndex}
+              expanded={expanded}
+              zoomLevel={zoomLevel}
+            />
+          )) }
         </div>
         { zoomLevel === 2.5
           ? (
@@ -87,8 +95,8 @@ export default function ImageGallery({ currentStyle }) {
           )
           : (
             <div className="productImage" id="productImage">
-              {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <></>}
-              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '140%' }} onClick={right}>&#8680;</div> : <></>}
+              {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <div />}
+              {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" style={{ marginLeft: '140%' }} onClick={rightarrow}>&#8680;</div> : <div />}
               <div className="reduceImage" onClick={() => { expand(); }}>&#10006;</div>
               <img
                 className="expandedImg"
@@ -110,42 +118,28 @@ export default function ImageGallery({ currentStyle }) {
     : (
       <div className="ImageGallery" data-testid="imagegallery">
         <div className="scroll">
-          {currentStyle?.photos.map((style, i) => <Image key={i} index={i} style={style} imgSwitch={imgSwitch} currentIndex={currentIndex} expanded={expanded} />)}
+          {currentStyle?.photos.map((style, i) => (
+            <Image
+              key={i}
+              index={i}
+              style={style}
+              imgSwitch={imgSwitch}
+              currentIndex={currentIndex}
+              expanded={expanded}
+            />
+          ))}
         </div>
         <div className="productImage" id="productImage">
-          {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <></>}
-          {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" onClick={right}>&#8680;</div> : <></>}
+          {currentIndex !== 0 ? <div className="leftarrow" onClick={leftarrow}>&#8678;</div> : <div />}
+          {currentIndex !== currentStyle?.photos.length - 1 ? <div className="rightarrow" onClick={rightarrow}>&#8680;</div> : <div />}
           <img
             className="mainImg"
             id="mainImg"
             src={currentStyle?.photos[currentIndex].url}
             alt={currentStyle?.name}
-            height="100%"
-            width="100%"
             onClick={() => { expand(); }}
           />
         </div>
       </div>
     ));
 }
-
-// currentStyle?.photos.length > 0 ? currentStyle?.photos[0].url : '';
-
-{ /* <img
-className="zoomedImg"
-id="zoomedImg"
-src={currentStyle?.photos[currentIndex].url}
-alt={currentStyle?.name}
-style={{
-  position: 'absolute',
-  height: 750,
-  width: 1400,
-  transformOrigin: `50%, 50%`,
-  transform: `scale(${zoomLevel})`,
-  left: `${-panStyle.left}%`,
-  top: `${-panStyle.top}%`,
-  zIndex: 1000,
-}}
-onClick={zoom}
-onMouseMove={handleMouseMove}
-/> */ }
