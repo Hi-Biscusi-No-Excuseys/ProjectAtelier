@@ -4,8 +4,6 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event'
-// import preview from 'jest-preview';
-import App from './client/src/components/App.jsx';
 import RelatedItems from './client/src/components/RelatedItems/RelatedItems';
 import RelatedProductsList from './client/src/components/RelatedItems/RelatedProductsList';
 import YourOutfitList from './client/src/components/RelatedItems/YourOutfitList';

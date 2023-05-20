@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PartialStars from '../RatingsReviews/components/PartialStars';
 
 export default function RelatedProductCard({
   item, setProduct, setCompare, isRelatedCard, removeOutfit, setShowCompare,
 }) {
-  // const [avg, setAvg] = useState(0);
-  // console.log('What dis', item);
-  // const [showCompare, setShowCompare] = useState(false);
-
   let avg = 0;
   let numOfReviews = 0;
   let numOfStars = 0;
@@ -19,7 +15,6 @@ export default function RelatedProductCard({
   avg = (Math.round(longAvg * 10) / 10);
 
   const handleActionClick = () => {
-    // console.log('Action clicked.', item.id, item);
     if (isRelatedCard) {
       setCompare(item);
       setShowCompare(true);
@@ -29,23 +24,25 @@ export default function RelatedProductCard({
   };
 
   const handleImageClick = () => {
-    // console.log('Image Clicked: ', item.id);
     setProduct(item);
   };
 
   return (
-    <div className="Card" data-testid='product-card'>
+    <div className="Card" data-testid="product-card">
       <div className="CardImageContainer">
-        <img className="CardImage" data-testid='card-image' src={item.results[0].photos[0].url} onClick={handleImageClick} alt="Product Image" />
+        <img className="CardImage" data-testid="card-image" src={item.results[0].photos[0].url} onClick={handleImageClick} alt="Product Image" />
         {isRelatedCard && <div className="Star" onClick={handleActionClick}>&#x2605;</div>}
         {!isRelatedCard && <div className="Cancel" onClick={handleActionClick}>&#x2716;</div>}
       </div>
       <div className="CardDetails">
-        <div data-testid='card-category'>{item.category}</div>
-        <div data-testid='card-name' style={{ fontSize: '16px', fontWeight: 'bold' }}>{item.name}</div>
-        <div data-testid='card-price' style={{ fontSize: '12px' }}>${item.default_price}</div>
+        <div data-testid="card-category">{item.category}</div>
+        <div data-testid="card-name" style={{ fontSize: '16px', fontWeight: 'bold' }}>{item.name}</div>
+        <div data-testid="card-price" style={{ fontSize: '12px' }}>
+          $
+          {item.default_price}
+        </div>
       </div>
-        <PartialStars avg={avg} style={{ justifySelf: 'flex-end' }} />
+      <PartialStars avg={avg} style={{ justifySelf: 'flex-end' }} />
     </div>
   );
 }

@@ -9,7 +9,6 @@ export default function AddToOutfitCard({ product, addToOutfit }) {
       }}
       data-testid="add-to-outfit-card"
     >
-      {/* <h1 style={forceStyle}></h1> */}
       <div style={{
         display: 'flex',
         alignItems: 'flex-start',
