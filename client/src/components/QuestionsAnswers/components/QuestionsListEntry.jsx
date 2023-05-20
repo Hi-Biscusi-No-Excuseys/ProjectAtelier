@@ -15,7 +15,7 @@ export default function QuestionsListEntry({
 
   const handleQHelpfulClick = (questionID) => {
     if (!helpfulClicked) {
-      axios.put(`http://localhost:3000/questionsanswers/questions/${questionID}/helpful`)
+      axios.put(`http://questionsanswers/questions/${questionID}/helpful`)
         .then(() => {
           setRequest(!request);
           setHelpfulClicked(!helpfulClicked);
@@ -26,7 +26,7 @@ export default function QuestionsListEntry({
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/questionsanswers/questions/${question.question_id}/answers`)
+    axios.get(`http://questionsanswers/questions/${question.question_id}/answers`)
       .then(({ data }) => {
         setAnswers(data.results);
       })

@@ -10,7 +10,7 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
 
   const handleAHelpfulClick = (answerID) => {
     if (!helpfulClicked) {
-      axios.put(`http://localhost:3000/questionsanswers/answers/${answerID}/helpful`)
+      axios.put(`http://questionsanswers/answers/${answerID}/helpful`)
         .then(() => {
           setRequest(!request);
           setHelpfulClicked(!helpfulClicked);
@@ -22,7 +22,7 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
 
   const handleReportClick = (answerID) => {
     if (!reportClicked) {
-      axios.put(`http://localhost:3000/questionsanswers/answers/${answerID}/report`)
+      axios.put(`http://questionsanswers/answers/${answerID}/report`)
         .then(() => {
           // setRequest(!request);
           setReportClicked(!reportClicked);

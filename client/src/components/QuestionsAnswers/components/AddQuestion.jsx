@@ -19,7 +19,7 @@ export default function AddQuestion({
       setErrorMessage('Please enter a valid email address');
       return;
     }
-    axios.post('http://localhost:3000/questionsanswers/questions/', {
+    axios.post('http://questionsanswers/questions/', {
       body: question,
       name: nickname,
       email,
