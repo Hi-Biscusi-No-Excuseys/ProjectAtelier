@@ -56,6 +56,8 @@ export default function AnswersListEntry({ answer, request, setRequest }) {
             {answer.photos.map((photo) => (
               <button
                 type="button"
+                aria-label="View Photo"
+                id="answer_thumbnails"
                 key={photo.id}
                 onClick={() => handlePhotoModal(photo.url)}
                 onKeyDown={(e) => {

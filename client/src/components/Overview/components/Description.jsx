@@ -15,10 +15,12 @@ export default function Description({ overview }) {
             if (list.value !== null) {
               return (
                 <ul key={i} className="productFeatures">
-                  {list.feature}
-                  ,
-                  {' '}
-                  {list.value}
+                  <li>
+                    {list.feature}
+                    ,
+                    {' '}
+                    {list.value}
+                  </li>
                 </ul>
               );
             }
