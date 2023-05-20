@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from './imagegallery/Image';
 
 export default function ImageGallery({ currentStyle }) {
@@ -7,6 +7,8 @@ export default function ImageGallery({ currentStyle }) {
   const [zoomLevel, setZoomLevel] = useState(1);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+
+  console.log(currentStyle);
 
   const imgSwitch = (smallImg, index) => {
     const main = document.getElementById('mainImg');
