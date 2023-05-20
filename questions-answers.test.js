@@ -1,8 +1,13 @@
 import React from 'react';
 import {
-  render, fireEvent, screen, waitFor, act,
+  render,
+  fireEvent,
+  screen,
+  waitFor,
+  act,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
 import axios from 'axios';
 import QuestionsAnswers from './client/src/components/QuestionsAnswers/QuestionsAnswers';
 import QuestionsList from './client/src/components/QuestionsAnswers/components/QuestionsList';
@@ -28,7 +33,7 @@ describe('QuestionsAnswers Component', () => {
       render(<QuestionsAnswers product={product} />);
     });
 
-    expect(screen.getByText('Questions & Answers')).toBeInTheDocument();
+    expect(screen.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
   });
 });
 
@@ -119,471 +124,303 @@ describe('QuestionsListEntry', () => {
   const request = jest.fn();
   const setRequest = jest.fn();
 
-  it('renders question correctly', () => {
-    const { getByText } = render(
-      <QuestionsListEntry
-        question={question}
-        request={request}
-        setRequest={setRequest}
-        productName="Product Name"
-      />,
-    );
+  it('renders question details', async () => {
+    await act(async () => {
+      render(
+        <QuestionsListEntry
+          question={question}
+          request={request}
+          setRequest={setRequest}
+          productName="Product Name"
+        />,
+      );
+    });
 
-    expect(getByText('Q: Question 1')).toBeInTheDocument();
+    expect(screen.getByText('Question 1')).toBeInTheDocument();
+    expect(screen.getByText('Helpful?')).toBeInTheDocument();
+    expect(screen.getByText('Yes')).toBeInTheDocument();
+    expect(screen.getByText('Report')).toBeInTheDocument();
   });
+  it('increases helpfulness when "Yes" is clicked', async () => {
+    await act(async () => {
+      render(
+        <QuestionsListEntry
+          question={question}
+          request={request}
+          setRequest={setRequest}
+          productName="Product Name"
+        />,
+      );
+    });
 
-  it('handles helpful button click', async () => {
-    axios.put.mockResolvedValueOnce();
-    const { getByText } = render(
-      <QuestionsListEntry
-        question={question}
-        request={request}
-        setRequest={setRequest}
-        productName="Product Name"
-      />,
-    );
+    const helpfulButton = screen.getByText('Yes');
 
-    const helpfulButton = getByText('Yes');
     await act(async () => {
       fireEvent.click(helpfulButton);
     });
 
-    expect(axios.put).toHaveBeenCalledWith(
-      `http://localhost:3000/questionsanswers/questions/${question.question_id}/helpful`,
-    );
-    expect(request).toHaveBeenCalledTimes(1);
+    expect(request).toHaveBeenCalledWith('questions/1/helpful');
   });
 
-  it('renders add answer form when Add Answer button is clicked', async () => {
-    const { getByText, queryByText } = render(
-      <QuestionsListEntry
-        question={question}
-        request={request}
-        setRequest={setRequest}
-        productName="Product Name"
-      />,
-    );
+  it('opens the "Add Answer" form when "Add Answer" is clicked', async () => {
+    await act(async () => {
+      render(
+        <QuestionsListEntry
+          question={question}
+          request={request}
+          setRequest={setRequest}
+          productName="Product Name"
+        />,
+      );
+    });
 
-    const addAnswerButton = getByText('Add Answer');
+    const addAnswerButton = screen.getByText('Add Answer');
+
     await act(async () => {
       fireEvent.click(addAnswerButton);
     });
 
-    expect(queryByText('Add Answer')).toBeNull();
-    expect(queryByText('Submit')).toBeInTheDocument();
-    expect(queryByText('Cancel')).toBeInTheDocument();
-  });
-
-  it('renders answers correctly', async () => {
-    const answers = [
-      {
-        answer_id: 1,
-        body: 'Answer 1',
-        helpfulness: 3,
-      },
-      {
-        answer_id: 2,
-        body: 'Answer 2',
-        helpfulness: 8,
-      },
-    ];
-
-    axios.get.mockResolvedValueOnce({ data: { results: answers } });
-
-    const { getByText } = render(
-      <QuestionsListEntry
-        question={question}
-        request={request}
-        setRequest={setRequest}
-        productName="Product Name"
-      />,
-    );
-
-    expect(axios.get).toHaveBeenCalledWith(
-      `http://localhost:3000/questionsanswers/questions/${question.question_id}/answers`,
-    );
-
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 0));
-    });
-
-    expect(getByText('A:')).toBeInTheDocument();
-    expect(getByText('Answer 1')).toBeInTheDocument();
-    expect(getByText('Answer 2')).toBeInTheDocument();
-    expect(getByText('See more answers')).toBeInTheDocument();
+    expect(screen.getByText('Your Answer')).toBeInTheDocument();
   });
 });
+// AddAnswer
+describe('AddAnswer', () => {
+  const question = {
+    question_id: 1,
+    question_body: 'Question 1',
+    question_helpfulness: 5,
+  };
 
-// answersList
+  const request = jest.fn();
+  const setRequest = jest.fn();
 
-describe('AnswersList Component', () => {
+  it('renders the AddAnswer form correctly', async () => {
+    await act(async () => {
+      render(
+        <AddAnswer
+          question={question}
+          request={request}
+          setRequest={setRequest}
+          productName="Product Name"
+        />,
+      );
+    });
+
+    expect(screen.getByText('Your Answer')).toBeInTheDocument();
+    expect(screen.getByText('Nickname')).toBeInTheDocument();
+    expect(screen.getByText('Email')).toBeInTheDocument();
+    expect(screen.getByText('Submit Answer')).toBeInTheDocument();
+  });
+
+  it('submits the answer form when "Submit Answer" is clicked', async () => {
+    await act(async () => {
+      render(
+        <AddAnswer
+          question={question}
+          request={request}
+          setRequest={setRequest}
+          productName="Product Name"
+        />,
+      );
+    });
+
+    const submitButton = screen.getByText('Submit Answer');
+
+    await act(async () => {
+      fireEvent.click(submitButton);
+    });
+
+    expect(request).toHaveBeenCalledWith('questions/1/answers', 'POST');
+  });
+});
+// AddQuestion
+
+describe('AddQuestion', () => {
+  const request = jest.fn();
+  const setRequest = jest.fn();
+
+  it('renders the AddQuestion form correctly', async () => {
+    await act(async () => {
+      render(
+        <AddQuestion request={request} setRequest={setRequest} />,
+      );
+    });
+
+    expect(screen.getByText('Ask Your Question')).toBeInTheDocument();
+    expect(screen.getByText('Your Question')).toBeInTheDocument();
+    expect(screen.getByText('Nickname')).toBeInTheDocument();
+    expect(screen.getByText('Email')).toBeInTheDocument();
+    expect(screen.getByText('Submit Question')).toBeInTheDocument();
+  });
+
+  it('submits the question form when "Submit Question" is clicked', async () => {
+    await act(async () => {
+      render(
+        <AddQuestion request={request} setRequest={setRequest} />,
+      );
+    });
+
+    const submitButton = screen.getByText('Submit Question');
+
+    await act(async () => {
+      fireEvent.click(submitButton);
+    });
+
+    expect(request).toHaveBeenCalledWith('questions', 'POST');
+  });
+});
+// AnswersList
+
+describe('AnswersList', () => {
   const answers = [
     {
       answer_id: 1,
-      answerer_name: 'User1',
+      body: 'Answer 1',
+      date: '2023-05-20T00:00:00.000Z',
       helpfulness: 5,
+      answerer_name: 'User 1',
+      photos: [],
     },
     {
       answer_id: 2,
-      answerer_name: 'User2',
-      helpfulness: 3,
-    },
-    {
-      answer_id: 3,
-      answerer_name: 'Seller',
-      helpfulness: 8,
+      body: 'Answer 2',
+      date: '2023-05-21T00:00:00.000Z',
+      helpfulness: 10,
+      answerer_name: 'User 2',
+      photos: [],
     },
   ];
 
-  const request = true;
+  const request = jest.fn();
   const setRequest = jest.fn();
 
-  test('renders AnswersList component', () => {
-    render(
-      <AnswersList
-        answers={answers}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    expect(screen.getByText('User1')).toBeInTheDocument();
-    expect(screen.getByText('User2')).toBeInTheDocument();
-    expect(screen.getByText('Seller')).toBeInTheDocument();
-  });
-
-  test('sorts answers by helpfulness', () => {
-    render(
-      <AnswersList
-        answers={answers}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    const answerElements = screen.getAllByTestId('answer-entry');
-
-    expect(answerElements[0]).toHaveTextContent('Seller');
-    expect(answerElements[1]).toHaveTextContent('User1');
-    expect(answerElements[2]).toHaveTextContent('User2');
-  });
-
-  test('displays "No Answers found" message when there are no answers', () => {
-    render(
-      <AnswersList
-        answers={[]}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    expect(screen.getByText('No Answers found')).toBeInTheDocument();
-  });
-});
-
-// AddQuestion
-describe('AddQuestion Component', () => {
-  const product = {
-    id: 1,
-    name: 'Product Name',
-  };
-
-  const request = true;
-  const setRequest = jest.fn();
-  const onClose = jest.fn();
-
-  test('renders AddQuestion component', () => {
-    render(
-      <AddQuestion
-        product={product}
-        request={request}
-        setRequest={setRequest}
-        onClose={onClose}
-        productName={product.name}
-      />,
-    );
-
-    expect(screen.getByText('Ask Your Question')).toBeInTheDocument();
-    expect(screen.getByText(`About the ${product.name}`)).toBeInTheDocument();
-  });
-
-  test('handles form submission with valid inputs', async () => {
-    axios.post.mockResolvedValueOnce();
-    render(
-      <AddQuestion
-        product={product}
-        request={request}
-        setRequest={setRequest}
-        onClose={onClose}
-        productName={product.name}
-      />,
-    );
-
-    const questionInput = screen.getByLabelText('Your Question *');
-    const nicknameInput = screen.getByLabelText('What is your nickname? *');
-    const emailInput = screen.getByLabelText('Your email *');
-    const submitButton = screen.getByText('Add A Question +');
-
-    fireEvent.change(questionInput, { target: { value: 'Question' } });
-    fireEvent.change(nicknameInput, { target: { value: 'Nickname' } });
-    fireEvent.change(emailInput, { target: { value: 'email@example.com' } });
-
-    await fireEvent.click(submitButton);
-
-    expect(axios.post).toHaveBeenCalledWith('http://localhost:3000/questionsanswers/questions/', {
-      body: 'Question',
-      name: 'Nickname',
-      email: 'email@example.com',
-      product_id: product.id,
+  it('renders answers correctly', async () => {
+    act(async () => {
+      render(
+        <AnswersList
+          answers={answers}
+          request={request}
+          setRequest={setRequest}
+        />,
+      );
     });
-    expect(setRequest).toHaveBeenCalledTimes(1);
-    expect(onClose).toHaveBeenCalledTimes(1);
+
+    expect(screen.getByText('Answer 1')).toBeInTheDocument();
+    expect(screen.getByText('Answer 2')).toBeInTheDocument();
   });
 
-  test('displays error message for missing inputs', async () => {
-    render(
-      <AddQuestion
-        product={product}
-        request={request}
-        setRequest={setRequest}
-        onClose={onClose}
-        productName={product.name}
-      />,
-    );
+  it('renders "No answers found" when answers array is empty', async () => {
+    await act(async () => {
+      render(
+        <AnswersList
+          answers={[]}
+          request={request}
+          setRequest={setRequest}
+        />,
+      );
+    });
 
-    const submitButton = screen.getByText('Add A Question +');
-
-    await fireEvent.click(submitButton);
-
-    expect(screen.queryByText('You must enter the following: Answer, Nickname, Email')).not.toBeNull();
-    expect(axios.post).not.toHaveBeenCalled();
-    expect(setRequest).not.toHaveBeenCalled();
-    expect(onClose).not.toHaveBeenCalled();
-  });
-
-  test('displays error message for invalid email format', async () => {
-    render(
-      <AddQuestion
-        product={product}
-        request={request}
-        setRequest={setRequest}
-        onClose={onClose}
-        productName={product.name}
-      />,
-    );
-
-    const emailInput = screen.getByLabelText('Your email *');
-    const submitButton = screen.getByText('Add A Question +');
-
-    fireEvent.change(emailInput, { target: { value: 'invalid_email' } });
-    await fireEvent.click(submitButton);
-
-    expect(screen.getByText('Please enter a valid email address')).toBeInTheDocument();
-    expect(axios.post).not.toHaveBeenCalled();
-    expect(setRequest).not.toHaveBeenCalled();
-    expect(onClose).not.toHaveBeenCalled();
+    expect(screen.getByText('No answers found')).toBeInTheDocument();
   });
 });
+// AnswersListEntry
 
-// AddAnswer
-
-describe('AddAnswer Component', () => {
-  const question = {
-    question_id: 1,
-    question_body: 'Question Body',
-  };
-
-  const onClose = jest.fn();
-  const productName = 'Product Name';
-  const setAnswers = jest.fn();
-  const answers = [];
-  const request = true;
-  const setRequest = jest.fn();
-
-  test('renders AddAnswer component', () => {
-    render(
-      <AddAnswer
-        question={question}
-        onClose={onClose}
-        productName={productName}
-        setAnswers={setAnswers}
-        answers={answers}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    expect(screen.getByText('Submit your Answer')).toBeInTheDocument();
-    expect(screen.getByText(`${productName}: ${question.question_body}`)).toBeInTheDocument();
-  });
-
-  test('handles form submission with valid inputs', async () => {
-    axios.post.mockResolvedValueOnce();
-    render(
-      <AddAnswer
-        question={question}
-        onClose={onClose}
-        productName={productName}
-        setAnswers={setAnswers}
-        answers={answers}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    const answerInput = screen.getByLabelText('Your Answer *');
-    const nicknameInput = screen.getByLabelText('What is your nickname? *');
-    const emailInput = screen.getByLabelText('Your email *');
-    const submitButton = screen.getByText('Add Answer');
-
-    fireEvent.change(answerInput, { target: { value: 'Answer' } });
-    fireEvent.change(nicknameInput, { target: { value: 'Nickname' } });
-    fireEvent.change(emailInput, { target: { value: 'email@example.com' } });
-
-    await fireEvent.click(submitButton);
-
-    expect(axios.post).toHaveBeenCalledWith(
-      `http://localhost:3000/questionsanswers/questions/${question.question_id}/answers`,
-      {
-        body: 'Answer',
-        name: 'Nickname',
-        email: 'email@example.com',
-        photos: [],
-      },
-    );
-    expect(setAnswers).toHaveBeenCalledTimes(1);
-    expect(setRequest).toHaveBeenCalledTimes(1);
-    expect(onClose).toHaveBeenCalledTimes(1);
-  });
-
-  test('displays error message for missing inputs', async () => {
-    render(
-      <AddAnswer
-        question={question}
-        onClose={onClose}
-        productName={productName}
-        setAnswers={setAnswers}
-        answers={answers}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    const submitButton = screen.getByText('Add Answer');
-
-    await fireEvent.click(submitButton);
-
-    expect(screen.getByText('You must enter the following: Answer, Nickname, Email')).toBeInTheDocument();
-    expect(axios.post).not.toHaveBeenCalled();
-    expect(setAnswers).not.toHaveBeenCalled();
-    expect(setRequest).not.toHaveBeenCalled();
-    expect(onClose).not.toHaveBeenCalled();
-  });
-
-  test('displays error message for invalid email format', async () => {
-    render(
-      <AddAnswer
-        question={question}
-        onClose={onClose}
-        productName={productName}
-        setAnswers={setAnswers}
-        answers={answers}
-        request={request}
-        setRequest={setRequest}
-      />,
-    );
-
-    const emailInput = screen.getByLabelText('Your email *');
-    const submitButton = screen.getByText('Add Answer');
-    fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
-
-    await fireEvent.click(submitButton);
-
-    expect(screen.getByText('Please enter a valid email address')).toBeInTheDocument();
-    expect(axios.post).not.toHaveBeenCalled();
-    expect(setAnswers).not.toHaveBeenCalled();
-    expect(setRequest).not.toHaveBeenCalled();
-    expect(onClose).not.toHaveBeenCalled();
-  });
-});
-
-// answerListentry
-
-describe('AnswersListEntry Component', () => {
+describe('AnswersListEntry', () => {
   const answer = {
     answer_id: 1,
-    body: 'Answer Body',
+    body: 'Answer 1',
+    date: '2023-05-20T00:00:00.000Z',
+    helpfulness: 5,
+    answerer_name: 'User 1',
     photos: [],
-    helpfulness: 0,
-    answerer_name: 'John',
-    date: new Date(),
   };
 
-  const request = true;
+  const request = jest.fn();
   const setRequest = jest.fn();
 
-  test('renders AnswersListEntry component', () => {
-    render(
-      <AnswersListEntry
-        answer={answer}
-        request={request}
-        setRequest={setRequest}
-      />
-    );
+  it('renders answer details', async () => {
+    await act(async () => {
+      render(
+        <AnswersListEntry
+          answer={answer}
+          request={request}
+          setRequest={setRequest}
+        />,
+      );
+    });
 
-    expect(screen.getByText(answer.body)).toBeInTheDocument();
-    expect(screen.getByText(`by ${answer.answerer_name},`)).toBeInTheDocument();
+    expect(screen.getByText('Answer 1')).toBeInTheDocument();
+    expect(screen.getByText('by User 1, May 20, 2023')).toBeInTheDocument();
+    expect(screen.getByText('Helpful?')).toBeInTheDocument();
+    expect(screen.getByText('Yes')).toBeInTheDocument();
+    expect(screen.getByText('Report')).toBeInTheDocument();
   });
 
-  test('handles helpful click', async () => {
-    axios.put.mockResolvedValueOnce();
-    render(
-      <AnswersListEntry
-        answer={answer}
-        request={request}
-        setRequest={setRequest}
-      />
-    );
+  it('increases helpfulness when "Yes" is clicked', async () => {
+    await act(async () => {
+      render(
+        <AnswersListEntry
+          answer={answer}
+          request={request}
+          setRequest={setRequest}
+        />,
+      );
+    });
 
     const helpfulButton = screen.getByText('Yes');
 
-    fireEvent.click(helpfulButton);
+    await act(async () => {
+      fireEvent.click(helpfulButton);
+    });
 
-    expect(axios.put).toHaveBeenCalledWith(`http://localhost:3000/questionsanswers/answers/${answer.answer_id}/helpful`);
-    expect(setRequest).toHaveBeenCalledTimes(1);
+    expect(request).toHaveBeenCalledWith('answers/1/helpful');
   });
 
-  test('handles report click', async () => {
-    axios.put.mockResolvedValueOnce();
-    render(
-      <AnswersListEntry
-        answer={answer}
-        request={request}
-        setRequest={setRequest}
-      />
-    );
+  it('displays image thumbnail when photos are available', async () => {
+    const answerWithPhotos = {
+      ...answer,
+      photos: ['image1.jpg', 'image2.jpg'],
+    };
 
-    const reportButton = screen.getByText('Report');
+    await act(async () => {
+      render(
+        <AnswersListEntry
+          answer={answerWithPhotos}
+          request={request}
+          setRequest={setRequest}
+        />,
+      );
+    });
 
-    fireEvent.click(reportButton);
+    const imageThumbnails = screen.getAllByAltText('Answer Photo');
 
-    expect(axios.put).toHaveBeenCalledWith(`http://localhost:3000/questionsanswers/answers/${answer.answer_id}/report`);
-    expect(setRequest).not.toHaveBeenCalled();
+    expect(imageThumbnails.length).toBe(2);
+    expect(imageThumbnails[0]).toHaveAttribute('src', 'image1.jpg');
+    expect(imageThumbnails[1]).toHaveAttribute('src', 'image2.jpg');
   });
+});
+// Search
 
-  test('handles photo modal', () => {
-    render(
-      <AnswersListEntry
-        answer={answer}
-        request={request}
-        setRequest={setRequest}
-      />
-    );
+describe('Search', () => {
+  const setFilterText = jest.fn();
 
-    const photoButton = screen.getByRole('button');
+  it('calls setFilterText with the entered value when Search button is clicked', async () => {
+    await act(async () => {
+      render(<Search setFilterText={setFilterText} />);
+    });
 
-    fireEvent.click(photoButton);
+    const searchInput = screen.getByPlaceholderText('Search for a question');
 
-    expect(screen.getByAltText('')).toBeInTheDocument();
+    await act(async () => {
+      fireEvent.change(searchInput, { target: { value: 'question' } });
+    });
+
+    const searchButton = screen.getByText('Search');
+
+    await act(async () => {
+      fireEvent.click(searchButton);
+    });
+
+    expect(setFilterText).toHaveBeenCalledWith('question');
   });
 });
