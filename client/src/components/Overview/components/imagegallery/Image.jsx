@@ -3,6 +3,8 @@ import React from 'react';
 export default function Image({
   style, imgSwitch, index, currentIndex, expanded, zoomLevel,
 }) {
+  console.log(style);
+
   if (zoomLevel === 2.5) {
     return (
       <> </>
